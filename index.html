@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Savanna Guides</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="/assets/css/app.css?v=156afab162" as="style" />
+    <link rel="preload" href="/assets/js/manifest.js?v=156afab162" as="script" />
+    <link rel="preload" href="/assets/js/vendor.js?v=156afab162" as="script" />
+    <link rel="preload" href="/assets/js/app.js?v=156afab162" as="script" />
+
+      <link rel="preload" href="/assets/css/home.css?v=156afab162" as="style" />
+  <link rel="preload" href="/assets/css/listing.css?v=156afab162" as="style" />
+  <link rel="preload" href="/assets/js/home.js?v=156afab162" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=156afab162") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=156afab162") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=156afab162") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=156afab162") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=156afab162") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=156afab162") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=156afab162");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=156afab162#iefix") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=156afab162") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=156afab162") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3?v=156afab162#icomoon") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=156afab162" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="/assets/css/home.css?v=156afab162" media="screen" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/listing.css?v=156afab162" media="screen" />
+
+
+    
+
+    <meta name="description" content="Helping you explore East Africa.">
+    <link rel="icon" href="https://savannaguides.com/content/images/size/w256h256/2025/09/app-icon-min-white.png" type="image/png">
+    <link rel="canonical" href="https://savannaguides.com/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Savanna Guides">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Savanna Guides">
+    <meta property="og:description" content="Helping you explore East Africa.">
+    <meta property="og:url" content="https://savannaguides.com/">
+    <meta property="og:image" content="https://savannaguides.com/content/images/2025/09/DSC04560.JPG">
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Savanna Guides">
+    <meta name="twitter:description" content="Helping you explore East Africa.">
+    <meta name="twitter:url" content="https://savannaguides.com/">
+    <meta name="twitter:image" content="https://savannaguides.com/content/images/2025/09/DSC04560.JPG">
+    <meta name="twitter:site" content="@ghost">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Savanna Guides",
+        "url": "https://savannaguides.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/09/app-icon-min-white-1.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "url": "https://savannaguides.com/",
+    "name": "Savanna Guides",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://savannaguides.com/content/images/2025/09/DSC04560.JPG",
+        "width": 1200,
+        "height": 675
+    },
+    "mainEntityOfPage": "https://savannaguides.com/",
+    "description": "Helping you explore East Africa."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.0">
+    <link rel="alternate" type="application/rss+xml" title="Savanna Guides" href="https://savannaguides.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="8d28d3b35d87a2006f6822161a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://savannaguides.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://savannaguides.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=156afab162"></script><style>:root {--ghost-accent-color: #10540d;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=156afab162">
+    <style>
+@font-face {
+  font-family: 'Forta';
+  src: url('/assets/fonts/Forta.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+</style>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: 'Forta'; }
+</style>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://savannaguides.com"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+  </head>
+  <body class="home-template">
+    
+
+
+
+
+<header class="m-header with-picture js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://savannaguides.com" class="m-logo in-mobile-topbar">
+        <img src="https://savannaguides.com/content/images/2025/09/app-icon-min-white-1.png" alt="Savanna Guides" class="">
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://savannaguides.com" class="m-logo">
+                    <img src="https://savannaguides.com/content/images/2025/09/app-icon-min-white-1.png" alt="Savanna Guides" class="">
+                  </a>
+                </li>
+                
+    <li class="nav-home nav-current">
+      <a href="https://savannaguides.com/">Home</a>
+    </li>
+    <li class="nav-about">
+      <a href="https://savannaguides.com/about/">About</a>
+    </li>
+
+                <li class="more">
+                  <span>
+                    <a href="javascript:void(0);" class="js-open-secondary-menu">
+                      More
+                      <span class="icon-chevron-down" aria-hidden="true"></span>
+                    </a>
+                  </span>
+                </li>
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="m-not-found in-recent-articles">No recent articles found :(</div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                              <li class="m-not-found">No tags found :(</li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle light/dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div id="secondary-navigation-template" style="display: none;">
+      
+  <ul class="m-secondary-menu">
+      <li class="nav-sign-up">
+        <a href="#/portal/">Sign up</a>
+      </li>
+  </ul>
+
+    </div>
+</header>
+
+<main class="main-wrap">
+  
+  <section class="m-hero with-picture" data-animate="fade">
+    <div class="m-hero__picture ">
+      <img
+        srcset="
+          /content/images/size/w300/2025/09/DSC04560.JPG 300w,
+          /content/images/size/w600/2025/09/DSC04560.JPG 600w,
+          /content/images/size/w1000/2025/09/DSC04560.JPG 1000w,
+          /content/images/size/w2000/2025/09/DSC04560.JPG 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="/content/images/size/w1000/2025/09/DSC04560.JPG"
+        alt=""
+      />
+    </div>
+  <div class="m-hero__content" data-animate="fade-down">
+    <h1 class="m-hero-title bigger">Savanna Guides</h1>
+      <p class="m-hero-description bigger">Helping you explore East Africa.</p>
+  </div>
+  </section>
+  <div class="l-content">
+    <div class="l-wrapper" data-animate="fade-up">
+      <div class="l-grid centered">
+        
+    <div class="m-recommended-slider__item swiper-slide">
+      <div class="m-heading no-margin">
+        <h3>No posts found</h3>
+        <p>
+          Apparently there are no posts at the moment, check again later.
+        </p>
+      </div>
+    </div>
+      </div>
+    </div>
+    
+<div class="l-wrapper">
+  <nav class="m-pagination" aria-label="Pagination">
+    <span class="m-pagination__text">Page 1 of 1</span>
+  </nav>
+</div>
+
+  </div>
+</main>
+
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+      <a href="https://savannaguides.com/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Savanna Guides &copy; 2025</span>
+    </p>
+
+  </div>
+</footer>
+    <script defer src="/assets/js/manifest.js?v=156afab162"></script>
+    <script defer src="/assets/js/vendor.js?v=156afab162"></script>
+    <script defer src="/assets/js/app.js?v=156afab162"></script>
+
+      <script defer src="/assets/js/home.js?v=156afab162"></script>
+
+
+    
+  </body>
+</html>
