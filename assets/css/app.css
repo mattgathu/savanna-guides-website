@@ -1569,6 +1569,66 @@ fieldset {
     justify-content: flex-end
 }
 
+.m-lang-switch {
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid var(--primary-border-color);
+    border-radius: 999px;
+    color: var(--titles-color);
+    display: inline-flex;
+    font-size: .75rem;
+    font-weight: 600;
+    gap: 6px;
+    height: 28px;
+    letter-spacing: .08em;
+    line-height: 1;
+    margin-left: 12px;
+    padding: 0 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease
+}
+
+.m-lang-switch .icon-globe {
+    font-size: .8rem
+}
+
+.m-lang-switch__text {
+    line-height: 1
+}
+
+.m-lang-switch:hover {
+    background-color: var(--secondary-subtle-color);
+    border-color: var(--link-color);
+    color: var(--link-color)
+}
+
+.m-lang-switch:focus {
+    box-shadow: 0 0 0 2px var(--primary-subtle-color);
+    outline: 0
+}
+
+.m-lang-switch:active {
+    transform: translateY(1px)
+}
+
+@media only screen and (min-width:48rem) {
+    .m-lang-switch {
+        margin-left: 16px
+    }
+}
+
+.rtl .m-lang-switch {
+    margin-left: 0;
+    margin-right: 12px
+}
+
+@media only screen and (min-width:48rem) {
+    .rtl .m-lang-switch {
+        margin-right: 16px
+    }
+}
+
 @media only screen and (min-width:48rem) {
     .m-nav__right {
         flex-shrink: 0;
