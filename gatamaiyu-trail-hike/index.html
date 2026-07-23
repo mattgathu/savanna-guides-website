@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Gatamaiyu Trail Hike</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="/assets/css/app.css?v=00b9e24c62" as="style" />
+    <link rel="preload" href="/assets/js/manifest.js?v=00b9e24c62" as="script" />
+    <link rel="preload" href="/assets/js/vendor.js?v=00b9e24c62" as="script" />
+    <link rel="preload" href="/assets/js/app.js?v=00b9e24c62" as="script" />
+
+      <link rel="preload" href="/assets/css/post.css?v=00b9e24c62" as="style" />
+  <link rel="preload" href="/assets/js/post.js?v=00b9e24c62" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=00b9e24c62") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=00b9e24c62") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=00b9e24c62") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=00b9e24c62") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=00b9e24c62") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=00b9e24c62") format('woff');
+      }
+
+      /* jost-300-light */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-Light.ttf?v=00b9e24c62") format('truetype');
+      }
+
+      /* jost-300-lightitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-LightItalic.ttf?v=00b9e24c62") format('truetype');
+      }
+
+      /* jost-400-book */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-Book.ttf?v=00b9e24c62") format('truetype');
+      }
+
+      /* jost-400-bookitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-BookItalic.ttf?v=00b9e24c62") format('truetype');
+      }
+
+      /* jost-500-medium */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-Medium.ttf?v=00b9e24c62") format('truetype');
+      }
+
+      /* jost-500-mediumitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-MediumItalic.ttf?v=00b9e24c62") format('truetype');
+      }
+
+      /* jost-600-semi */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-Semi.ttf?v=00b9e24c62") format('truetype');
+      }
+
+      /* jost-600-semiitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-SemiItalic.ttf?v=00b9e24c62") format('truetype');
+      }
+
+      /* jost-700-bold */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-Bold.ttf?v=00b9e24c62") format('truetype');
+      }
+
+      /* jost-700-bolditalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-BoldItalic.ttf?v=00b9e24c62") format('truetype');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=00b9e24c62");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=00b9e24c62#iefix") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=00b9e24c62") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=00b9e24c62") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3?v=00b9e24c62#icomoon") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=00b9e24c62" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="/assets/css/post.css?v=00b9e24c62" media="screen" />
+
+
+    
+
+    <meta name="description" content="A day hike through Ngare Ndare Forest featuring forest trails, the canopy walk, and the iconic turquoise Blue Pools.">
+    <link rel="icon" href="https://savannaguides.com/content/images/size/w256h256/2025/09/app-icon-min-white.png" type="image/png">
+    <link rel="canonical" href="https://savannaguides.com/gatamaiyu-trail-hike/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Savanna Guides">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Gatamaiyu Trail Hike">
+    <meta property="og:description" content="A day hike through Ngare Ndare Forest featuring forest trails, the canopy walk, and the iconic turquoise Blue Pools.">
+    <meta property="og:url" content="https://savannaguides.com/gatamaiyu-trail-hike/">
+    <meta property="og:image" content="https://savannaguides.com/content/images/2026/07/IMG_4382.JPG">
+    <meta property="article:published_time" content="2026-07-23T05:38:50.000Z">
+    <meta property="article:modified_time" content="2026-07-23T05:38:50.000Z">
+    <meta property="article:tag" content="Trails">
+    <meta property="article:tag" content="Hikes">
+    <meta property="article:tag" content="Laikipia">
+    <meta property="article:tag" content="Ngare Ndare">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gatamaiyu Trail Hike">
+    <meta name="twitter:description" content="A day hike through Ngare Ndare Forest featuring forest trails, the canopy walk, and the iconic turquoise Blue Pools.">
+    <meta name="twitter:url" content="https://savannaguides.com/gatamaiyu-trail-hike/">
+    <meta name="twitter:image" content="https://savannaguides.com/content/images/2026/07/IMG_4382.JPG">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Savanna Guides">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Trails, Hikes, Laikipia, Ngare Ndare">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="900">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Savanna Guides",
+        "url": "https://savannaguides.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Savanna Guides",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png",
+            "width": 1024,
+            "height": 1024
+        },
+        "url": "https://savannaguides.com/author/sgt/",
+        "sameAs": [
+            "https://savannaguides.com/",
+            "https://www.instagram.com/savannaguides"
+        ]
+    },
+    "headline": "Gatamaiyu Trail Hike",
+    "url": "https://savannaguides.com/gatamaiyu-trail-hike/",
+    "datePublished": "2026-07-23T05:38:50.000Z",
+    "dateModified": "2026-07-23T05:38:50.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://savannaguides.com/content/images/2026/07/IMG_4382.JPG",
+        "width": 1200,
+        "height": 900
+    },
+    "keywords": "Trails, Hikes, Laikipia, Ngare Ndare",
+    "description": "A day hike through Ngare Ndare Forest featuring forest trails, the canopy walk, and the iconic turquoise Blue Pools.",
+    "mainEntityOfPage": "https://savannaguides.com/gatamaiyu-trail-hike/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.0">
+    <link rel="alternate" type="application/rss+xml" title="Savanna Guides" href="https://savannaguides.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="8d28d3b35d87a2006f6822161a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://savannaguides.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://savannaguides.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=00b9e24c62"></script><style>:root {--ghost-accent-color: #10540d;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=00b9e24c62">
+    <style>
+@font-face {
+  font-family: 'Forta';
+  src: url('/assets/fonts/Forta.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+</style>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: 'Forta'; }
+</style> 
+
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: #1d1f1d; /* charcoal */
+  }
+
+  thead {
+    background: #f3f7f0; /* pale savanna green */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #d6e2d1; /* desaturated green-gray */
+    text-align: center;
+  }
+
+  th {
+    color: #10540d; /* savanna green */
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background: #f8faf7; /* subtle hover hint */
+  }
+</style>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42V9F2RPQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42V9F2RPQ5');
+</script>
+
+
+
+
+    <link rel="alternate" hreflang="en" href="https://savannaguides.com/ngare-ndare-forest-hike-2026/" />
+<link rel="alternate" hreflang="fr" href="https://savannaguides.com/fr/randonnee-a-ngare-ndare-2026/" />
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://savannaguides.com"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+  </head>
+  <body class="post-template tag-trails tag-hikes tag-laikipia tag-ngare-ndare tag-en">
+    
+
+
+  
+
+
+
+  
+<header class="m-header with-picture js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu" data-i18n="Open menu" data-i18n-attr="aria-label">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://savannaguides.com" class="m-logo sg-brand in-mobile-topbar">
+        <span class="sg-brand__mark">
+          <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+        </span>
+        <span class="sg-brand__wordmark">Savanna Guides</span>
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="Open search" data-i18n="Open search" data-i18n-attr="aria-label">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu" data-i18n="Close menu" data-i18n-attr="aria-label">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu" data-i18n="Main menu" data-i18n-attr="aria-label">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://savannaguides.com" class="m-logo sg-brand">
+                    <span class="sg-brand__mark">
+                      <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+                    </span>
+                    <span class="sg-brand__wordmark">Savanna Guides</span>
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="https://savannaguides.com/">Home</a>
+    </li>
+    <li class="nav-app">
+      <a href="https://savannaguides.com/app/">App</a>
+    </li>
+    <li class="nav-about">
+      <a href="https://savannaguides.com/about/">About</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu" data-i18n="Open submenu" data-i18n-attr="aria-label">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles" data-i18n="Recent articles">Recent articles</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="/gatamaiyu-trail-hike/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/07/IMG_4382.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Gatamaiyu Trail Hike">
+                                      Gatamaiyu Trail Hike
+                                    </h3>
+                                    <span class="m-recent-article__date">7 minutes ago</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/weekend-camping-at-gura-river-camp/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/04/DSC05378.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Weekend Camping at Gura River Camp">
+                                      Weekend Camping at Gura River Camp
+                                    </h3>
+                                    <span class="m-recent-article__date">3 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/fr/randonnee-a-ngare-ndare-2026/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Randonnée à Ngare Ndare">
+                                      Randonnée à Ngare Ndare
+                                    </h3>
+                                    <span class="m-recent-article__date">6 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/ngare-ndare-forest-hike-2026/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Ngare Ndare Forest Hike">
+                                      Ngare Ndare Forest Hike
+                                    </h3>
+                                    <span class="m-recent-article__date">6 months ago</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title" data-i18n="Tags">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="/tag/campsites/">Campsites</a>
+                            </li>
+                            <li>
+                              <a href="/tag/hikes/">Hikes</a>
+                            </li>
+                            <li>
+                              <a href="/tag/laikipia/">Laikipia</a>
+                            </li>
+                            <li>
+                              <a href="/tag/ngare-ndare/">Ngare Ndare</a>
+                            </li>
+                            <li>
+                              <a href="/tag/trails/">Trails</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="Open search" data-i18n="Open search" data-i18n-attr="aria-label">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" data-i18n="Toggle dark mode" data-i18n-attr="data-tippy-content" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only" data-i18n-text>
+                Toggle light/dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+            <a id="lang-switch" class="m-lang-switch" href="/fr/" title="Switch language" aria-label="Switch language" data-i18n="Switch language" data-i18n-attr="title,aria-label">
+              <span class="icon-globe" aria-hidden="true"></span>
+              <span class="m-lang-switch__text">FR</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+(function () {
+  var p = window.location.pathname || "/";
+  var isFR = (p === "/fr/" || p.indexOf("/fr/") === 0);
+  var el = document.getElementById("lang-switch");
+  if (!el) return;
+  var textEl = el.querySelector(".m-lang-switch__text") || el;
+  textEl.textContent = isFR ? "EN" : "FR";
+  var targetLang = isFR ? "en" : "fr";
+  var fallbackHref = isFR ? "/" : "/fr/";
+  var alternate = document.querySelector('link[rel="alternate"][hreflang="' + targetLang + '"]');
+  var alternateHref = alternate && alternate.getAttribute("href");
+  el.href = alternateHref || fallbackHref;
+})();
+</script>
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-animate="fade">
+    <div class="m-hero__picture in-post">
+      <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+    src="/content/images/size/w1000/2026/07/IMG_4382.JPG"
+    alt=""
+    
+    
+  />
+</picture>
+    </div>
+    </section>
+        <div class="l-wrapper in-caption">
+          <p class="m-small-text align-center">
+            <span style="white-space: pre-wrap;">Little thompson watefalls seen from tea plantations</span>
+          </p>
+        </div>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-animation-wrapper" data-animate="fade-up">
+          <div
+            class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Gatamaiyu Trail Hike</h1>
+              <div class="m-heading__meta">
+                  <a href="https://savannaguides.com/tag/trails/" class="m-heading__meta__tag">Trails</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">Jul 23, 2026</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://savannaguides.com/gatamaiyu-trail-hike/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Gatamaiyu%20Trail%20Hike&url=https://savannaguides.com/gatamaiyu-trail-hike/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top" data-i18n="Scroll to top" data-i18n-attr="aria-label">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <figure class="kg-card kg-image-card kg-width-wide"><img src="https://savannaguides.com/content/images/2026/07/dji_mimo_20260718_145700_20260718145700_1784389688939_photo.jpg" class="kg-image" alt="" loading="lazy" width="2000" height="1125" srcset="https://savannaguides.com/content/images/size/w600/2026/07/dji_mimo_20260718_145700_20260718145700_1784389688939_photo.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/07/dji_mimo_20260718_145700_20260718145700_1784389688939_photo.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/dji_mimo_20260718_145700_20260718145700_1784389688939_photo.jpg 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/dji_mimo_20260718_145700_20260718145700_1784389688939_photo.jpg 2400w" sizes="(min-width: 1200px) 1200px"></figure><h2 id="summary-card">Summary Card</h2>
+<!--kg-card-begin: html-->
+<div class="summary-card">
+  <table class="summary-table">
+    <tr><th>Region</th><td>Kiambu</td></tr>
+    <tr><th>Trail Name</th><td>Gatamaiyu Trail</td></tr>
+    <tr><th>Distance</th><td>8 km</td></tr>
+    <tr><th>Elevation Gain</th><td>447 m</td></tr>
+    <tr><th>Duration</th><td>3–5 hours</td></tr>
+    <tr><th>Difficulty</th><td>Moderate</td></tr>
+    <tr><th>Trail Type</th><td>Loop</td></tr>
+    <tr><th>Season</th><td>Dry</td></tr>
+    <tr><th>Highlights</th><td>Tea farms, Waterfalls, Caves</td></tr>
+    <tr><th>Fees</th><td>Free</td></tr>
+  </table>
+</div>
+
+<!--kg-card-end: html-->
+<h2 id="introduction">Introduction</h2><p>Gatamaiyu is a relatively challenging walk up and down tea farms with rewarding wide open vistas and the occasional waterfalls and river crossings.<br><br>It's great for those seeking a mix of highland scenery, short steep climbs and waterfalls exploration in one compact loop.</p><hr><h2 id="location-access">Location &amp; Access</h2><p>The trail starts and ends in Kagwe Town.</p><p>Google Maps: <a href="https://maps.app.goo.gl/Y7HSjurKVEwi7RK48?ref=localhost" rel="noreferrer"><em>Kagwe Town</em></a></p><p><strong>Access</strong></p><ul><li>Self-drive is common. The roads are accessible all year round.</li></ul><hr><h2 id="entry-requirements">Entry Requirements</h2><p>The trails is on publicly accessible land with no entry requirements. This is mostly private land, be mindful of people's property. </p><hr><h2 id="route-description">Route Description</h2><p>Gatamaiyu Trail starts and ends in Kagwe Town, tracing a moderate 7.8 km loop through the tea-growing highlands of northern Kiambu.</p><p>This is a hiking route shaped by contrast. Open farm tracks and tea plantations give way to steep descents into wooded river valleys, where dense vegetation, wet rock and cool shade create a very different mood from the cultivated slopes above. The trail sits between 2,004 and 2,110 metres and packs 447 metres of climbing into a 2 to 3 hour outing, so the hilly terrain demands steady effort throughout.</p><p>Water defines much of the experience. The route is associated with Kagagu Cave and a series of waterfalls, including a cave-side fall reached through muddy, slippery valley terrain. Riverine sections bring ferns, vines and shaded stream corridors, while the climbs back toward the farms and town can feel tougher than the distance suggests. Kagwe Town serves as both trailhead and finish point, making this a convenient town-based walk rather than a full forest-reserve trek.</p><p>Gatamaiyu suits hikers looking for a mix of rural highland scenery, short steep climbs and waterfall exploration in one compact loop.</p><p>You can find this route visualized inside the Savanna Guides app.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://apps.apple.com/us/app/savanna-guides/id6636470632?itscg=30200&itsct=apps_box_link&mttnsubad=6636470632&ref=localhost"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Savanna Guides App - App Store</div><div class="kg-bookmark-description">Download Savanna Guides by Matthew Gathu Kamande on the App Store. See screenshots, ratings and reviews, user tips, and more games like Savanna Guides.</div><div class="kg-bookmark-metadata"><picture><source type="image/webp" srcset="/content/images/format/webp/icon/favicon-180.png.webp"><img class="kg-bookmark-icon" src="https://savannaguides.com/content/images/icon/favicon-180.png" alt=""></picture><span class="kg-bookmark-author">App Store</span><span class="kg-bookmark-publisher">Matthew Gathu Kamande</span></div></div><div class="kg-bookmark-thumbnail"><picture><source type="image/webp" srcset="/content/images/format/webp/thumbnail/1200x630wa.jpg.webp"><img src="https://savannaguides.com/content/images/thumbnail/1200x630wa.jpg" alt="" onerror="this.style.display = 'none'"></picture></div></a></figure>
+<!--kg-card-begin: html-->
+<a
+  href="https://play.google.com/store/apps/details?id=com.mgk.savannaguides&utm_source=savannaguides&utm_medium=website"
+  target="_blank"
+  rel="noopener"
+  style="
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+    height: 150px;
+    background: #ffffff;
+    border: 1px solid #d9dde3;
+    border-radius: 0;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+  "
+>
+  <!-- Left: App information -->
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 18px 22px;
+      box-sizing: border-box;
+      min-width: 0;
+      text-align: left;
+    "
+  >
+    <div
+      style="
+        margin: 0 0 8px 0;
+        padding: 0;
+        font-size: 16px;
+        line-height: 1.25;
+        font-weight: 700;
+        color: #383e47;
+        text-align: left;
+      "
+    >
+      Savanna Guides App - Google Play
+    </div>
+
+    <div
+      style="
+        margin: 0 0 16px 0;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.4;
+        font-weight: 400;
+        color: #687281;
+        text-align: left;
+      "
+    >
+      Explore East Africa's national parks, hiking trails, campsites,
+      wildlife and outdoor destinations with Savanna Guides.
+    </div>
+
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.3;
+        color: #687281;
+        text-align: left;
+      "
+    >
+      <img
+        src="https://savannaguides.com/assets/app/google-play-icon.png"
+        alt="Google Play"
+        style="
+          display: block;
+          width: 28px;
+          height: 28px;
+          margin: 0;
+          padding: 0;
+          object-fit: cover;
+          border-radius: 5px;
+          flex-shrink: 0;
+        "
+      />
+
+      <span
+        style="
+          font-weight: 500;
+          color: #383e47;
+        "
+      >
+        Google Play
+      </span>
+
+      <span style="color: #383e47;">•</span>
+
+      <span>Matthew Gathu Kamande</span>
+    </div>
+  </div>
+
+  <!-- Right: App icon -->
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: #f7f7f8;
+      box-sizing: border-box;
+    "
+  >
+    <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img
+      src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png"
+      alt="Savanna Guides"
+      style="
+        display: block;
+        width: 90px;
+        height: 90px;
+        margin: 0;
+        padding: 0;
+        object-fit: cover;
+        border-radius: 20px;
+      "
+    /></picture>
+  </div>
+</a>
+<!--kg-card-end: html-->
+<hr><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/2026/07/dji_mimo_20260718_125938_20260718125937_1784389690056_photo.jpg" width="1728" height="3072" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/dji_mimo_20260718_125938_20260718125937_1784389690056_photo.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/07/dji_mimo_20260718_125938_20260718125937_1784389690056_photo.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/dji_mimo_20260718_125938_20260718125937_1784389690056_photo.jpg 1600w, https://savannaguides.com/content/images/2026/07/dji_mimo_20260718_125938_20260718125937_1784389690056_photo.jpg 1728w" sizes="(min-width: 720px) 720px"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/2026/07/IMG_4373.JPG" width="2000" height="2667" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4373.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4373.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4373.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4373.JPG 2400w" sizes="(min-width: 720px) 720px"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/2026/07/IMG_4309.JPG" width="2000" height="1500" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4309.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4309.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4309.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4309.JPG 2400w" sizes="(min-width: 720px) 720px"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/2026/07/IMG_4327.JPG" width="2000" height="2667" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4327.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4327.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4327.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4327.JPG 2400w" sizes="(min-width: 720px) 720px"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/2026/07/dji_mimo_20260718_145710_20260718145711_1784389687947_photo.jpg" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/dji_mimo_20260718_145710_20260718145711_1784389687947_photo.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/07/dji_mimo_20260718_145710_20260718145711_1784389687947_photo.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/dji_mimo_20260718_145710_20260718145711_1784389687947_photo.jpg 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/dji_mimo_20260718_145710_20260718145711_1784389687947_photo.jpg 2400w" sizes="(min-width: 720px) 720px"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/2026/07/IMG_4305.JPG" width="2000" height="1500" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4305.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4305.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4305.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4305.JPG 2400w" sizes="(min-width: 720px) 720px"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/2026/07/IMG_4338.JPG" width="2000" height="1500" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4338.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4338.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4338.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4338.JPG 2400w" sizes="(min-width: 720px) 720px"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/2026/07/IMG_4334.JPG" width="2000" height="1500" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4334.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4334.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4334.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4334.JPG 2400w" sizes="(min-width: 720px) 720px"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/2026/07/IMG_4318.JPG" width="2000" height="2667" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4318.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4318.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4318.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4318.JPG 2400w" sizes="(min-width: 720px) 720px"></div></div></div></figure><h2 id="highlights">Highlights</h2><h3 id="tea-farms">Tea Farms</h3><p>The trails traverse tea plantations descending and ascending steep slopes..</p><h3 id="waterfalls">Waterfalls</h3><p>There are several waterfalls along the trail.</p><h3 id="caves">Caves</h3><p>There are caves on the trail.</p><hr><h2 id="trail-conditions">Trail Conditions</h2><p>This section focuses on how the trail feels and behaves, not just the numbers.</p><ul><li><strong>Terrain:</strong> mostly tea farms paths with steep slopes near rivers.</li><li><strong>Gradient:</strong> steep tea plantations descending into river valleys.</li><li><strong>Surface:</strong> can get muddy and slippery after rain; in dry season it's mostly firm.</li><li><strong>Navigation:</strong> straightforward with a guide; </li><li><strong>Phone signal:</strong> generally great.</li><li><strong>Facilities:</strong> no facilities along the trail.</li></ul><hr><h2 id="gear-packing-list">Gear &amp; Packing List</h2><h3 id="essentials"><strong>Essentials</strong></h3><ul><li>1.5 L of water per person</li><li>Snacks or a packed lunch</li><li>Comfortable trail shoes or sturdy trainers</li><li>Hat and sunscreen</li><li>Light, breathable clothing that can dry quickly</li><li>A small daypack</li><li>Rain jacket in case of showers.</li></ul><hr><h2 id="safety-tips">Safety &amp; Tips</h2><ul><li><strong>Weather:</strong> prefer the dry season. Muddy trails make navigating the slopes hard.</li><li><strong>Leave no trace:</strong> pack out all rubbish, including food wrappers and bottles.</li></ul><hr><h2 id="best-time-to-go">Best Time to Go</h2><ul><li><strong>Season:</strong> the drier months (roughly June - October and January - March) offer the easiest walking conditions.</li><li><strong>Time of day:</strong> starting mid-morning works well.</li><li><strong>Weekdays vs weekends:</strong> both are fine.</li></ul><hr><h2 id="notes">Notes</h2><p>Gatamaiyu suits hikers looking for a mix of rural highland scenery, short steep climbs and waterfall exploration in one compact loop.</p>
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title" data-i18n="Tags">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="/tag/trails/" title="Trails">Trails</a>
+                      </li>
+                      <li>
+                        <a href="/tag/hikes/" title="Hikes">Hikes</a>
+                      </li>
+                      <li>
+                        <a href="/tag/laikipia/" title="Laikipia">Laikipia</a>
+                      </li>
+                      <li>
+                        <a href="/tag/ngare-ndare/" title="Ngare Ndare">Ngare Ndare</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="https://savannaguides.com/author/sgt/" class="m-author-picture" aria-label="Savanna Guides">
+                  <div style="background-image: url(https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="https://savannaguides.com/author/sgt/">Savanna Guides</a>
+              </h4>
+                <p class="m-author__bio">Savanna Guides is a project by Matt Gathu with the loving help of my dear friends Nicks and Tessie.</p>
+              <ul class="m-author-links">
+                  <li>
+                    <a href="https://savannaguides.com/" target="_blank" rel="noopener" aria-label="Website" data-i18n="Website" data-i18n-attr="aria-label">
+                      <span class="icon-globe" aria-hidden="true"></span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
+
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search" data-i18n="Search" data-i18n-attr="aria-label">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search" data-i18n="Close search" data-i18n-attr="aria-label">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only" data-i18n="Type to search">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search" data-i18n="Type to search" data-i18n-attr="placeholder">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results" data-i18n="No results for your search, try something different.">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+      <a href="https://savannaguides.com/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Savanna Guides &copy; 2026</span>
+    </p>
+
+  </div>
+</footer>
+    <script defer src="/assets/js/manifest.js?v=00b9e24c62"></script>
+    <script defer src="/assets/js/vendor.js?v=00b9e24c62"></script>
+    <script defer src="/assets/js/app.js?v=00b9e24c62"></script>
+
+      <script defer src="/assets/js/post.js?v=00b9e24c62"></script>
+
+
+    <script src="/assets/js/i18n.js?v=00b9e24c62"></script>
+
+    
+  </body>
+</html>
