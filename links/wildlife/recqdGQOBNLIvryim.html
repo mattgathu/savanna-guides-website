@@ -29,8 +29,10 @@ body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,
 h1{margin:0 0 12px;font-size:27px;line-height:1.2}
 .lede{margin:0 0 18px;color:var(--muted)}
 .prompt{margin:0 0 18px}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 14px}
-.button{flex:1 1 200px;text-align:center;background:var(--accent);color:#fff;text-decoration:none;padding:12px 16px;border-radius:10px;font-weight:600}
+.badges{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 16px}
+.badge{display:inline-flex;align-items:center;background:#000;border-radius:8px;overflow:hidden;height:50px;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.badge img{display:block;height:50px;width:auto}
+@media(max-width:420px){.badge,.badge img{height:44px}}
 .muted{margin:0;font-size:14px;color:var(--muted)}
 .muted a{color:inherit}
 </style>
@@ -43,9 +45,13 @@ h1{margin:0 0 12px;font-size:27px;line-height:1.2}
     <h1>Striped Hyena</h1>
     <p class="lede">Silent Striper of the Night</p>
     <p class="prompt">Open this in Savanna Guides for maps, photos and the full guide.</p>
-    <p class="actions">
-      <a class="button" href="https://apps.apple.com/us/app/savanna-parks-guide/id6636470632">Download for iPhone</a>
-      <a class="button" href="https://play.google.com/store/apps/details?id=com.mgk.savannaguides">Download for Android</a>
+    <p class="badges">
+      <a class="badge" href="https://apps.apple.com/us/app/savanna-parks-guide/id6636470632">
+        <img src="/assets/app/app-store-badge.svg" alt="Download Savanna Guides on the App Store" width="120" height="40">
+      </a>
+      <a class="badge" href="https://play.google.com/store/apps/details?id=com.mgk.savannaguides">
+        <img src="/assets/app/google-play-badge-optimized.jpg" alt="Get Savanna Guides on Google Play" width="640" height="190">
+      </a>
     </p>
     <p class="muted"><a href="https://savannaguides.com/">savannaguides.com</a></p>
   </div>
