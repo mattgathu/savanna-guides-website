@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "D3CMZ8R99B.mgk.EastAfricaParksGuide"
+        ],
+        "components": [
+          {
+            "/": "/links/*"
+          }
+        ]
+      }
+    ]
+  }
+}

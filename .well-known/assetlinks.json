@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mgk.savannaguides",
+      "sha256_cert_fingerprints": [
+        "E2:E8:EC:5C:74:E7:AD:1F:C1:BD:B7:0E:73:2F:21:BF:59:7F:E9:78:61:8E:62:4F:B1:84:56:6C:71:35:69:3F",
+        "96:29:1D:8C:0B:5A:FC:F8:4E:98:F7:EC:20:B6:D6:C5:AF:33:10:E8:D8:9C:5E:9B:8E:34:16:A9:5E:A5:8E:B7"
+      ]
+    }
+  }
+]
