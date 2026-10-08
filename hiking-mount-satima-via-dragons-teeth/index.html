@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Hiking Mount Satima via Dragon’s Teeth</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="/assets/css/app.css?v=0ae7ef7e53" as="style" />
+    <link rel="preload" href="/assets/js/manifest.js?v=0ae7ef7e53" as="script" />
+    <link rel="preload" href="/assets/js/vendor.js?v=0ae7ef7e53" as="script" />
+    <link rel="preload" href="/assets/js/app.js?v=0ae7ef7e53" as="script" />
+
+      <link rel="preload" href="/assets/css/post.css?v=0ae7ef7e53" as="style" />
+  <link rel="preload" href="/assets/js/post.js?v=0ae7ef7e53" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=0ae7ef7e53") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=0ae7ef7e53") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=0ae7ef7e53") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=0ae7ef7e53") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=0ae7ef7e53") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=0ae7ef7e53") format('woff');
+      }
+
+      /* jost-300-light */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-Light.ttf?v=0ae7ef7e53") format('truetype');
+      }
+
+      /* jost-300-lightitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-LightItalic.ttf?v=0ae7ef7e53") format('truetype');
+      }
+
+      /* jost-400-book */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-Book.ttf?v=0ae7ef7e53") format('truetype');
+      }
+
+      /* jost-400-bookitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-BookItalic.ttf?v=0ae7ef7e53") format('truetype');
+      }
+
+      /* jost-500-medium */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-Medium.ttf?v=0ae7ef7e53") format('truetype');
+      }
+
+      /* jost-500-mediumitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-MediumItalic.ttf?v=0ae7ef7e53") format('truetype');
+      }
+
+      /* jost-600-semi */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-Semi.ttf?v=0ae7ef7e53") format('truetype');
+      }
+
+      /* jost-600-semiitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-SemiItalic.ttf?v=0ae7ef7e53") format('truetype');
+      }
+
+      /* jost-700-bold */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-Bold.ttf?v=0ae7ef7e53") format('truetype');
+      }
+
+      /* jost-700-bolditalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-BoldItalic.ttf?v=0ae7ef7e53") format('truetype');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=0ae7ef7e53");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=0ae7ef7e53#iefix") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=0ae7ef7e53") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=0ae7ef7e53") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3?v=0ae7ef7e53#icomoon") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=0ae7ef7e53" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="/assets/css/post.css?v=0ae7ef7e53" media="screen" />
+
+
+    
+
+    <meta name="description" content="Hiking Mount Satima in Aberdare National Park">
+    <link rel="icon" href="https://savannaguides.com/content/images/size/w256h256/2025/09/app-icon-min-white.png" type="image/png">
+    <link rel="canonical" href="https://savannaguides.com/hiking-mount-satima-via-dragons-teeth/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Savanna Guides">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Hiking Mount Satima via Dragon’s Teeth">
+    <meta property="og:description" content="Hiking Mount Satima in Aberdare National Park">
+    <meta property="og:url" content="https://savannaguides.com/hiking-mount-satima-via-dragons-teeth/">
+    <meta property="og:image" content="https://savannaguides.com/content/images/2026/10/dragons-teeth-cover.jpg">
+    <meta property="article:published_time" content="2026-10-08T06:10:58.000Z">
+    <meta property="article:modified_time" content="2026-10-08T16:05:41.000Z">
+    <meta property="article:tag" content="Trails">
+    <meta property="article:tag" content="Aberdare">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hiking Mount Satima via Dragon’s Teeth">
+    <meta name="twitter:description" content="Hiking Mount Satima in Aberdare National Park">
+    <meta name="twitter:url" content="https://savannaguides.com/hiking-mount-satima-via-dragons-teeth/">
+    <meta name="twitter:image" content="https://savannaguides.com/content/images/2026/10/dragons-teeth-cover.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Savanna Guides">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Trails, Aberdare">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Savanna Guides",
+        "url": "https://savannaguides.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Savanna Guides",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png",
+            "width": 1024,
+            "height": 1024
+        },
+        "url": "https://savannaguides.com/author/sgt/",
+        "sameAs": [
+            "https://savannaguides.com/",
+            "https://www.instagram.com/savannaguides"
+        ]
+    },
+    "headline": "Hiking Mount Satima via Dragon’s Teeth",
+    "url": "https://savannaguides.com/hiking-mount-satima-via-dragons-teeth/",
+    "datePublished": "2026-10-08T06:10:58.000Z",
+    "dateModified": "2026-10-08T16:05:41.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://savannaguides.com/content/images/2026/10/dragons-teeth-cover.jpg",
+        "width": 1200,
+        "height": 675
+    },
+    "keywords": "Trails, Aberdare",
+    "description": "Hiking Mount Satima in Aberdare National Park",
+    "mainEntityOfPage": "https://savannaguides.com/hiking-mount-satima-via-dragons-teeth/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.0">
+    <link rel="alternate" type="application/rss+xml" title="Savanna Guides" href="https://savannaguides.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="8d28d3b35d87a2006f6822161a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://savannaguides.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://savannaguides.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=0ae7ef7e53"></script><style>:root {--ghost-accent-color: #10540d;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=0ae7ef7e53">
+    <style>
+@font-face {
+  font-family: 'Forta';
+  src: url('/assets/fonts/Forta.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+</style>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: 'Forta'; }
+</style> 
+
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: #1d1f1d; /* charcoal */
+  }
+
+  thead {
+    background: #f3f7f0; /* pale savanna green */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #d6e2d1; /* desaturated green-gray */
+    text-align: center;
+  }
+
+  th {
+    color: #10540d; /* savanna green */
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background: #f8faf7; /* subtle hover hint */
+  }
+</style>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42V9F2RPQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42V9F2RPQ5');
+</script>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://savannaguides.com"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+  </head>
+  <body class="post-template tag-trails tag-en tag-aberdare">
+    
+
+
+  
+
+
+
+  
+<header class="m-header with-picture js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu" data-i18n="Open menu" data-i18n-attr="aria-label">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://savannaguides.com" class="m-logo sg-brand in-mobile-topbar">
+        <span class="sg-brand__mark">
+          <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+        </span>
+        <span class="sg-brand__wordmark">Savanna Guides</span>
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="Open search" data-i18n="Open search" data-i18n-attr="aria-label">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu" data-i18n="Close menu" data-i18n-attr="aria-label">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu" data-i18n="Main menu" data-i18n-attr="aria-label">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://savannaguides.com" class="m-logo sg-brand">
+                    <span class="sg-brand__mark">
+                      <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+                    </span>
+                    <span class="sg-brand__wordmark">Savanna Guides</span>
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="https://savannaguides.com/">Home</a>
+    </li>
+    <li class="nav-app">
+      <a href="https://savannaguides.com/app/">App</a>
+    </li>
+    <li class="nav-about">
+      <a href="https://savannaguides.com/about/">About</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu" data-i18n="Open submenu" data-i18n-attr="aria-label">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles" data-i18n="Recent articles">Recent articles</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="/hiking-mount-satima-via-dragons-teeth/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/dragons-teeth-cover.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/dragons-teeth-cover.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/dragons-teeth-cover.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/dragons-teeth-cover.jpg.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/dragons-teeth-cover.jpg 300w,
+      /content/images/size/w600/2026/10/dragons-teeth-cover.jpg 600w,
+      /content/images/size/w1000/2026/10/dragons-teeth-cover.jpg 1000w,
+      /content/images/size/w2000/2026/10/dragons-teeth-cover.jpg 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/10/dragons-teeth-cover.jpg"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Hiking Mount Satima via Dragon’s Teeth">
+                                      Hiking Mount Satima via Dragon’s Teeth
+                                    </h3>
+                                    <span class="m-recent-article__date">10 hours ago</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/gatamaiyu-trail-hike/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/07/IMG_4382.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Gatamaiyu Trail Hike">
+                                      Gatamaiyu Trail Hike
+                                    </h3>
+                                    <span class="m-recent-article__date">3 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/weekend-camping-at-gura-river-camp/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/04/DSC05378.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Weekend Camping at Gura River Camp">
+                                      Weekend Camping at Gura River Camp
+                                    </h3>
+                                    <span class="m-recent-article__date">6 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/fr/randonnee-a-ngare-ndare-2026/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Randonnée à Ngare Ndare">
+                                      Randonnée à Ngare Ndare
+                                    </h3>
+                                    <span class="m-recent-article__date">9 months ago</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title" data-i18n="Tags">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="/tag/aberdare/">Aberdare</a>
+                            </li>
+                            <li>
+                              <a href="/tag/campsites/">Campsites</a>
+                            </li>
+                            <li>
+                              <a href="/tag/hikes/">Hikes</a>
+                            </li>
+                            <li>
+                              <a href="/tag/kiambu/">Kiambu</a>
+                            </li>
+                            <li>
+                              <a href="/tag/laikipia/">Laikipia</a>
+                            </li>
+                            <li>
+                              <a href="/tag/ngare-ndare/">Ngare Ndare</a>
+                            </li>
+                            <li>
+                              <a href="/tag/trails/">Trails</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="Open search" data-i18n="Open search" data-i18n-attr="aria-label">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" data-i18n="Toggle dark mode" data-i18n-attr="data-tippy-content" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only" data-i18n-text>
+                Toggle light/dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+            <a id="lang-switch" class="m-lang-switch" href="/fr/" title="Switch language" aria-label="Switch language" data-i18n="Switch language" data-i18n-attr="title,aria-label">
+              <span class="icon-globe" aria-hidden="true"></span>
+              <span class="m-lang-switch__text">FR</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+(function () {
+  var p = window.location.pathname || "/";
+  var isFR = (p === "/fr/" || p.indexOf("/fr/") === 0);
+  var el = document.getElementById("lang-switch");
+  if (!el) return;
+  var textEl = el.querySelector(".m-lang-switch__text") || el;
+  textEl.textContent = isFR ? "EN" : "FR";
+  var targetLang = isFR ? "en" : "fr";
+  var fallbackHref = isFR ? "/" : "/fr/";
+  var alternate = document.querySelector('link[rel="alternate"][hreflang="' + targetLang + '"]');
+  var alternateHref = alternate && alternate.getAttribute("href");
+  el.href = alternateHref || fallbackHref;
+})();
+</script>
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-animate="fade">
+    <div class="m-hero__picture in-post">
+      <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/dragons-teeth-cover.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/dragons-teeth-cover.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/dragons-teeth-cover.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/dragons-teeth-cover.jpg.webp 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/dragons-teeth-cover.jpg 300w,
+      /content/images/size/w600/2026/10/dragons-teeth-cover.jpg 600w,
+      /content/images/size/w1000/2026/10/dragons-teeth-cover.jpg 1000w,
+      /content/images/size/w2000/2026/10/dragons-teeth-cover.jpg 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+    src="/content/images/size/w1000/2026/10/dragons-teeth-cover.jpg"
+    alt="A hiker follows a moorland path towards the jagged towers of Dragon’s Teeth."
+    
+    
+  />
+</picture>
+    </div>
+    </section>
+        <div class="l-wrapper in-caption">
+          <p class="m-small-text align-center">
+            <span style="white-space: pre-wrap;">Dragon’s Teeth on the Mount Satima trail.</span>
+          </p>
+        </div>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-animation-wrapper" data-animate="fade-up">
+          <div
+            class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Hiking Mount Satima via Dragon’s Teeth</h1>
+              <div class="m-heading__meta">
+                  <a href="https://savannaguides.com/tag/trails/" class="m-heading__meta__tag">Trails</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">Oct 8, 2026</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://savannaguides.com/hiking-mount-satima-via-dragons-teeth/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Hiking%20Mount%20Satima%20via%20Dragon%E2%80%99s%20Teeth&url=https://savannaguides.com/hiking-mount-satima-via-dragons-teeth/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top" data-i18n="Scroll to top" data-i18n-attr="aria-label">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p>Mount Satima was my introduction to the northern Aberdares. The approach through Rhino Gate takes you from open grassland into dense forest, then out into wide moorland. By Twin Rocks, the landscape has opened up and you begin to see what you’ve come for.</p><p>The trail heads through small valleys and jagged rock formations towards the summit, with Dragon’s Teeth stealing much of the attention along the way. I kept finding reasons to stop and look back. Each view seemed to reveal a little more than the last.</p><p>Rain followed much of my climb, with pauses just long enough to get my hopes up. The return brought better weather and a chance to enjoy the places I had trudged past the day before.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://savannaguides.com/content/images/2026/10/satima-moorland-trail.jpg" class="kg-image" alt="A narrow path winds through golden moorland grasses and tall rosette plants towards rocky outcrops." loading="lazy" width="2000" height="1500" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-moorland-trail.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-moorland-trail.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/10/satima-moorland-trail.jpg 1600w, https://savannaguides.com/content/images/2026/10/satima-moorland-trail.jpg 2000w" sizes="(min-width: 1200px) 1200px"><figcaption><span style="white-space: pre-wrap;">Open moorland along the Satima trail.</span></figcaption></figure><p></p><hr><h2 id="getting-to-twin-rocks">Getting to Twin Rocks</h2><p>This hike starts at Twin Rocks, approached on this trip from Nanyuki through Rhino Gate. It’s a modest entrance to a rather extraordinary landscape.</p><p>Inside the park, the road winds through forest and onto hillsides covered in low moorland shrubs. The twin rocks appear well before you reach them, piercing the landscape and announcing their presence. There’s little doubt about how the place got its name.</p><p>At the trailhead, a large parking area and a sign mark the picnic site and the Ol Donyo Satima trail. The campsite sits at the foot of the rock outcrops, with few facilities. The small toilet structure looked rundown and disused during my visit, so check current arrangements before planning a stay.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://savannaguides.com/content/images/2026/10/twin-rocks-trailhead.jpg" class="kg-image" alt="A vehicle is parked beside trail signs beneath the rock outcrops at Twin Rocks." loading="lazy" width="2000" height="1500" srcset="https://savannaguides.com/content/images/size/w600/2026/10/twin-rocks-trailhead.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/twin-rocks-trailhead.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/10/twin-rocks-trailhead.jpg 1600w, https://savannaguides.com/content/images/2026/10/twin-rocks-trailhead.jpg 2000w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">Twin Rocks and the start of the Satima trail.</span></figcaption></figure><p></p><h2 id="a-gentle-start-into-the-moorland">A gentle start into the moorland</h2><p>The trail welcomes you gently. A mostly flat 4×4 track gives you time to settle into the walk before the climb through the moorland grasses begins.</p><p>Around where the track ends, the first jagged rocks hint at what lies ahead. It’s worth turning around here: Twin Rocks and the campsite are already taking on a different shape below.</p><p>After the initial climb, the route drops into a small valley, crosses a tiny stream and heads up a steeper slope. Nipple Rock stands in the middle ground, with Dragon’s Teeth behind it. There is plenty to hold your attention, even before you reach the main attraction.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/10/looking-back-twin-rocks.jpg.webp 600w, /content/images/size/w1000/format/webp/2026/10/looking-back-twin-rocks.jpg.webp 1000w, /content/images/size/w1600/format/webp/2026/10/looking-back-twin-rocks.jpg.webp 1600w, /content/images/format/webp/2026/10/looking-back-twin-rocks.jpg.webp 2000w"><img src="https://savannaguides.com/content/images/2026/10/looking-back-twin-rocks.jpg" class="kg-image" alt="A view back across low moorland shrubs towards the rock outcrops at Twin Rocks." loading="lazy" width="2000" height="1500" srcset="https://savannaguides.com/content/images/size/w600/2026/10/looking-back-twin-rocks.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/looking-back-twin-rocks.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/10/looking-back-twin-rocks.jpg 1600w, https://savannaguides.com/content/images/2026/10/looking-back-twin-rocks.jpg 2000w" sizes="(min-width: 1200px) 1200px"></picture><figcaption><span style="white-space: pre-wrap;">Looking back towards Twin Rocks.</span></figcaption></figure><p></p><hr><h2 id="walking-through-dragon%E2%80%99s-teeth">Walking through Dragon’s Teeth</h2><p>Dragon’s Teeth had me pinching myself. Under a grey sky, the jagged outcrops have a sombre presence above the wet grasses. I stopped during a break in the rain, a little cold but very glad to be there.</p><p>The trail climbs and then drops through a gap in the rocks, almost like a gate. On the other side, open moorland returns and the path snakes gently through the grasses.</p><p>Keep looking back along this stretch. The view seems to zoom out as you walk: first the rocks beside you, then the whole formation, then the surrounding hills. I’m a slow hiker at the best of times; this wasn’t helping.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://savannaguides.com/content/images/2026/10/dragons-teeth-rock-passage.jpg" class="kg-image" alt="A narrow passage runs between tall, jagged rock walls at Dragon’s Teeth." loading="lazy" width="2000" height="1125" srcset="https://savannaguides.com/content/images/size/w600/2026/10/dragons-teeth-rock-passage.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/dragons-teeth-rock-passage.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/10/dragons-teeth-rock-passage.jpg 1600w, https://savannaguides.com/content/images/2026/10/dragons-teeth-rock-passage.jpg 2000w" sizes="(min-width: 1200px) 1200px"><figcaption><span style="white-space: pre-wrap;">The gap through Dragon’s Teeth.</span></figcaption></figure><p></p><h2 id="the-climb-towards-the-summit">The climb towards the summit</h2><p>Beyond Dragon’s Teeth, the route continues across open ground and up the ridges towards Satima. Gentle stretches break up the climbs, but the easy start rather undersells the effort ahead, especially with a heavy backpack.</p><p>The ridges leave you exposed to the weather. On my visit, drizzle became repeated downpours, with only short breaks between them. By the summit, my boots were soaked and stopping meant getting cold. Hot tea had rarely been so welcome.</p><p>Allow time for the scenery as well as the climb. There are too many good places to pause to treat this as a straight march to the top. An early start gives you room to enjoy them without leaving the final ascent too late.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/10/satima-summit-ridge.jpg.webp 600w, /content/images/size/w1000/format/webp/2026/10/satima-summit-ridge.jpg.webp 1000w, /content/images/size/w1600/format/webp/2026/10/satima-summit-ridge.jpg.webp 1600w, /content/images/format/webp/2026/10/satima-summit-ridge.jpg.webp 2000w"><img src="https://savannaguides.com/content/images/2026/10/satima-summit-ridge.jpg" class="kg-image" alt="A rocky ridge leads towards the Satima summit marker, surrounded by open hills and low cloud." loading="lazy" width="2000" height="1125" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-summit-ridge.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-summit-ridge.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/10/satima-summit-ridge.jpg 1600w, https://savannaguides.com/content/images/2026/10/satima-summit-ridge.jpg 2000w" sizes="(min-width: 1200px) 1200px"></picture><figcaption><span style="white-space: pre-wrap;">The exposed ridge around Satima’s summit.</span></figcaption></figure><p></p><hr><h2 id="returning-through-the-rocks">Returning through the rocks</h2><p>Coming down the following day was a joy. The weather stayed pleasant, the walking was mostly downhill, and the rain cover could finally stay packed away.</p><p>Dragon’s Teeth looked different from the opposite direction. With time to linger, I could properly appreciate the shapes of the rocks and the spaces between them. It felt a little like wandering into another world.</p><p>The summit gives this hike a destination, but the changing views between Twin Rocks and Dragon’s Teeth are what have stayed with me. They’re worth taking your time over, whichever way you’re walking.</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/10/vlcsnap-2026-10-05-15h37m00s793.png.webp 600w, /content/images/size/w1000/format/webp/2026/10/vlcsnap-2026-10-05-15h37m00s793.png.webp 1000w, /content/images/size/w1600/format/webp/2026/10/vlcsnap-2026-10-05-15h37m00s793.png.webp 1600w, /content/images/size/w2400/format/webp/2026/10/vlcsnap-2026-10-05-15h37m00s793.png.webp 2400w"><img src="https://savannaguides.com/content/images/2026/10/vlcsnap-2026-10-05-15h37m00s793.png" class="kg-image" alt="" loading="lazy" width="2000" height="1125" srcset="https://savannaguides.com/content/images/size/w600/2026/10/vlcsnap-2026-10-05-15h37m00s793.png 600w, https://savannaguides.com/content/images/size/w1000/2026/10/vlcsnap-2026-10-05-15h37m00s793.png 1000w, https://savannaguides.com/content/images/size/w1600/2026/10/vlcsnap-2026-10-05-15h37m00s793.png 1600w, https://savannaguides.com/content/images/size/w2400/2026/10/vlcsnap-2026-10-05-15h37m00s793.png 2400w" sizes="(min-width: 1200px) 1200px"></picture><figcaption><span style="white-space: pre-wrap;">Dragon’s Teeth opens out into a much wider formation when viewed from the trail</span></figcaption></figure><hr><h2 id="field-notes">Field Notes</h2><table>
+<thead>
+<tr>
+<th>Detail</th>
+<th>Notes from this visit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Starting point</td>
+<td>Twin Rocks, approached through Rhino Gate</td>
+</tr>
+<tr>
+<td>Route</td>
+<td>Twin Rocks to Mount Satima via Dragon’s Teeth, returning the same way</td>
+</tr>
+<tr>
+<td>Terrain</td>
+<td>Vehicle track at the start, moorland paths, valley crossings and ridge climbs</td>
+</tr>
+<tr>
+<td>Main highlights</td>
+<td>Twin Rocks, Nipple Rock, Dragon’s Teeth and the open moorland</td>
+</tr>
+<tr>
+<td>Conditions</td>
+<td>Prolonged rain on the ascent; pleasant weather on the return</td>
+</tr>
+<tr>
+<td>Facilities</td>
+<td>Basic trailhead campsite; toilet structure appeared disused</td>
+</tr>
+<tr>
+<td>Phone signal</td>
+<td>Intermittent at Twin Rocks during this visit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="planning-your-hike">Planning your hike</h3><ul><li>Start early and allow time for the scenery as well as the summit.</li><li>Pack waterproof layers and protect the contents of your bag. The rain on this trip lasted much longer than a passing shower.</li><li>Carry a warm layer for stops. Wet feet and clothing made the summit particularly cold.</li><li>If camping, keep sleeping gear dry and bring enough warm clothing for the night.</li><li>Check current access, guide and camping arrangements with the park before travelling.</li></ul><p>My visit included a night near the summit. A planned onward descent via Wandare was abandoned because of the weather, so this account covers the Twin Rocks route only.</p><p><em>Editing reminder: Add a verified route map or GPX embed here. Insert distance, elevation gain and walking time after checking the recorded track.</em></p><h3 id="find-the-trail-in-savanna-guides">Find the trail in Savanna Guides</h3><p>The Mount Satima trail is available in the Savanna Guides app. Find it in the app as you plan your hike, and download Savanna Guides from Google Play or the App Store below.</p>
+<!--kg-card-begin: html-->
+<a
+  href="https://play.google.com/store/apps/details?id=com.mgk.savannaguides&utm_source=savannaguides&utm_medium=website"
+  target="_blank"
+  rel="noopener"
+  style="
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+    height: 150px;
+    background: #ffffff;
+    border: 1px solid #d9dde3;
+    border-radius: 0;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+  "
+>
+  <!-- Left: App information -->
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 18px 22px;
+      box-sizing: border-box;
+      min-width: 0;
+      text-align: left;
+    "
+  >
+    <div
+      style="
+        margin: 0 0 8px 0;
+        padding: 0;
+        font-size: 16px;
+        line-height: 1.25;
+        font-weight: 700;
+        color: #383e47;
+        text-align: left;
+      "
+    >
+      Savanna Guides App - Google Play
+    </div>
+
+    <div
+      style="
+        margin: 0 0 16px 0;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.4;
+        font-weight: 400;
+        color: #687281;
+        text-align: left;
+      "
+    >
+      Explore East Africa's national parks, hiking trails, campsites,
+      wildlife and outdoor destinations with Savanna Guides.
+    </div>
+
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.3;
+        color: #687281;
+        text-align: left;
+      "
+    >
+      <picture><source type="image/webp" srcset="/assets/app/google-play-icon.png.webp"><img
+        src="https://savannaguides.com/assets/app/google-play-icon.png"
+        alt="Google Play"
+        style="
+          display: block;
+          width: 28px;
+          height: 28px;
+          margin: 0;
+          padding: 0;
+          object-fit: cover;
+          border-radius: 5px;
+          flex-shrink: 0;
+        "
+      /></picture>
+
+      <span
+        style="
+          font-weight: 500;
+          color: #383e47;
+        "
+      >
+        Google Play
+      </span>
+
+      <span style="color: #383e47;">•</span>
+
+      <span>Matthew Gathu Kamande</span>
+    </div>
+  </div>
+
+  <!-- Right: App icon -->
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: #f7f7f8;
+      box-sizing: border-box;
+    "
+  >
+    <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img
+      src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png"
+      alt="Savanna Guides"
+      style="
+        display: block;
+        width: 90px;
+        height: 90px;
+        margin: 0;
+        padding: 0;
+        object-fit: cover;
+        border-radius: 20px;
+      "
+    /></picture>
+  </div>
+</a>
+<!--kg-card-end: html-->
+<figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://apps.apple.com/us/app/savanna-guides/id6636470632?itscg=30200&itsct=apps_box_link&mttnsubad=6636470632&ref=localhost"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Savanna Guides App - App Store</div><div class="kg-bookmark-description">Download Savanna Guides by Matthew Gathu Kamande on the App Store. See screenshots, ratings and reviews, user tips, and more games like Savanna Guides.</div><div class="kg-bookmark-metadata"><picture><source type="image/webp" srcset="/content/images/format/webp/icon/favicon-180.png.webp"><img class="kg-bookmark-icon" src="https://savannaguides.com/content/images/icon/favicon-180.png" alt=""></picture><span class="kg-bookmark-author">App Store</span><span class="kg-bookmark-publisher">Matthew Gathu Kamande</span></div></div><div class="kg-bookmark-thumbnail"><picture><source type="image/webp" srcset="/content/images/format/webp/thumbnail/1200x630wa.jpg.webp"><img src="https://savannaguides.com/content/images/thumbnail/1200x630wa.jpg" alt="" onerror="this.style.display = 'none'"></picture></div></a></figure><hr><h2 id="watch-the-hike">Watch the hike</h2><p>Watch the Mount Satima hike on YouTube — link to be added.</p>
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title" data-i18n="Tags">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="/tag/trails/" title="Trails">Trails</a>
+                      </li>
+                      <li>
+                        <a href="/tag/aberdare/" title="Aberdare">Aberdare</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="https://savannaguides.com/author/sgt/" class="m-author-picture" aria-label="Savanna Guides">
+                  <div style="background-image: url(https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="https://savannaguides.com/author/sgt/">Savanna Guides</a>
+              </h4>
+                <p class="m-author__bio">Savanna Guides is a project by Matt Gathu with the loving help of my dear friends Nicks and Tessie.</p>
+              <ul class="m-author-links">
+                  <li>
+                    <a href="https://savannaguides.com/" target="_blank" rel="noopener" aria-label="Website" data-i18n="Website" data-i18n-attr="aria-label">
+                      <span class="icon-globe" aria-hidden="true"></span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
+
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search" data-i18n="Search" data-i18n-attr="aria-label">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search" data-i18n="Close search" data-i18n-attr="aria-label">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only" data-i18n="Type to search">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search" data-i18n="Type to search" data-i18n-attr="placeholder">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results" data-i18n="No results for your search, try something different.">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+      <a href="https://savannaguides.com/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Savanna Guides &copy; 2026</span>
+    </p>
+
+  </div>
+</footer>
+    <script defer src="/assets/js/manifest.js?v=0ae7ef7e53"></script>
+    <script defer src="/assets/js/vendor.js?v=0ae7ef7e53"></script>
+    <script defer src="/assets/js/app.js?v=0ae7ef7e53"></script>
+
+      <script defer src="/assets/js/post.js?v=0ae7ef7e53"></script>
+
+
+    <script src="/assets/js/i18n.js?v=0ae7ef7e53"></script>
+
+    
+  </body>
+</html>
