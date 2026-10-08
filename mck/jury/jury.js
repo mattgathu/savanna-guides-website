@@ -1,5 +1,5 @@
 // Phone app. One voter per device per session; answers upsert into votes.
-import { QUESTIONS, PERSONAS, questionById, supabase, getSession, normalizeCode, TEST_CODE } from './jury-core.js';
+import { QUESTIONS, PERSONAS, questionById, supabase, getSession, normalizeCode, TEST_CODE, fetchVotes, tally, isClosed } from './jury-core.js';
 
 const app = document.getElementById('app');
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -9,7 +9,7 @@ const toast = m => { const t = document.getElementById('toast'); clearTimeout(to
 
 const S = {
   sb: null, code: null, session: null, voter: null, answered: new Set(), channel: null,
-  screen: 'loading', q: null, step: 0, picks: [], order: [], points: {}, swipes: {}, ratings: {}, slider: 50, text: '',
+  screen: 'loading', q: null, votes: [], step: 0, picks: [], order: [], points: {}, swipes: {}, ratings: {}, slider: 50, text: '',
   name: '', personas: [], drag: { x: 0, on: false, startX: 0, fly: null, half: 0 }, pairTap: 0, doneTimer: null, codeError: ''
 };
 
@@ -29,14 +29,27 @@ async function enter(code) {
   S.code = code; store.set('tj:last-code', code);
   history.replaceState(null, '', `?s=${encodeURIComponent(code)}`);
   const voter = store.get(`tj:voter:${code}`);
+  if (S.session.results_published && !voter) return showResults(); // latecomer scanning the results QR
+  if (isClosed(S.session) && !voter) { S.screen = 'closed'; return render(); }
   if (voter) { S.voter = voter; await afterJoin(); } else { S.screen = 'join'; render(); }
+}
+async function showResults() {
+  S.screen = 'results';
+  render();
+  S.votes = await fetchVotes(S.sb, S.code);
+  render();
+  if (S.voter) return; // joined voters already follow the session channel
+  S.channel ||= S.sb.channel(`jury:${S.code}`)
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'sessions', filter: `code=eq.${S.code}` }, p => { S.session = p.new; if (!p.new.results_published) { S.screen = 'wait'; sync(); } })
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'votes', filter: `session_code=eq.${S.code}` }, async () => { S.votes = await fetchVotes(S.sb, S.code); if (S.screen === 'results') render(); })
+    .subscribe();
 }
 
 async function afterJoin() {
   const { data } = await S.sb.from('votes').select('question_id').eq('session_code', S.code).eq('voter_id', S.voter.id);
   S.answered = new Set((data || []).map(r => r.question_id));
   S.channel = S.sb.channel(`jury:${S.code}`, { config: { presence: { key: S.voter.id } } })
-    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'sessions', filter: `code=eq.${S.code}` }, payload => { S.session = payload.new; sync(); })
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'sessions', filter: `code=eq.${S.code}` }, payload => { S.session = payload.new; if (payload.new.results_published) return showResults(); sync(); })
     .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'sessions', filter: `code=eq.${S.code}` }, () => { S.screen = 'code'; S.codeError = 'That session was closed.'; render(); })
     .subscribe(async status => { if (status === 'SUBSCRIBED') await S.channel.track({ name: S.voter.name, personas: S.voter.personas, at: Date.now() }); });
   sync();
@@ -44,6 +57,9 @@ async function afterJoin() {
 
 // Decide what the phone should show from the session state. Catch-up: missed opened questions queue after the active one.
 function sync() {
+  if (S.session?.results_published) { clearTimeout(S.doneTimer); return showResults(); }
+  if (isClosed(S.session)) { clearTimeout(S.doneTimer); S.screen = 'closed'; return render(); }
+  if (S.screen === 'results') S.screen = 'wait';
   if (S.screen === 'question' || S.screen === 'done') return; // never interrupt an answer in progress
   const next = nextQuestion();
   if (next) openQuestion(next); else { S.screen = 'wait'; render(); }
@@ -64,7 +80,7 @@ async function submit(answer) {
   if (!S.sb || !S.voter) { console.log('debug submit', q.id, answer); S.answered.add(q.id); S.screen = 'done'; render(); return; }
   S.screen = 'saving'; render();
   const { error } = await S.sb.from('votes').upsert({ session_code: S.code, voter_id: S.voter.id, question_id: q.id, answer }, { onConflict: 'session_code,voter_id,question_id' });
-  if (error) { console.error(error); toast('Could not save — try again'); S.screen = 'question'; return render(); }
+  if (error) { console.error(error); if (isClosed(S.session) || /policy|row-level/i.test(error.message || '')) { S.screen = 'closed'; return render(); } toast('Could not save — try again'); S.screen = 'question'; return render(); }
   S.answered.add(q.id);
   S.screen = 'done'; render();
   S.doneTimer = setTimeout(() => { S.screen = 'wait'; sync(); }, 2200);
@@ -109,14 +125,42 @@ const views = {
       <p class="muted" style="max-width:260px">${S.answered.size ? 'The next question appears here when the speaker opens it.' : 'Eyes up front — the first question comes when the speaker opens it.'}</p>
     </div>
     <span class="chip">${esc(S.voter?.name || 'Juror')} · ${juryCount()}</span></section>`,
+  closed: () => `<section class="screen center">
+    <span class="check" aria-hidden="true" style="background:var(--ink)">✓</span>
+    <div style="display:flex;flex-direction:column;gap:8px"><h2 class="display" style="font-size:30px">Voting is closed.</h2>
+    <p class="muted" style="max-width:280px">The jury has spoken. Results land here when the speaker sends them.</p></div>
+    <span class="chip">${S.voter ? juryCount() : esc(S.code)}</span></section>`,
   saving: () => `<section class="screen center"><span class="spinner" aria-hidden="true"></span><p class="muted">Locking it in…</p></section>`,
   done: () => `<section class="screen center">
     <span class="check" aria-hidden="true">✓</span>
     <div style="display:flex;flex-direction:column;gap:8px"><h2 class="display" style="font-size:30px">Vote recorded</h2>
     <p class="muted" style="max-width:260px">Results stay hidden until the finale, so nobody gets swayed by the room.</p></div>
     <span class="chip">${juryCount()}</span></section>`,
-  question: () => `<section class="screen">${header(S.q)}${bodies[S.q.type]()}</section>`
+  question: () => `<section class="screen">${header(S.q)}${bodies[S.q.type]()}</section>`,
+  results: () => `<section class="screen" style="gap:14px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span class="kicker">MCK × Savanna Guides · ${esc(S.code)}</span>
+      <h1 class="display" style="font-size:30px">What the jury said.</h1>
+      <p class="muted">${S.votes.length ? `${new Set(S.votes.map(v => v.voter_id)).size} hikers voted tonight.` : 'Loading the verdict…'}</p>
+    </div>
+    ${QUESTIONS.map((q, i) => resultCard(q, i, tally(S.votes, q))).join('')}
+    <p class="muted small" style="text-align:center;padding:12px 0">Thanks for being the jury. savannaguides.com/app</p></section>`
 };
+const rbar = (label, pct, right) => `<div class="rbar"><div class="rlbl"><b>${esc(label)}</b><span>${esc(right ?? pct + '%')}</span></div><div class="rtrack"><div class="rfill" style="width:${Math.max(pct, 3)}%"></div></div></div>`;
+function resultCard(q, i, t) {
+  let body = '<p class="muted small" style="margin:0">No votes.</p>';
+  if (t.voters) switch (q.type) {
+    case 'pair': body = t.pairs.map(p => `<div class="rbar"><div class="rlbl"><b>${esc(p.a)}</b><span>${esc(p.b)}</span></div><div class="rsplit"><span style="flex:${Math.max(p.aPct, 8)}">${p.aPct}%</span><span class="alt" style="flex:${Math.max(p.bPct, 8)}">${p.bPct}%</span></div></div>`).join(''); break;
+    case 'choose': body = t.options.filter(o => o.count).slice(0, 5).map(o => rbar(o.label, o.pct)).join(''); break;
+    case 'swipe': body = [...t.hikes].sort((a, b) => b.yesPct - a.yesPct).map(h => rbar(h.name, h.yesPct, `${h.yesPct}% in`)).join(''); break;
+    case 'scale': body = t.trails.map(tr => `<div class="rsub">${esc(tr.name)}</div>` + tr.levels.filter(l => l.count).map(l => rbar(l.label, l.pct)).join('')).join(''); break;
+    case 'rank': body = t.options.map((o, k) => rbar(`${k + 1}. ${o.label}`, Math.round(100 * o.score / (t.voters * q.options.length)), `${o.firstPct}% first`)).join(''); break;
+    case 'points': body = t.options.filter(o => o.points).slice(0, 5).map(o => rbar(o.label, o.pct)).join(''); break;
+    case 'slider': body = `<div class="rbig">${t.mean} / 100</div><p class="muted small" style="margin:0">${t.mean >= 60 ? 'The room agrees.' : t.mean < 40 ? 'The room disagrees.' : 'The room is on the fence.'} ${t.agree} agree · ${t.fence} fence · ${t.disagree} disagree</p>`; break;
+    case 'text': { const max = t.words[0]?.count || 1; body = `<div class="rwords">${t.words.map(w => `<span style="font-size:${Math.round(14 + 18 * w.count / max)}px">${esc(w.word)}</span>`).join('')}</div>`; break; }
+  }
+  return `<article class="rcard"><div class="rhead"><span class="rnum">${i + 1}</span><span>${esc(q.label)}</span><span class="muted small" style="margin-left:auto">${t.voters}</span></div>${body}</article>`;
+}
 
 const cardStyle = () => {
   const x = S.drag.fly ?? S.drag.x;

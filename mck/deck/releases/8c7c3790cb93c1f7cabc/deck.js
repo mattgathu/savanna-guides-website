@@ -29,6 +29,8 @@ function render() {
   $('notes-text').textContent = slide.dataset.notes || '—';
   $('reveal').hidden = !slide.dataset.reveal || slide.classList.contains('revealed');
   $('qr-toggle').hidden = !slide.querySelector('[data-qr]') || !jury.session;
+  $('publish').hidden = !slide.dataset.publish;
+  jury.renderPublish();
   setQrZoom(false);
   jury.onSlide(slide);
 }
@@ -64,6 +66,7 @@ document.addEventListener('keydown', e => {
   else if (e.key === 'End') next = total - 1;
   else if (e.key.toLowerCase() === 'r' && !$('reveal').hidden) { e.preventDefault(); $('reveal').click(); return; }
   else if (e.key.toLowerCase() === 'n') { e.preventDefault(); $('notes-toggle').click(); return; }
+  else if (e.key.toLowerCase() === 's' && !$('publish').hidden) { e.preventDefault(); $('publish').click(); return; }
   if (next !== undefined) { e.preventDefault(); go(next); }
 });
 stage.addEventListener('touchstart', e => { touch = e.touches.length === 1 && !e.target.closest('button,a') ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : null; }, { passive: true });
@@ -115,6 +118,7 @@ const jury = {
     $('host-link').href = `/mck/jury/host/?s=${encodeURIComponent(code)}`;
     this.votes = await this.core.fetchVotes(this.sb, code);
     this.channel = this.sb.channel(`deck:${code}`)
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'sessions', filter: `code=eq.${code}` }, payload => { this.session = payload.new; this.renderPublish(); })
       .on('postgres_changes', { event: '*', schema: 'public', table: 'votes', filter: `session_code=eq.${code}` }, payload => {
         if (payload.eventType === 'DELETE') this.votes = this.votes.filter(v => v.id !== payload.old.id);
         else { this.votes = this.votes.filter(v => !(v.voter_id === payload.new.voter_id && v.question_id === payload.new.question_id)); this.votes.push(payload.new); }
@@ -156,7 +160,7 @@ const jury = {
   },
   async onSlide(slide) {
     if (!this.sb || !this.session) return;
-    const id = slide.dataset.jury || null;
+    const id = this.core.isClosed(this.session) ? null : (slide.dataset.jury || null);
     if (id === lastJury) return;
     lastJury = id;
     try { this.session = await this.core.setActiveQuestion(this.sb, this.session.code, id) || this.session; }
@@ -169,6 +173,18 @@ const jury = {
     slide.classList.add('revealed');
     this.remember(slide.dataset.reveal, true);
     $('reveal').hidden = true;
+  },
+  renderPublish() {
+    const on = !!this.session?.results_published, closed = this.core?.isClosed(this.session);
+    $('close-voting').textContent = closed ? 'Reopen voting' : 'Close voting (no more votes)';
+    $('session').classList.toggle('closed', !!closed);
+    for (const el of document.querySelectorAll('[data-publish-state]')) { el.textContent = on ? 'Results are live on every phone' : 'Results not sent yet'; el.style.background = on ? '#10540D' : '#201e1d'; }
+    $('publish').querySelector('span').textContent = on ? 'Unsend results' : 'Send results';
+  },
+  async publish() {
+    if (!this.sb || !this.session) return toast('Trail Jury is offline');
+    try { this.session = await this.core.publishResults(this.sb, this.session.code, !this.session.results_published); this.renderPublish(); toast(this.session.results_published ? 'Results sent to every phone' : 'Results hidden again'); }
+    catch (error) { console.warn(error); toast('Could not send results'); }
   },
   unreveal(slide) { slide.classList.remove('revealed'); this.remember(slide.dataset.reveal, false); $('reveal').hidden = !slide.dataset.reveal; }
 };
@@ -232,6 +248,13 @@ const fill = {
 
 $('reveal').addEventListener('click', () => jury.reveal(slides[state.idx]));
 $('qr-toggle').addEventListener('click', () => setQrZoom($('qr-zoom').hidden));
+$('publish').addEventListener('click', () => jury.publish());
+$('close-voting').addEventListener('click', async () => {
+  setMenu(false, true);
+  if (!jury.sb || !jury.session) return toast('Trail Jury is offline');
+  try { jury.session = await jury.core.closeSession(jury.sb, jury.session.code, !jury.core.isClosed(jury.session)); lastJury = null; jury.renderPublish(); toast(jury.core.isClosed(jury.session) ? 'Voting closed' : 'Voting reopened'); }
+  catch (error) { console.warn(error); toast('Could not change the session'); }
+});
 $('qr-zoom').addEventListener('click', () => setQrZoom(false));
 frame.addEventListener('click', e => { if (e.target.closest('[data-qr]') && !e.target.closest('#qr-zoom')) setQrZoom(true); });
 $('unreveal').addEventListener('click', () => { setMenu(false, true); jury.unreveal(slides[state.idx]); });

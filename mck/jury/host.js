@@ -1,5 +1,5 @@
 // Presenter page: backup remote for the deck. Creates sessions, opens questions, shows live tallies.
-import { QUESTIONS, supabase, getSession, latestSession, createSession, setActiveQuestion, fetchVotes, tally, juryUrl, newCode, TEST_CODE, DECK_ROUTE } from './jury-core.js';
+import { QUESTIONS, publishResults, closeSession, isClosed, supabase, getSession, latestSession, createSession, setActiveQuestion, fetchVotes, tally, juryUrl, newCode, TEST_CODE, DECK_ROUTE } from './jury-core.js';
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -37,7 +37,7 @@ async function use(code) {
       else { H.votes = H.votes.filter(v => !(v.voter_id === p.new.voter_id && v.question_id === p.new.question_id)); H.votes.push(p.new); }
       renderAll();
     })
-    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'sessions', filter: `code=eq.${code}` }, p => { H.session = p.new; renderQuestions(); })
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'sessions', filter: `code=eq.${code}` }, p => { H.session = p.new; renderQuestions(); renderSessionButtons(); })
     .on('presence', { event: 'sync' }, () => { H.connected = Object.keys(H.channel.presenceState()).length; $('connected').textContent = String(H.connected); })
     .subscribe();
   renderQr(); renderAll();
@@ -49,7 +49,14 @@ async function renderQr() {
     $('qr').innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true }).replace(/fill="black"|fill="#000(000)?"/gi, 'fill="#201e1d"');
   } catch { $('qr').textContent = H.code; }
 }
-function renderAll() { renderQuestions(); renderResults(); }
+function renderAll() { renderQuestions(); renderResults(); renderSessionButtons(); }
+function renderSessionButtons() {
+  const closed = isClosed(H.session);
+  $('close-session').textContent = closed ? 'Reopen voting' : 'Close voting';
+  $('close-session').classList.toggle('ghost', !closed);
+  $('send-results').textContent = H.session?.results_published ? 'Unsend results' : 'Send results to phones';
+  $('questions').classList.toggle('disabled', closed);
+}
 function renderQuestions() {
   const active = H.session?.active_question, opened = H.session?.opened || [];
   $('questions').innerHTML = QUESTIONS.map((q, i) => {
@@ -81,9 +88,12 @@ function body(q, t) {
 
 $('questions').addEventListener('click', async e => {
   const b = e.target.closest('[data-open]'); if (!b) return;
+  if (isClosed(H.session)) return toast('Voting is closed — reopen it first');
   const id = b.dataset.open === H.session?.active_question ? null : b.dataset.open;
   try { H.session = await setActiveQuestion(H.sb, H.code, id); renderQuestions(); toast(id ? 'Question is live on the phones' : 'Phones down'); } catch (err) { console.error(err); toast('Could not update the session'); }
 });
+$('close-session').addEventListener('click', async () => { H.session = await closeSession(H.sb, H.code, !isClosed(H.session)); renderSessionButtons(); toast(isClosed(H.session) ? 'Voting closed — phones can no longer vote' : 'Voting reopened'); });
+$('send-results').addEventListener('click', async () => { H.session = await publishResults(H.sb, H.code, !H.session?.results_published); renderSessionButtons(); toast(H.session.results_published ? 'Results sent to every phone' : 'Results hidden again'); });
 $('phones-down').addEventListener('click', async () => { H.session = await setActiveQuestion(H.sb, H.code, null); renderQuestions(); toast('Phones down'); });
 $('session-select').addEventListener('change', e => use(e.target.value));
 $('new-session').addEventListener('click', async () => {

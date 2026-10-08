@@ -48,11 +48,11 @@ export const QUESTIONS = [
     options: ['Yesterday', '1 month ago', '6 months ago', '2 years ago'] },
   { id: 'mapped', type: 'choose', multi: false, big: true, label: 'Should every trail be mapped?', title: 'Should every trail be mapped?', hint: 'Pick one',
     intro: 'A quiet route through a sensitive area. Fifty people a year walk it today. Publishing it means five hundred.', options: ['Yes', 'No'] },
+  { id: 'backpack', type: 'points', step: 10, label: '100-point backpack', title: 'But you have 100 points. Spend them.', hint: 'Tap + and −',
+    options: ['Offline maps', 'Reliable GPX', 'Recent conditions', 'Water sources', 'Access information', 'Difficulty', 'Guide contacts', 'Photos', 'Weather', 'Achievements'] },
   { id: 'difficulty', type: 'scale', label: 'How difficult is this?', title: 'How difficult is this?', hint: 'Pick one', trails: DIFFICULTY_TRAILS, scale: SCALE },
   { id: 'factors', type: 'rank', label: 'What makes a hike difficult?', title: 'What makes a hike difficult?', hint: 'Tap in order, hardest first',
     options: ['Distance', 'Altitude', 'Exposure', 'Terrain', 'Elevation gain'] },
-  { id: 'backpack', type: 'points', step: 10, label: '100-point backpack', title: 'But you have 100 points. Spend them.', hint: 'Tap + and −',
-    options: ['Offline maps', 'Reliable GPX', 'Recent conditions', 'Water sources', 'Access information', 'Difficulty', 'Guide contacts', 'Photos', 'Weather', 'Achievements'] },
   { id: 'hot-take', type: 'slider', label: 'Hot take', title: 'Hot take.', hint: 'Slide it', take: 'Difficulty ratings are mostly useless.' },
   { id: 'one-thing', type: 'text', label: 'The one thing', title: 'The one thing Savanna Guides must get right?', hint: 'One or two words' }
 ];
@@ -80,11 +80,11 @@ export function newCode() {
 export const normalizeCode = code => String(code || '').trim().toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
 
 export async function latestSession(sb) {
-  const { data } = await sb.from('sessions').select('code, created_at, active_question, opened').neq('code', TEST_CODE).order('created_at', { ascending: false }).limit(1);
+  const { data } = await sb.from('sessions').select('code, created_at, active_question, opened, results_published, closed_at').neq('code', TEST_CODE).order('created_at', { ascending: false }).limit(1);
   return data?.[0] || null;
 }
 export async function getSession(sb, code) {
-  const { data } = await sb.from('sessions').select('code, created_at, active_question, opened').eq('code', code).maybeSingle();
+  const { data } = await sb.from('sessions').select('code, created_at, active_question, opened, results_published, closed_at').eq('code', code).maybeSingle();
   return data;
 }
 export async function createSession(sb, code = newCode()) {
@@ -100,6 +100,17 @@ export async function setActiveQuestion(sb, code, questionId) {
   if (error) throw error;
   return data;
 }
+export async function publishResults(sb, code, on = true) {
+  const { data, error } = await sb.from('sessions').update({ results_published: on, active_question: null }).eq('code', code).select().single();
+  if (error) throw error;
+  return data;
+}
+export async function closeSession(sb, code, closed = true) {
+  const { data, error } = await sb.from('sessions').update({ closed_at: closed ? new Date().toISOString() : null, active_question: null }).eq('code', code).select().single();
+  if (error) throw error;
+  return data;
+}
+export const isClosed = session => !!session?.closed_at;
 export async function fetchVotes(sb, code) {
   const { data, error } = await sb.from('votes').select('voter_id, question_id, answer').eq('session_code', code);
   if (error) throw error;
