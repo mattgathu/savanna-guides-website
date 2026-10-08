@@ -1,0 +1,35 @@
+body.host { background:var(--sand) }
+.bar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px; padding:28px 32px 8px; max-width:1400px; margin:0 auto }
+.bar h1 { font-size:30px; margin-top:4px }
+.session-box { display:flex; align-items:flex-end; gap:10px; flex-wrap:wrap }
+.session-box label { display:block; margin-bottom:6px }
+.session-box select.input { width:auto; min-width:160px; font-family:var(--display); letter-spacing:0.2em; background:var(--cream) }
+.session-box .btn { width:auto; padding:14px 22px }
+.layout { display:grid; grid-template-columns:minmax(280px, 340px) minmax(0, 1fr); gap:24px; padding:20px 32px 48px; max-width:1400px; margin:0 auto }
+@media (max-width: 860px) { .layout { grid-template-columns:1fr } }
+.panel { display:flex; flex-direction:column; gap:18px; padding:24px; border-radius:28px; background:var(--cream); box-shadow:0 3px 10px rgba(46,43,37,0.12); align-self:start; position:sticky; top:16px }
+.live { display:flex; align-items:center; gap:10px; padding:12px 16px; border-radius:20px; background:var(--sage-soft); color:var(--brand); font-size:14px; font-weight:600 }
+.live .dot { width:12px; height:12px; border-radius:999px; background:var(--brand); animation:pulse 1.6s ease-out infinite }
+.qr-box { display:flex; flex-direction:column; align-items:center; gap:10px }
+.qr { width:180px; height:180px; border-radius:24px; background:#fff; padding:10px; display:flex; align-items:center; justify-content:center; overflow:hidden } .qr svg { width:100%; height:100%; display:block }
+.qr:empty::after { content:'QR'; font-family:var(--display); color:#c0b6a5; font-size:24px }
+.small-btn { width:auto; padding:8px 18px; font-size:12px; border-width:2px }
+.qlist { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px }
+.qlist button { display:flex; align-items:center; gap:12px; width:100%; padding:10px 14px; border-radius:999px; background:var(--sand); text-align:left; font-size:14px; min-height:44px }
+.qlist button .n { flex:none; width:26px; height:26px; border-radius:999px; background:var(--brand); color:var(--cream); font-size:12px; font-weight:700; display:inline-flex; align-items:center; justify-content:center }
+.qlist button .c { margin-left:auto; font-size:12px; color:var(--muted); white-space:nowrap }
+.qlist button.active { background:var(--brand); color:var(--cream) } .qlist button.active .n { background:var(--cream); color:var(--brand) } .qlist button.active .c { color:var(--sage-pale) }
+.qlist button.opened:not(.active) { background:var(--sage-soft) }
+.results { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:16px; align-content:start }
+.card-r { padding:20px; border-radius:24px; background:var(--cream); box-shadow:0 3px 10px rgba(46,43,37,0.10); display:flex; flex-direction:column; gap:12px }
+.card-r .head { display:flex; align-items:center; gap:10px } .card-r .head .n { flex:none; width:24px; height:24px; border-radius:999px; background:var(--sage-soft); color:var(--brand); font-size:11px; font-weight:700; display:inline-flex; align-items:center; justify-content:center }
+.card-r h3 { margin:0; font-family:var(--display); font-weight:400; font-size:18px; line-height:1.15; text-transform:uppercase; text-wrap:balance }
+.bars { display:flex; flex-direction:column; gap:8px }
+.bar-row { display:flex; flex-direction:column; gap:4px } .bar-row .lbl { display:flex; justify-content:space-between; font-size:12px; color:var(--muted) } .bar-row .lbl b { color:var(--brand); font-weight:600 }
+.track { position:relative; height:22px; border-radius:999px; background:var(--sand); overflow:hidden; display:flex }
+.fill { height:100%; border-radius:999px; background:var(--brand); display:flex; align-items:center; padding-left:10px; font-size:11px; font-weight:700; color:var(--cream); min-width:34px; transition:width 0.6s ease }
+.fill.alt { background:var(--sage) }
+.split { display:flex; gap:4px; height:22px; border-radius:999px; overflow:hidden } .split span { display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:var(--cream); min-width:28px; transition:flex 0.6s ease }
+.words { display:flex; flex-wrap:wrap; gap:8px 14px; align-items:baseline } .words span { font-family:var(--display); text-transform:uppercase; line-height:1 }
+.answers { margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:6px } .answers li { padding:6px 12px; border-radius:999px; background:var(--sand); font-size:13px }
+.empty { color:var(--muted); font-size:13px; margin:0 }

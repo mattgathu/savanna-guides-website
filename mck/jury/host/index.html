@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5ead8">
+<meta name="robots" content="noindex,nofollow">
+<title>Trail Jury — presenter</title>
+<link rel="icon" href="/mck/jury/assets/icon-192.png">
+<link rel="stylesheet" href="/mck/jury/jury.css?v=a7af230e167a659659da">
+<link rel="stylesheet" href="/mck/jury/host.css?v=a7af230e167a659659da">
+<script type="module" src="/mck/jury/host.js?v=a7af230e167a659659da"></script>
+</head>
+<body class="host">
+<header class="bar">
+  <div>
+    <span class="kicker">Presenter · Trail Jury</span>
+    <h1 class="display">What the jury says</h1>
+  </div>
+  <div class="session-box">
+    <label class="muted small" for="session-select">Session</label>
+    <select id="session-select" class="input" aria-label="Session"></select>
+    <button id="new-session" class="btn" type="button">New session</button>
+  </div>
+</header>
+<main class="layout">
+  <aside class="panel">
+    <div class="live"><span class="dot"></span><b id="connected">0</b> phones connected</div>
+    <div class="qr-box"><div id="qr" class="qr" role="img" aria-label="QR code to join"></div><a id="join-link" class="small" href="#" target="_blank" rel="noopener">—</a><button id="copy-link" class="btn ghost small-btn" type="button">Copy link</button></div>
+    <nav aria-label="Questions"><ol id="questions" class="qlist"></ol></nav>
+    <button id="phones-down" class="btn ghost" type="button">Phones down</button>
+    <a id="deck-link" class="btn" href="/mck/deck/" target="_blank" rel="noopener">Open the deck ↗</a>
+  </aside>
+  <section id="results" class="results" aria-live="polite"></section>
+</main>
+<div id="toast" role="status" hidden></div>
+</body>
+</html>

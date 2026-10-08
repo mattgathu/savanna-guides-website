@@ -6,3 +6,4 @@ Disallow: /members/api/comments/counts/
 Disallow: /r/
 Disallow: /webmentions/receive/
 Disallow: /links/
+Disallow: /mck/
