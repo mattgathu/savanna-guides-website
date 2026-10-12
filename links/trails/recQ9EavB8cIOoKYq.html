@@ -17,44 +17,70 @@
 <link rel="canonical" href="https://savannaguides.com/links/trails/recQ9EavB8cIOoKYq">
 <title>Buyangu Trail - Kakamega Forest · Savanna Guides</title>
 <style>
-:root{color-scheme:light dark;--bg:#f6f5f1;--fg:#1a1a18;--muted:#5f5f58;--card:#fff;--accent:#10540d;--line:#e3e1da}
-@media(prefers-color-scheme:dark){:root{--bg:#14150f;--fg:#f2f1ea;--muted:#a3a196;--card:#1e1f18;--line:#32332a}}
+@font-face{font-family:'Jost';src:url('/assets/fonts/Jost-400-Book.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Jost';src:url('/assets/fonts/Jost-600-Semi.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'Forta';src:url('/assets/fonts/Forta.woff') format('woff');font-weight:400 700;font-display:swap}
+:root{color-scheme:light dark;--bg:#f1eee3;--surface:#fcf9f0;--text:#20251d;--muted:#626755;--line:#d9d6c6;--perf:#b9bbab;--brand:#10540d;--brand-ink:#10540d;--brand-stub:#10540d;--brand-stub-ink:#f1eee3;--brand-pop:#e2772b;--grid:rgba(32,37,29,.04)}
+@media (prefers-color-scheme:dark){:root{--bg:#1b1e19;--surface:#242822;--text:#ece9dd;--muted:#b4b7a7;--line:#3a3f36;--perf:#5a6054;--brand-ink:#9ccf8a;--brand-stub:#0f3f0d;--brand-stub-ink:#ece9dd;--grid:rgba(236,233,221,.04)}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;max-width:560px;width:100%;overflow:hidden}
-.hero{display:block;width:100%;height:auto;background:var(--line)}
-.body{padding:24px}
-.kicker{margin:0 0 6px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
-@media(prefers-color-scheme:dark){.kicker{color:#7bbf6a}}
-h1{margin:0 0 12px;font-size:27px;line-height:1.2}
-.lede{margin:0 0 18px;color:var(--muted)}
-.prompt{margin:0 0 18px}
-.badges{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 16px}
-.badge{display:inline-flex;align-items:center;background:#000;border-radius:8px;overflow:hidden;height:50px;box-shadow:0 8px 20px rgba(0,0,0,.18)}
-.badge img{display:block;height:50px;width:auto}
-@media(max-width:420px){.badge,.badge img{height:44px}}
-.muted{margin:0;font-size:14px;color:var(--muted)}
-.muted a{color:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 'Jost',system-ui,-apple-system,sans-serif;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:safe center;padding:28px 16px 32px}
+a{color:var(--brand-ink)}
+.ticket{width:100%;max-width:420px;display:flex;flex-direction:column;filter:drop-shadow(0 10px 24px rgba(32,37,29,.14))}
+.ticket-head{background:var(--surface);border:1px solid var(--line);border-top:8px solid var(--pop);border-bottom:0;border-radius:6px 6px 0 0;padding-bottom:14px;-webkit-mask-image:radial-gradient(circle 12px at 0 100%,transparent 98%,#000 100%),radial-gradient(circle 12px at 100% 100%,transparent 98%,#000 100%);-webkit-mask-composite:source-in;mask-image:radial-gradient(circle 12px at 0 100%,transparent 98%,#000 100%),radial-gradient(circle 12px at 100% 100%,transparent 98%,#000 100%);mask-composite:intersect}
+.ticket-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px 10px 12px}
+.ticket-brand{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.ticket-brand img{display:block;width:26px;height:26px;border-radius:50%;background:var(--brand)}
+.ticket-tag{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--tag-ink);background:var(--pop);border-radius:999px;padding:5px 12px;white-space:nowrap}
+.ticket-photo{display:block;margin:0 12px;width:calc(100% - 24px);aspect-ratio:3/2;height:auto;object-fit:cover;border-radius:4px;background:var(--line)}
+.ticket-nophoto{margin:0 12px;aspect-ratio:3/2;border-radius:4px;background:var(--stub);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 2px,transparent 2px 14px);display:flex;align-items:center;justify-content:center}
+.ticket-nophoto img{display:block;width:88px;height:88px;border-radius:50%;box-shadow:0 0 0 6px var(--pop)}
+.ticket-body{background:var(--surface);border:1px solid var(--line);border-top:2px dashed var(--perf);border-bottom:2px dashed var(--perf);padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;-webkit-mask-image:radial-gradient(circle 12px at 0 0,transparent 98%,#000 100%),radial-gradient(circle 12px at 100% 0,transparent 98%,#000 100%),radial-gradient(circle 12px at 0 100%,transparent 98%,#000 100%),radial-gradient(circle 12px at 100% 100%,transparent 98%,#000 100%);-webkit-mask-composite:source-in;mask-image:radial-gradient(circle 12px at 0 0,transparent 98%,#000 100%),radial-gradient(circle 12px at 100% 0,transparent 98%,#000 100%),radial-gradient(circle 12px at 0 100%,transparent 98%,#000 100%),radial-gradient(circle 12px at 100% 100%,transparent 98%,#000 100%);mask-composite:intersect}
+.ticket-kicker{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--kicker-ink)}
+.ticket-body h1{margin:0;font-family:'Forta','Jost',sans-serif;font-weight:400;font-size:30px;line-height:1.05;letter-spacing:.02em;text-wrap:pretty}
+.ticket-lede{margin:0;font-size:15px;line-height:1.5;color:var(--muted)}
+.ticket-stub{background:var(--stub);color:var(--stub-ink);border-radius:0 0 6px 6px;padding:16px 18px 14px;display:flex;flex-direction:column;gap:12px;-webkit-mask-image:radial-gradient(circle 12px at 0 0,transparent 98%,#000 100%),radial-gradient(circle 12px at 100% 0,transparent 98%,#000 100%);-webkit-mask-composite:source-in;mask-image:radial-gradient(circle 12px at 0 0,transparent 98%,#000 100%),radial-gradient(circle 12px at 100% 0,transparent 98%,#000 100%);mask-composite:intersect}
+.ticket-cta{display:flex;flex-direction:column;gap:4px}
+.ticket-cta strong{font-family:'Forta','Jost',sans-serif;font-weight:400;font-size:24px;line-height:1.1;letter-spacing:.03em;color:var(--pop-stub)}
+.ticket-cta span{font-size:13px;line-height:1.45;opacity:.85}
+.badges{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0}
+.badge{display:inline-flex;height:44px;background:#000;border-radius:7px;overflow:hidden;transition:transform .15s ease}
+.badge:active{transform:scale(.97)}
+.badge img{display:block;height:44px;width:auto}
+.ticket-serial{display:flex;flex-direction:column;gap:5px;padding-top:10px;border-top:1px solid color-mix(in srgb,var(--stub-ink) 22%,transparent)}
+.ticket-barcode{height:22px;color:var(--pop-stub);background:repeating-linear-gradient(90deg,currentColor 0 2px,transparent 2px 5px,currentColor 5px 6px,transparent 6px 10px,currentColor 10px 13px,transparent 13px 16px,currentColor 16px 17px,transparent 17px 21px,currentColor 21px 22px,transparent 22px 24px)}
+.ticket-serial span{font-size:10px;letter-spacing:.08em;opacity:.8;overflow-wrap:anywhere;line-height:1.3}
+.site{margin:14px 0 0;font-size:12px;letter-spacing:.02em}
+.site a{color:var(--muted);text-decoration:none;padding:8px 12px;display:inline-block}
+a:focus-visible{outline:2px solid var(--pop-stub,var(--brand-pop));outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){.badge{transition:none}}
 </style>
 </head>
 <body>
-<article class="card">
-  <img class="hero" src="https://mgk.fra1.cdn.digitaloceanspaces.com/savanna-guide/assets/trails/recQ9EavB8cIOoKYq/images/thumbnails/ahrptwlqwc9cq9kpokkm2zff02kux1ocuvfyqsbqcp7tqtf6kie1etxceqkuvet8abyxckh6gsj0yfy0niycto1dcqfqw7af5z2jk3mtnwckejxwo6qmjvsm94qkis2572cvuessg9wgw4000-c97d06c80db0-large.jpeg" alt="" width="800" height="600">
-  <div class="body">
-    <p class="kicker">Trail · Kakamega Forest</p>
+<article class="ticket" style="--pop:var(--brand-pop);--pop-stub:var(--brand-pop);--stub:var(--brand-stub);--stub-ink:var(--brand-stub-ink);--tag-ink:#20251d;--kicker-ink:var(--brand-ink)" aria-label="Buyangu Trail - Kakamega Forest, Trail in Savanna Guides">
+  <div class="ticket-head">
+    <div class="ticket-bar">
+      <span class="ticket-brand"><img src="/assets/app/app-icon-white-circle.png" alt="" width="26" height="26">Savanna Guides</span>
+      <span class="ticket-tag">Trail</span>
+    </div>
+    <img class="ticket-photo" src="https://mgk.fra1.cdn.digitaloceanspaces.com/savanna-guide/assets/trails/recQ9EavB8cIOoKYq/images/thumbnails/ahrptwlqwc9cq9kpokkm2zff02kux1ocuvfyqsbqcp7tqtf6kie1etxceqkuvet8abyxckh6gsj0yfy0niycto1dcqfqw7af5z2jk3mtnwckejxwo6qmjvsm94qkis2572cvuessg9wgw4000-c97d06c80db0-large.jpeg" alt="" width="800" height="600" loading="eager" decoding="async">
+  </div>
+  <div class="ticket-body">
+    <p class="ticket-kicker">Kakamega Forest</p>
     <h1>Buyangu Trail - Kakamega Forest</h1>
-    <p class="lede">Buyangu Trail is the northern Kakamega Forest walk that brings together the reserve’s two signature contrasts: a rocky hill lookout above the canopy and the cooler, enclosed world of the Isiukhu…</p>
-    <p class="prompt">Open this in Savanna Guides for maps, photos and the full guide.</p>
+    <p class="ticket-lede">Buyangu Trail is the northern Kakamega Forest walk that brings together the reserve’s two signature contrasts: a rocky hill lookout above the canopy and the cooler, enclosed world of the Isiukhu…</p>
+  </div>
+  <div class="ticket-stub">
+    <p class="ticket-cta"><strong>Open in Savanna Guides</strong><span>Maps, photos and the full guide. Works offline.</span></p>
     <p class="badges">
-      <a class="badge" href="https://apps.apple.com/us/app/savanna-parks-guide/id6636470632">
-        <img src="/assets/app/app-store-badge.svg" alt="Download Savanna Guides on the App Store" width="120" height="40">
-      </a>
-      <a class="badge" href="https://play.google.com/store/apps/details?id=com.mgk.savannaguides">
-        <img src="/assets/app/google-play-badge-optimized.jpg" alt="Get Savanna Guides on Google Play" width="640" height="190">
-      </a>
+      <a class="badge" href="https://apps.apple.com/us/app/savanna-parks-guide/id6636470632" aria-label="Download Savanna Guides on the App Store"><img src="/assets/app/app-store-badge.svg" alt="" width="120" height="40"></a>
+      <a class="badge" href="https://play.google.com/store/apps/details?id=com.mgk.savannaguides" aria-label="Get Savanna Guides on Google Play"><img src="/assets/app/google-play-badge-optimized.jpg" alt="" width="640" height="190"></a>
     </p>
-    <p class="muted"><a href="https://savannaguides.com/">savannaguides.com</a></p>
+    <div class="ticket-serial">
+      <div class="ticket-barcode" aria-hidden="true"></div>
+      <span>recQ9EavB8cIOoKYq</span>
+    </div>
   </div>
 </article>
+<p class="site"><a href="https://savannaguides.com/">savannaguides.com</a></p>
 </body>
 </html>
