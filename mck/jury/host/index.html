@@ -7,9 +7,9 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Trail Jury — presenter</title>
 <link rel="icon" href="/mck/jury/assets/icon-192.png">
-<link rel="stylesheet" href="/mck/jury/jury.css?v=86aa83e1548cfb7d2338">
-<link rel="stylesheet" href="/mck/jury/host.css?v=86aa83e1548cfb7d2338">
-<script type="module" src="/mck/jury/host.js?v=86aa83e1548cfb7d2338"></script>
+<link rel="stylesheet" href="/mck/jury/jury.css?v=7476cad7d25be85a7e74">
+<link rel="stylesheet" href="/mck/jury/host.css?v=7476cad7d25be85a7e74">
+<script type="module" src="/mck/jury/host.js?v=7476cad7d25be85a7e74"></script>
 </head>
 <body class="host">
 <header class="bar">
@@ -20,7 +20,12 @@
   <div class="session-box">
     <label class="muted small" for="session-select">Session</label>
     <select id="session-select" class="input" aria-label="Session"></select>
-    <button id="new-session" class="btn" type="button">New session</button>
+    <form id="new-session-form" class="new-session">
+      <label class="muted small" for="new-code">New code</label>
+      <input id="new-code" class="input" name="code" maxlength="6" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="Auto" aria-describedby="new-code-hint">
+      <span id="new-code-hint" hidden>Optional. 3 to 6 letters or digits. Leave empty for a random code.</span>
+      <button id="new-session" class="btn" type="submit">New session</button>
+    </form>
   </div>
 </header>
 <main class="layout">

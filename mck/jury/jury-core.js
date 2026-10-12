@@ -78,6 +78,15 @@ export function newCode() {
   return code === TEST_CODE ? newCode() : code;
 }
 export const normalizeCode = code => String(code || '').trim().toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+// A presenter-chosen code must fit the sessions.code check (3–6 letters or digits) and must not be the rehearsal code.
+export function codeError(input) {
+  const code = String(input || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (code.length < 3 || code.length > 6) return 'Use 3 to 6 letters or digits.';
+  if (code === TEST_CODE) return `${TEST_CODE} is the rehearsal session. Choose another code.`;
+  return '';
+}
+// Postgres unique_violation: the code is already in use.
+export const isDuplicate = err => err?.code === '23505';
 
 export async function latestSession(sb) {
   const { data } = await sb.from('sessions').select('code, created_at, active_question, opened, results_published, closed_at').neq('code', TEST_CODE).order('created_at', { ascending: false }).limit(1);

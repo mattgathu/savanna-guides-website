@@ -1,5 +1,5 @@
 // Presenter page: backup remote for the deck. Creates sessions, opens questions, shows live tallies.
-import { QUESTIONS, publishResults, closeSession, isClosed, supabase, getSession, latestSession, createSession, setActiveQuestion, fetchVotes, tally, juryUrl, newCode, TEST_CODE, DECK_ROUTE } from './jury-core.js';
+import { QUESTIONS, publishResults, closeSession, isClosed, supabase, getSession, latestSession, createSession, setActiveQuestion, fetchVotes, tally, juryUrl, newCode, normalizeCode, codeError, isDuplicate, TEST_CODE, DECK_ROUTE } from './jury-core.js';
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -96,8 +96,22 @@ $('close-session').addEventListener('click', async () => { H.session = await clo
 $('send-results').addEventListener('click', async () => { H.session = await publishResults(H.sb, H.code, !H.session?.results_published); renderSessionButtons(); toast(H.session.results_published ? 'Results sent to every phone' : 'Results hidden again'); });
 $('phones-down').addEventListener('click', async () => { H.session = await setActiveQuestion(H.sb, H.code, null); renderQuestions(); toast('Phones down'); });
 $('session-select').addEventListener('change', e => use(e.target.value));
-$('new-session').addEventListener('click', async () => {
-  try { const s = await createSession(H.sb, newCode()); await loadSessions(); await use(s.code); toast(`New session ${s.code} — the deck follows it automatically`); }
-  catch (err) { console.error(err); toast('Could not create a session'); }
+$('new-session-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const input = $('new-code'), wanted = input.value.trim();
+  if (wanted && codeError(wanted)) { toast(codeError(wanted)); return input.focus(); }
+  const code = wanted ? normalizeCode(wanted) : null;
+  $('new-session').disabled = true;
+  try {
+    let s;
+    // Session codes are unique (primary key). A typed code is never reused; a random code is drawn again on a collision.
+    for (let attempt = 0; !s; attempt++) {
+      try { s = await createSession(H.sb, code || newCode()); }
+      catch (err) { if (!isDuplicate(err)) throw err; if (code) { toast(`Code ${code} is already used. Choose another code.`); return input.focus(); } if (attempt >= 4) throw err; }
+    }
+    input.value = '';
+    await loadSessions(); await use(s.code); toast(`New session ${s.code} — the deck follows it automatically`);
+  } catch (err) { console.error(err); toast('Could not create a session'); }
+  finally { $('new-session').disabled = false; }
 });
 $('copy-link').addEventListener('click', async () => { try { await navigator.clipboard.writeText(juryUrl(H.code)); toast('Link copied'); } catch { toast(juryUrl(H.code)); } });

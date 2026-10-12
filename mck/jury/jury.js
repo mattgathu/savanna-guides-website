@@ -237,7 +237,7 @@ app.addEventListener('submit', async e => {
   if (e.target.id !== 'code-form') return;
   e.preventDefault();
   const code = normalizeCode(new FormData(e.target).get('code'));
-  if (code.length < 3) { S.codeError = 'Codes have 4 letters.'; return render(); }
+  if (code.length < 3) { S.codeError = 'Codes have 3 to 6 letters or digits.'; return render(); }
   S.codeError = ''; await enter(code);
 });
 app.addEventListener('input', e => {

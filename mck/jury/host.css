@@ -2,9 +2,12 @@ body.host { background:var(--sand) }
 .bar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px; padding:28px 32px 8px; max-width:1400px; margin:0 auto }
 .bar h1 { font-size:30px; margin-top:4px }
 .session-box { display:flex; align-items:flex-end; gap:10px; flex-wrap:wrap }
-.session-box label { display:block; margin-bottom:6px }
+.session-box label { display:block; margin-bottom:6px; white-space:nowrap }
 .session-box select.input { width:auto; min-width:160px; font-family:var(--display); letter-spacing:0.2em; background:var(--cream) }
 .session-box .btn { width:auto; padding:14px 22px }
+.new-session { display:flex; align-items:flex-end; gap:10px; margin:0 0 0 14px }
+.session-box #new-code { width:7.5em; font-family:var(--display); letter-spacing:0.2em; text-transform:uppercase; background:var(--cream) }
+.session-box #new-code::placeholder { letter-spacing:0.05em; text-transform:none }
 .layout { display:grid; grid-template-columns:minmax(280px, 340px) minmax(0, 1fr); gap:24px; padding:20px 32px 48px; max-width:1400px; margin:0 auto }
 @media (max-width: 860px) { .layout { grid-template-columns:1fr } }
 .panel { display:flex; flex-direction:column; gap:18px; padding:24px; border-radius:28px; background:var(--cream); box-shadow:0 3px 10px rgba(46,43,37,0.12); align-self:start; position:sticky; top:16px }
