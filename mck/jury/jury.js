@@ -72,6 +72,8 @@ function nextQuestion() {
 }
 function openQuestion(q) {
   clearTimeout(S.doneTimer);
+  if (q.shuffle && !S.shuffled?.[q.id]) { S.shuffled = S.shuffled || {}; S.shuffled[q.id] = [...q.options].sort(() => Math.random() - 0.5); }
+  if (q.shuffle) q = { ...q, options: S.shuffled[q.id] };
   Object.assign(S, { screen: 'question', q, step: 0, picks: [], order: [], points: {}, swipes: {}, ratings: {}, slider: 50, text: '', pairTap: 0, drag: { x: 0, on: false, startX: 0, fly: null, half: 0 } });
   render();
 }

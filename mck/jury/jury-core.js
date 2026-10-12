@@ -48,12 +48,12 @@ export const QUESTIONS = [
     options: ['Yesterday', '1 month ago', '6 months ago', '2 years ago'] },
   { id: 'mapped', type: 'choose', multi: false, big: true, label: 'Should every trail be mapped?', title: 'Should every trail be mapped?', hint: 'Pick one',
     intro: 'A quiet route through a sensitive area. Fifty people a year walk it today. Publishing it means five hundred.', options: ['Yes', 'No'] },
-  { id: 'backpack', type: 'points', step: 10, label: '100-point backpack', title: 'But you have 100 points. Spend them.', hint: 'Tap + and −',
-    options: ['Offline maps', 'Reliable GPX', 'Recent conditions', 'Water sources', 'Access information', 'Difficulty', 'Guide contacts', 'Photos', 'Weather', 'Achievements'] },
+  { id: 'backpack', type: 'points', step: 10, shuffle: true, label: '100-point backpack', title: 'But you have 100 points. Spend them.', hint: 'Tap + and −',
+    options: ['Offline maps', 'Reliable GPX', 'Recent conditions', 'Water sources', 'Access information', 'Difficulty', 'Guide contacts', 'Photos', 'Weather', 'Achievements', 'Campsites', 'Park fees', 'Emergency contacts', 'Trip reports', 'Hikes calendar'] },
   { id: 'difficulty', type: 'scale', label: 'How difficult is this?', title: 'How difficult is this?', hint: 'Pick one', trails: DIFFICULTY_TRAILS, scale: SCALE },
   { id: 'factors', type: 'rank', label: 'What makes a hike difficult?', title: 'What makes a hike difficult?', hint: 'Tap in order, hardest first',
     options: ['Distance', 'Altitude', 'Exposure', 'Terrain', 'Elevation gain'] },
-  { id: 'hot-take', type: 'slider', label: 'Hot take', title: 'Hot take.', hint: 'Slide it', take: 'Difficulty ratings are mostly useless.' },
+  { id: 'hot-take', type: 'slider', label: 'Hot take', title: 'Hot take.', hint: 'Slide it', take: 'Subjective difficulty ratings are mostly useless.' },
   { id: 'one-thing', type: 'text', label: 'The one thing', title: 'The one thing Savanna Guides must get right?', hint: 'One or two words' }
 ];
 export const questionById = id => QUESTIONS.find(q => q.id === id);

@@ -12,6 +12,30 @@ try { const v = Number(localStorage.getItem('sg-mck-slide')); if (Number.isInteg
 const state = { idx: hashIndex() ?? saved, notes: false };
 let toastTimer, touch, lastJury = undefined;
 
+// ------------------------------------------------------------------ time guide
+// Each slide carries data-time="m:ss". The clock starts when you leave the cover (or press T); T again resets it.
+const toSecs = s => { const [m, ss] = String(s || '0:00').split(':').map(Number); return (m || 0) * 60 + (ss || 0); };
+const fmt = n => { const sign = n < 0 ? '−' : ''; n = Math.abs(Math.round(n)); return `${sign}${Math.floor(n / 60)}:${String(n % 60).padStart(2, '0')}`; };
+const budget = slides.map(s => toSecs(s.dataset.time));
+const startAt = budget.map((_, i) => budget.slice(0, i).reduce((a, b) => a + b, 0));
+const clock = {
+  key: 'sg-mck-clock-start', tick: null,
+  get started() { const v = Number(sessionStorage.getItem(this.key)); return v > 0 ? v : null; },
+  start() { sessionStorage.setItem(this.key, String(Date.now())); this.run(); toast('Clock started'); },
+  reset() { sessionStorage.removeItem(this.key); clearInterval(this.tick); this.render(); toast('Clock reset'); },
+  elapsed() { const s = this.started; return s ? (Date.now() - s) / 1000 : 0; },
+  run() { clearInterval(this.tick); this.tick = setInterval(() => this.render(), 1000); this.render(); },
+  render() {
+    const i = state.idx, el = $('clock'), guide = $('notes-time');
+    const target = startAt[i], plan = budget[i];
+    guide.textContent = plan ? `${fmt(plan)} on this slide · be here by ${fmt(target)}` : `Open the room · be here by ${fmt(target)}`;
+    if (!this.started) { el.textContent = 'T to start · ' + fmt(target); el.dataset.state = 'idle'; return; }
+    const e = this.elapsed(), delta = e - target; // + = behind the plan
+    el.textContent = `${fmt(e)} · ${delta >= 0 ? '+' : ''}${fmt(delta)}`;
+    el.dataset.state = delta > 60 ? 'behind' : delta < -60 ? 'ahead' : 'ok';
+  }
+};
+
 // Jury slides are numbered by their position in the deck, so reordering slides keeps "#N" labels correct.
 slides.filter(s => s.dataset.jury).forEach((s, i) => s.querySelectorAll('[data-jury-number]').forEach(el => { el.textContent = String(i + 1); }));
 
@@ -27,6 +51,7 @@ function render() {
   $('counter').textContent = `${String(state.idx + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
   const slide = slides[state.idx];
   $('notes-text').textContent = slide.dataset.notes || '—';
+  clock.render();
   $('reveal').hidden = !slide.dataset.reveal || slide.classList.contains('revealed');
   $('qr-toggle').hidden = !slide.querySelector('[data-qr]') || !jury.session;
   $('publish').hidden = !slide.dataset.publish;
@@ -41,7 +66,7 @@ function setQrZoom(open) {
   $('qr-toggle').setAttribute('aria-pressed', String(open));
   $('qr-toggle').querySelector('span').textContent = open ? 'Close QR' : 'Big QR';
 }
-function go(idx) { state.idx = Math.max(0, Math.min(total - 1, idx)); setMenu(false); render(); persist(); }
+function go(idx) { const from = state.idx; state.idx = Math.max(0, Math.min(total - 1, idx)); if (from === 0 && state.idx === 1 && !clock.started) clock.start(); setMenu(false); render(); persist(); }
 function setMenu(open, restoreFocus = false) {
   $('menu').hidden = !open;
   $('menu-toggle').setAttribute('aria-expanded', String(open));
@@ -126,11 +151,7 @@ const jury = {
       }).subscribe();
     await this.renderQr();
     this.renderCounts();
-    const revealed = this.revealed();
-    for (const s of slides) {
-      s.classList.toggle('revealed', revealed.has(s.dataset.reveal));
-      if (revealed.has(s.dataset.reveal)) fill[s.dataset.reveal]?.(s, this.votes, this.core);
-    }
+    for (const s of slides) s.classList.toggle('revealed', this.revealed().has(s.dataset.reveal));
     lastJury = undefined;
     render();
     toast(`Trail Jury session ${code}`);
@@ -207,6 +228,20 @@ const fill = {
       bar.style.width = `${Math.max(leftPct, 8)}%`; bar.textContent = `${leftPct}%`; rest.textContent = `${rightPct}%`;
     }
   },
+  'would-you-hike'(slide, votes, core) {
+    const t = core.tally(votes, core.questionById('would-you-hike'));
+    slide.querySelector('[data-voted]').textContent = `Results · ${t.voters} hiker${t.voters === 1 ? '' : 's'} swiped`;
+    if (!t.voters) return;
+    const ranked = [...t.hikes].sort((x, y) => y.yesPct - x.yesPct);
+    const win = ranked[0], lose = ranked.at(-1);
+    slide.querySelector('[data-headline]').textContent = win.yesPct === lose.yesPct ? 'MCK would hike all five.' : `${win.name.replace(' Crater Circuit', '')} won the room.`;
+    for (const card of slide.querySelectorAll('[data-hike]')) {
+      const h = t.hikes.find(x => x.id === card.dataset.hike); if (!h) continue;
+      card.querySelector('[data-hike-pct]').textContent = `${h.yesPct}%`;
+      card.querySelector('[data-hike-sub]').textContent = h.id === lose.id && lose.yesPct < 50 ? 'the one they rejected' : 'would hike it';
+      card.classList.toggle('m191', h.id === win.id);
+    }
+  },
   summary(slide, votes, core) {
     const backpack = core.tally(votes, core.questionById('backpack'));
     const list = slide.querySelector('[data-list="backpack-top3"]');
@@ -274,3 +309,10 @@ if ('serviceWorker' in navigator) {
     .then(() => { document.documentElement.dataset.offlineReady = 'true'; })
     .catch(error => console.warn('Deck offline installation failed:', error));
 }
+
+if (clock.started) clock.run(); else clock.render();
+document.addEventListener('keydown', e => {
+  if (e.key.toLowerCase() !== 't' || e.metaKey || e.ctrlKey || e.altKey || e.target.closest('input, textarea, select, [contenteditable=true]')) return;
+  e.preventDefault(); clock.started ? clock.reset() : clock.start();
+});
+$('reset-clock').addEventListener('click', () => { setMenu(false, true); clock.started ? clock.reset() : clock.start(); });

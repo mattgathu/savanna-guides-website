@@ -14,6 +14,10 @@ button:focus-visible, a:focus-visible { outline:2px solid var(--cream); outline-
 #controls .spacer { flex:1 }
 #pager { display:flex; align-items:center; gap:10px }
 #counter { min-width:72px; text-align:center; font-variant-numeric:tabular-nums; font-size:14px; color:#c0b6a5 }
+#clock { min-width:120px; padding:6px 12px; border-radius:999px; font-variant-numeric:tabular-nums; font-size:13px; color:#c0b6a5; background:rgba(245,234,216,0.08); white-space:nowrap }
+#clock[data-state="ok"] { color:#b7d1a8 }
+#clock[data-state="ahead"] { color:#f5ead8; background:rgba(122,138,94,0.45) }
+#clock[data-state="behind"] { color:#f5ead8; background:#c67139 }
 .circle { width:44px; height:44px; border-radius:999px; border:0; background:rgba(245,234,216,0.12); color:var(--cream); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; }
 .circle:hover { background:rgba(245,234,216,0.22) }
 .circle:disabled { opacity:0.35; cursor:default }
@@ -35,10 +39,11 @@ button:focus-visible, a:focus-visible { outline:2px solid var(--cream); outline-
 #menu a:hover { background:var(--sand) }
 #notes { position:absolute; left:18px; right:18px; bottom:76px; max-width:720px; padding:16px 20px; border-radius:20px; background:rgba(32,30,29,0.92); color:var(--cream); font-size:16px; line-height:1.4; z-index:4; backdrop-filter:blur(8px) }
 #notes[hidden] { display:none }
+#notes-time { display:block; font-variant-numeric:tabular-nums; font-size:13px; color:#b7d1a8; margin-bottom:8px }
 #notes b { display:block; font-family:Forta, sans-serif; text-transform:uppercase; letter-spacing:0.08em; font-size:12px; color:#b7d1a8; margin-bottom:6px }
 #toast { position:fixed; left:50%; bottom:88px; transform:translateX(-50%); padding:10px 18px; border-radius:999px; background:var(--cream); color:var(--ink); font-size:14px; z-index:6; box-shadow:0 10px 30px rgba(0,0,0,0.3) }
 #toast[hidden] { display:none }
 .vote-count { display:inline-flex; align-items:center; gap:10px; padding:8px 20px; border-radius:999px; background:#201e1d; color:#f5ead8; font-family:Forta, sans-serif; font-size:24px; letter-spacing:0.02em }
 .vote-count::before { content:''; width:12px; height:12px; border-radius:999px; background:#b7d1a8; animation:pulse 1.6s ease-out infinite }
 @keyframes pulse { 0%,100% { opacity:1 } 50% { opacity:0.35 } }
-@media (max-width: 700px) { #controls .wordmark, #session span { display:none } }
+@media (max-width: 700px) { #controls .wordmark, #session span, #clock { display:none } }
