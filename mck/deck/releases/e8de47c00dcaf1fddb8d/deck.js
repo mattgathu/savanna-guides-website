@@ -192,7 +192,7 @@ const jury = {
     catch (error) { console.warn(error); toast('Could not update the phones'); }
   },
   async reveal(slide) {
-    if (!this.sb || !this.session) { toast('Trail Jury is offline — showing example numbers'); slide.classList.add('revealed'); return; }
+    if (!this.sb || !this.session) { toast('Trail Jury is offline — no results to show'); slide.classList.add('revealed'); return; }
     this.votes = await this.core.fetchVotes(this.sb, this.session.code);
     fill[slide.dataset.reveal]?.(slide, this.votes, this.core);
     slide.classList.add('revealed');
@@ -218,8 +218,9 @@ const fill = {
   suffering(slide, votes, core) {
     const t = core.tally(votes, core.questionById('suffering'));
     slide.querySelector('[data-voted]').textContent = `Results · ${t.voters} hiker${t.voters === 1 ? '' : 's'} voted`;
+    if (!t.voters) return;
     const best = [...t.pairs].sort((x, y) => Math.abs(y.aPct - 50) - Math.abs(x.aPct - 50))[0];
-    if (best && t.voters) {
+    if (best) {
       const [win, lose] = best.aPct >= 50 ? [best.a, best.b] : [best.b, best.a];
       slide.querySelector('[data-headline]').textContent = best.aPct === 50 ? `MCK is split on ${best.a.toLowerCase()} vs ${best.b.toLowerCase()}.` : `MCK would rather ${win.toLowerCase()} than ${lose.toLowerCase()}.`;
     }
