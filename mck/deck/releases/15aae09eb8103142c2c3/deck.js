@@ -151,7 +151,11 @@ const jury = {
       }).subscribe();
     await this.renderQr();
     this.renderCounts();
-    for (const s of slides) s.classList.toggle('revealed', this.revealed().has(s.dataset.reveal));
+    const revealed = this.revealed();
+    for (const s of slides) {
+      s.classList.toggle('revealed', revealed.has(s.dataset.reveal));
+      if (revealed.has(s.dataset.reveal)) fill[s.dataset.reveal]?.(s, this.votes, this.core);
+    }
     lastJury = undefined;
     render();
     toast(`Trail Jury session ${code}`);
