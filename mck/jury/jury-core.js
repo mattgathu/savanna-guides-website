@@ -11,10 +11,10 @@ const CDN = 'https://mgk.fra1.cdn.digitaloceanspaces.com/savanna-guide/assets/tr
 
 // Trail facts come from the Savanna Guides app manifest. Edit here if the app data changes.
 export const HIKES = [
-  { id: 'ke-gatamaiyu-trail', name: 'Gatamaiyu Trail', place: 'Kiambu', km: '7.8 km', time: '3–4 h', rating: 'Moderate', dot: '#7a8a5e',
+  { id: 'ke-gatamaiyu-trail', name: 'Gatamaiyu Trail', place: 'Kiambu', km: '7.8 km', time: '4–6 h', rating: 'Moderate', dot: '#7a8a5e',
     image: `${CDN}reclaQffTwwwQW95R/images/thumbnails/dji_20260718145700_0144_d-4a3cbaea4938-large.jpeg`,
     facts: [['Loop from Kagwe town', '#7a8a5e'], ['Tea-growing highlands', '#7a8a5e'], ['Well-walked path', '#7a8a5e'], ['1 h from Nairobi', '#645c50']] },
-  { id: 'ke-mt-longonot', name: 'Mt Longonot Crater Circuit', place: 'Mount Longonot National Park', km: '14 km', time: '4–6 h', rating: 'Moderate', dot: '#d9a441',
+  { id: 'ke-mt-longonot', name: 'Mt Longonot Crater Circuit', place: 'Mount Longonot National Park', km: '12 km', time: '4–6 h', rating: 'Moderate', dot: '#d9a441',
     image: `${CDN}recMPVjiBy6N3xQsm/images/thumbnails/attdpgayl5zavetgi-large.jpeg`,
     facts: [['Volcanic rim loop', '#d9a441'], ['Rift Valley views', '#7a8a5e'], ['No shade on the rim', '#c67139'], ['KWS gate fee', '#645c50']] },
   { id: 'ke-seven-ponds', name: 'Seven Ponds', place: 'Aberdare National Park', km: '12 km', time: '6–8 h', rating: 'Hard', dot: '#c67139',
@@ -23,13 +23,13 @@ export const HIKES = [
   { id: 'ke-mount-kinangop', name: 'Mount Kinangop', place: 'Aberdare Range', km: '27.9 km', time: 'Full day', rating: 'Hard', dot: '#c67139',
     image: `${CDN}recR1J02Z1rSs9bph/images/thumbnails/kin52048x1536-c6b062769c52-large.jpeg`,
     facts: [['Mutarakwa route', '#645c50'], ['Second-highest Aberdare summit', '#c67139'], ['Long out-and-back', '#c67139'], ['Start: North Kinangop Forest Station', '#645c50']] },
-  { id: 'ke-mt-ololokwe', name: 'Mount Ololokwe', place: 'Samburu County', km: 'Half day', time: '4–6 h', rating: 'Hard', dot: '#c67139',
+  { id: 'ke-mt-ololokwe', name: 'Mount Ololokwe', place: 'Samburu County', km: 'Half day', time: '3–5 h', rating: 'Moderate', dot: '#d9a441',
     image: `${CDN}recui0gDObqxKofSI/images/thumbnails/attu9m0nzm41ui4my-large.jpeg`,
     facts: [['Steep ascent above the lowlands', '#c67139'], ['Sacred to the Samburu', '#645c50'], ['Starts near Sabache Eco Camp', '#645c50'], ['6 h drive from Nairobi', '#c67139']] }
 ];
 
 export const DIFFICULTY_TRAILS = [
-  { id: 'ke-elephant-hill', name: 'Elephant Hill', prompt: '19 km · +1,050 m · rocky terrain · some scrambling · 7–10 hours · max 3,660 m' },
+  { id: 'ke-elephant-hill', name: 'Elephant Hill', prompt: '19.5 km · +1,238 m · rocky terrain · some scrambling · 7–10 hours · max 3,579 m' },
   { id: 'ke-nachu-caves', name: 'Nachu Caves', prompt: '≈11 km · rocky hills and dusty tracks · out-and-back · 4–7 hours · Lusigeti' }
 ];
 
