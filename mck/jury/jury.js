@@ -8,7 +8,7 @@ let toastTimer;
 const toast = m => { const t = document.getElementById('toast'); clearTimeout(toastTimer); t.textContent = m; t.hidden = false; toastTimer = setTimeout(() => { t.hidden = true; }, 2600); };
 
 const S = {
-  sb: null, code: null, session: null, voter: null, answered: new Set(), channel: null,
+  sb: null, code: null, session: null, voter: null, answered: new Set(), channel: null, updates: 0,
   screen: 'loading', q: null, votes: [], step: 0, picks: [], order: [], points: {}, swipes: {}, ratings: {}, slider: 50, text: '',
   name: '', personas: [], drag: { x: 0, on: false, startX: 0, fly: null, half: 0 }, pairTap: 0, doneTimer: null, codeError: ''
 };
@@ -22,6 +22,10 @@ if (new URLSearchParams(location.search).has('debug')) window.__tj = { S, openQu
   if (!code) { S.screen = 'code'; return render(); }
   await enter(code);
 })();
+// A locked phone or a dropped connection misses live updates. Read the session again when the page comes back.
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') resync(); });
+addEventListener('online', resync);
+addEventListener('pageshow', e => { if (e.persisted) resync(); });
 
 async function enter(code) {
   S.session = await getSession(S.sb, code);
@@ -40,19 +44,33 @@ async function showResults() {
   render();
   if (S.voter) return; // joined voters already follow the session channel
   S.channel ||= S.sb.channel(`jury:${S.code}`)
-    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'sessions', filter: `code=eq.${S.code}` }, p => { S.session = p.new; if (!p.new.results_published) { S.screen = 'wait'; sync(); } })
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'sessions', filter: `code=eq.${S.code}` }, p => { S.updates++; S.session = p.new; if (!p.new.results_published) { S.screen = 'wait'; sync(); } })
     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'votes', filter: `session_code=eq.${S.code}` }, async () => { S.votes = await fetchVotes(S.sb, S.code); if (S.screen === 'results') render(); })
-    .subscribe();
+    .subscribe(status => { if (status === 'SUBSCRIBED') resync(); });
 }
 
 async function afterJoin() {
   const { data } = await S.sb.from('votes').select('question_id').eq('session_code', S.code).eq('voter_id', S.voter.id);
   S.answered = new Set((data || []).map(r => r.question_id));
   S.channel = S.sb.channel(`jury:${S.code}`, { config: { presence: { key: S.voter.id } } })
-    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'sessions', filter: `code=eq.${S.code}` }, payload => { S.session = payload.new; if (payload.new.results_published) return showResults(); sync(); })
-    .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'sessions', filter: `code=eq.${S.code}` }, () => { S.screen = 'code'; S.codeError = 'That session was closed.'; render(); })
-    .subscribe(async status => { if (status === 'SUBSCRIBED') await S.channel.track({ name: S.voter.name, personas: S.voter.personas, at: Date.now() }); });
+    .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'sessions', filter: `code=eq.${S.code}` }, payload => { S.updates++; S.session = payload.new; if (payload.new.results_published) return showResults(); sync(); })
+    .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'sessions', filter: `code=eq.${S.code}` }, () => { S.updates++; S.screen = 'code'; S.codeError = 'That session was closed.'; render(); })
+    .subscribe(async status => { if (status === 'SUBSCRIBED') { resync(); await S.channel.track({ name: S.voter.name, personas: S.voter.personas, at: Date.now() }); } });
   sync();
+}
+// Catch up after a gap in live updates. The channel calls this on each (re)join, so a reconnect also catches up.
+async function resync() {
+  if (!S.sb || !S.code || !S.channel) return;
+  const seen = S.updates;
+  try {
+    const session = await getSession(S.sb, S.code);
+    if (!session || S.updates !== seen) return; // no answer, or a live update is newer
+    S.session = session;
+    if (S.voter) return await sync();
+    if (!session.results_published) { S.screen = 'wait'; return await sync(); }
+    S.votes = await fetchVotes(S.sb, S.code);
+    if (S.screen === 'results') render();
+  } catch (e) { console.error(e); }
 }
 
 // Decide what the phone should show from the session state. Catch-up: missed opened questions queue after the active one.
