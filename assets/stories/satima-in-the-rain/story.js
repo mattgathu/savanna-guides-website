@@ -248,24 +248,37 @@ function arrangeCards(section) {
   }
 }
 
-// The Ghost body holds a plain link to the trail page in the last practical card.
-// With JavaScript, the link becomes a ticket below the cards. Without JavaScript, the plain link stays.
+// The Ghost body holds plain links to the trail and park pages in the last practical card.
+// With JavaScript, the links become a trail ticket and a park card below the cards. Without JavaScript, the plain links stay.
 function arrangeTicket(section) {
-  const link = section.querySelector('.sg-satima__card-link a[href*="/links/trails/"]');
-  const template = document.querySelector('.sg-satima__ticket-template');
-  if (!link || !template) return;
+  const tickets = [
+    appLinkCard(section, '/links/trails/', '.sg-satima__ticket-template'),
+    appLinkCard(section, '/links/parks/', '.sg-satima__park-template'),
+  ].filter(Boolean);
+  if (!tickets.length) return;
+
+  const row = document.createElement('div');
+  row.className = 'sg-satima__tickets';
+  row.append(...tickets);
+  const cards = section.querySelector('.sg-satima__cards');
+  (cards || section).after(row);
+}
+
+// Clone the template for an app link and remove the plain link paragraph.
+// Remove the card too if the link was its only content after the title.
+function appLinkCard(section, path, templateSelector) {
+  const link = section.querySelector(`.sg-satima__card-link a[href*="${path}"]`);
+  const template = document.querySelector(templateSelector);
+  if (!link || !template) return null;
 
   const ticket = template.content.firstElementChild.cloneNode(true);
   ticket.href = link.href;
 
-  const cards = section.querySelector('.sg-satima__cards');
-  (cards || section).after(ticket);
-
-  // Remove the plain link paragraph. Remove the card too if the link was its only content after the title.
   const paragraph = link.closest('.sg-satima__card-link');
   const card = paragraph.closest('.sg-satima__card');
   paragraph.remove();
   if (card && !card.querySelector('p:not(.sg-satima__card-title), table')) card.remove();
+  return ticket;
 }
 
 // When an editor adds a YouTube embed card, add a plain fallback link and hide the placeholder.

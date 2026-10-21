@@ -1074,7 +1074,7 @@ html[data-theme="dark"] .sg-satima {
   to { transform: translate3d(4%, 2%, 0) scale(1.08); }
 }
 
-/* Trail ticket: app link in the practical section of "Satima in the rain".
+/* Trail ticket and park card: app links in the practical section of "Satima in the rain".
    All rules are scoped under .sg-satima. */
 
 .sg-satima {
@@ -1087,10 +1087,23 @@ html[data-theme="dark"] .sg-satima {
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.sg-satima__ticket {
-  display: flex;
+/* The trail ticket and the park card sit side by side on wide screens and stack on narrow screens. */
+.sg-satima__tickets {
+  display: grid;
+  gap: 24px;
+  align-items: start;
   max-width: 1100px;
   margin-top: 24px;
+}
+
+@media (min-width: 900px) {
+  .sg-satima__tickets {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+  }
+}
+
+.sg-satima__ticket {
+  display: flex;
   color: var(--color-text);
   text-decoration: none;
   filter: drop-shadow(var(--shadow-sm));
@@ -1271,6 +1284,208 @@ html[data-theme="dark"] .sg-satima {
   .sg-satima__ticket-fields {
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   }
+}
+
+/* Park card. It mirrors the park share page at /links/parks/<id>: brand bar, photo, name, and a stub in the park colour. */
+.sg-satima__park {
+  --park: #b446db;
+  --park-ink: #f1eee3;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  color: var(--color-text);
+  text-decoration: none;
+  filter: drop-shadow(var(--shadow-sm));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.sg-satima__body a.sg-satima__park,
+.sg-satima__body a.sg-satima__park:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.sg-satima__park:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(var(--shadow-md));
+}
+
+.sg-satima__park:active {
+  transform: translateY(0);
+}
+
+.sg-satima__park-head,
+.sg-satima__park-body {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+}
+
+.sg-satima__park-head {
+  padding-bottom: 14px;
+  border-top: 8px solid var(--park);
+  border-bottom: 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  -webkit-mask-image:
+    radial-gradient(circle 12px at 0 100%, transparent 98%, #000 100%),
+    radial-gradient(circle 12px at 100% 100%, transparent 98%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(circle 12px at 0 100%, transparent 98%, #000 100%),
+    radial-gradient(circle 12px at 100% 100%, transparent 98%, #000 100%);
+  mask-composite: intersect;
+}
+
+.sg-satima__park-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px 10px 12px;
+}
+
+.sg-satima__park-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sg-satima__body .sg-satima__park-brand img {
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  border-radius: 50%;
+  background: var(--map-ink);
+}
+
+.sg-satima__park-tag {
+  padding: 5px 12px;
+  color: var(--park-ink);
+  background: var(--park);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sg-satima__body .sg-satima__park-photo {
+  display: block;
+  width: calc(100% - 24px);
+  height: auto;
+  margin: 0 12px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background: var(--color-divider);
+}
+
+.sg-satima__park-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px 18px;
+  border-top: 2px dashed var(--color-neutral-400);
+  border-bottom: 2px dashed var(--color-neutral-400);
+  -webkit-mask-image:
+    radial-gradient(circle 12px at 0 0, transparent 98%, #000 100%),
+    radial-gradient(circle 12px at 100% 0, transparent 98%, #000 100%),
+    radial-gradient(circle 12px at 0 100%, transparent 98%, #000 100%),
+    radial-gradient(circle 12px at 100% 100%, transparent 98%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(circle 12px at 0 0, transparent 98%, #000 100%),
+    radial-gradient(circle 12px at 100% 0, transparent 98%, #000 100%),
+    radial-gradient(circle 12px at 0 100%, transparent 98%, #000 100%),
+    radial-gradient(circle 12px at 100% 100%, transparent 98%, #000 100%);
+  mask-composite: intersect;
+}
+
+.sg-satima__park-kicker {
+  color: var(--color-neutral-700);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sg-satima__body .sg-satima__park-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+}
+
+.sg-satima__body .sg-satima__park-lede {
+  margin: 0;
+  color: var(--color-neutral-700);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.sg-satima__park-stub {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px 14px;
+  color: var(--park-ink);
+  background: var(--park);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  -webkit-mask-image:
+    radial-gradient(circle 12px at 0 0, transparent 98%, #000 100%),
+    radial-gradient(circle 12px at 100% 0, transparent 98%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(circle 12px at 0 0, transparent 98%, #000 100%),
+    radial-gradient(circle 12px at 100% 0, transparent 98%, #000 100%);
+  mask-composite: intersect;
+}
+
+.sg-satima__park-cta {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.sg-satima__park-note {
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+.sg-satima__park-serial {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid color-mix(in srgb, var(--park-ink) 22%, transparent);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+.sg-satima__park-barcode {
+  height: 22px;
+  background: repeating-linear-gradient(
+    90deg,
+    currentColor 0 2px, transparent 2px 5px,
+    currentColor 5px 6px, transparent 6px 10px,
+    currentColor 10px 13px, transparent 13px 16px,
+    currentColor 16px 17px, transparent 17px 21px,
+    currentColor 21px 22px, transparent 22px 24px
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {
