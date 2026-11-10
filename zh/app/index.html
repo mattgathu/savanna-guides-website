@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Savanna Guides 应用</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="/assets/css/app.css?v=4fdd992dd6" as="style" />
+    <link rel="preload" href="/assets/js/manifest.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/vendor.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/app.js?v=4fdd992dd6" as="script" />
+
+      <link rel="preload" href="/assets/css/mobile-app.css?v=4fdd992dd6" as="style" />
+  <link rel="preload" href="/assets/app/iphone-mockup.webp?v=4fdd992dd6" as="image" type="image/webp" fetchpriority="high" />
+  <link rel="preload" href="/assets/app/app-discover.webp?v=4fdd992dd6" as="image" type="image/webp" fetchpriority="high" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* jost-300-light */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-Light.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-300-lightitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-LightItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-book */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-Book.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-bookitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-BookItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-medium */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-Medium.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-mediumitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-MediumItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semi */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-Semi.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semiitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-SemiItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bold */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-Bold.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bolditalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-BoldItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6#iefix") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=4fdd992dd6") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=4fdd992dd6") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3?v=4fdd992dd6#icomoon") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=4fdd992dd6" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="/assets/css/mobile-app.css?v=4fdd992dd6" media="screen" />
+
+
+    
+
+    <meta name="description" content="通过 Savanna Guides 移动应用，探索东非各地的国家公园、徒步路线、野生动物与旅行贴士。">
+    <link rel="icon" href="https://savannaguides.com/content/images/size/w256h256/2025/09/app-icon-min-white.png" type="image/png">
+    <link rel="canonical" href="https://savannaguides.com/zh/app/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Savanna Guides">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Savanna Guides 应用">
+    <meta property="og:description" content="通过 Savanna Guides 移动应用，探索东非各地的国家公园、徒步路线、野生动物与旅行贴士。">
+    <meta property="og:url" content="https://savannaguides.com/zh/app/">
+    <meta property="og:image" content="https://savannaguides.com/assets/app/app-poster-optimized.jpg">
+    <meta property="article:published_time" content="2026-05-17T05:06:19.000Z">
+    <meta property="article:modified_time" content="2026-05-17T05:06:19.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Savanna Guides 应用">
+    <meta name="twitter:description" content="通过 Savanna Guides 移动应用，探索东非各地的国家公园、徒步路线、野生动物与旅行贴士。">
+    <meta name="twitter:url" content="https://savannaguides.com/zh/app/">
+    <meta name="twitter:image" content="https://savannaguides.com/assets/app/app-poster-optimized.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Savanna Guides">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="2609">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Savanna Guides",
+        "url": "https://savannaguides.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Savanna Guides",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png",
+            "width": 1024,
+            "height": 1024
+        },
+        "url": "https://savannaguides.com/author/sgt/",
+        "sameAs": [
+            "https://savannaguides.com/",
+            "https://www.instagram.com/savannaguides"
+        ]
+    },
+    "headline": "Savanna Guides 应用",
+    "url": "https://savannaguides.com/zh/app/",
+    "datePublished": "2026-05-17T05:06:19.000Z",
+    "dateModified": "2026-05-17T05:06:19.000Z",
+    "description": "通过 Savanna Guides 移动应用，探索东非各地的国家公园、徒步路线、野生动物与旅行贴士。",
+    "mainEntityOfPage": "https://savannaguides.com/app/",
+    "inLanguage": "zh-Hans"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.0">
+    <link rel="alternate" type="application/rss+xml" title="Savanna Guides" href="https://savannaguides.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="8d28d3b35d87a2006f6822161a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://savannaguides.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://savannaguides.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=4fdd992dd6"></script><style>:root {--ghost-accent-color: #10540d;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=4fdd992dd6">
+    <style>
+@font-face {
+  font-family: 'Forta';
+  src: url('/assets/fonts/Forta.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+</style>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: 'Forta'; }
+</style> 
+
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: #1d1f1d; /* charcoal */
+  }
+
+  thead {
+    background: #f3f7f0; /* pale savanna green */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #d6e2d1; /* desaturated green-gray */
+    text-align: center;
+  }
+
+  th {
+    color: #10540d; /* savanna green */
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background: #f8faf7; /* subtle hover hint */
+  }
+</style>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42V9F2RPQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42V9F2RPQ5');
+</script>
+
+
+
+
+    <meta name=apple-itunes-app content=app-id=6636470632>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://savannaguides.com"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+      <link rel="alternate" hreflang="en" href="https://savannaguides.com/app/" />
+    <link rel="alternate" hreflang="de" href="https://savannaguides.com/de/app/" />
+    <link rel="alternate" hreflang="fr" href="https://savannaguides.com/fr/app/" />
+    <link rel="alternate" hreflang="es" href="https://savannaguides.com/es/app/" />
+    <link rel="alternate" hreflang="it" href="https://savannaguides.com/it/app/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://savannaguides.com/zh/app/" />
+    <link rel="alternate" hreflang="x-default" href="https://savannaguides.com/app/" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="it_IT" />
+  </head>
+  <body class="page-template page-app">
+    
+
+
+
+  
+<header class="m-header  js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="打开菜单" data-i18n="Open menu" data-i18n-attr="aria-label">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://savannaguides.com/zh/" class="m-logo sg-brand in-mobile-topbar">
+        <span class="sg-brand__mark">
+          <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+        </span>
+        <span class="sg-brand__wordmark">Savanna Guides</span>
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="打开搜索" data-i18n="Open search" data-i18n-attr="aria-label">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="关闭菜单" data-i18n="Close menu" data-i18n-attr="aria-label">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="主菜单" data-i18n="Main menu" data-i18n-attr="aria-label">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://savannaguides.com/zh/" class="m-logo sg-brand">
+                    <span class="sg-brand__mark">
+                      <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+                    </span>
+                    <span class="sg-brand__wordmark">Savanna Guides</span>
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="https://savannaguides.com/zh/">首页</a>
+    </li>
+    <li class="nav-app nav-current">
+      <a href="https://savannaguides.com/zh/app/">应用</a>
+    </li>
+    <li class="nav-about">
+      <a href="https://savannaguides.com/zh/about/">关于</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="打开子菜单" data-i18n="Open submenu" data-i18n-attr="aria-label">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles" data-i18n="Recent articles">近期文章</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="/zh/hiking-mount-satima-via-dragons-teeth/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/satima-story/hero.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/satima-story/hero.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/satima-story/hero.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/satima-story/hero.jpg.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/satima-story/hero.jpg 300w,
+      /content/images/size/w600/2026/10/satima-story/hero.jpg 600w,
+      /content/images/size/w1000/2026/10/satima-story/hero.jpg 1000w,
+      /content/images/size/w2000/2026/10/satima-story/hero.jpg 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/10/satima-story/hero.jpg"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="雨中的 Satima">
+                                      雨中的 Satima
+                                    </h3>
+                                    <span class="m-recent-article__date">上个月</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/gatamaiyu-trail-hike/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/07/IMG_4382.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Gatamaiyu 徒步路线">
+                                      Gatamaiyu 徒步路线
+                                    </h3>
+                                    <span class="m-recent-article__date">4个月前</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/weekend-camping-at-gura-river-camp/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/04/DSC05378.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="周末露营：Gura River Camp">
+                                      周末露营：Gura River Camp
+                                    </h3>
+                                    <span class="m-recent-article__date">7个月前</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/ngare-ndare-forest-hike-2026/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Ngare Ndare 森林徒步">
+                                      Ngare Ndare 森林徒步
+                                    </h3>
+                                    <span class="m-recent-article__date">10个月前</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title" data-i18n="Tags">标签</h3>
+                        <ul>
+                            <li>
+                              <a href="/zh/tag/aberdare/">Aberdare</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/campsites/">露营地</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/hikes/">徒步</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/kiambu/">Kiambu</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/laikipia/">Laikipia</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/ngare-ndare/">Ngare Ndare</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/trails/">徒步路线</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="打开搜索" data-i18n="Open search" data-i18n-attr="aria-label">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" data-i18n="Toggle dark mode" data-i18n-attr="data-tippy-content" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only" data-i18n-text>
+                切换浅色/深色模式
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+            <details class="m-lang-menu js-lang-menu">
+              <summary class="m-lang-switch" aria-label="选择语言">
+                <span class="icon-globe" aria-hidden="true"></span>
+                <span class="m-lang-switch__text" translate="no" data-lang-current>ZH</span>
+              </summary>
+              <ul class="m-lang-menu__list" translate="no">
+                <li><a data-lang-link="en" lang="en" hreflang="en" href="/app/">English</a></li>
+                <li><a data-lang-link="de" lang="de" hreflang="de" href="/de/app/">Deutsch</a></li>
+                <li><a data-lang-link="fr" lang="fr" hreflang="fr" href="/fr/app/">Français</a></li>
+                <li><a data-lang-link="es" lang="es" hreflang="es" href="/es/app/">Español</a></li>
+                <li><a data-lang-link="it" lang="it" hreflang="it" href="/it/app/">Italiano</a></li>
+                <li><a data-lang-link="zh" lang="zh-Hans" hreflang="zh-Hans" href="/zh/app/" aria-current="true">简体中文</a></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</header>
+
+<main class="app-page">
+  <section class="app-hero">
+    <div class="app-shell app-hero__grid">
+      <div class="app-hero__copy" data-animate="fade-down">
+        <picture><source type="image/webp" srcset="/assets/app/app-icon-white-circle.png.webp"><img class="app-hero__icon" src="/assets/app/app-icon-white-circle.png?v=4fdd992dd6" alt="" width="72" height="72" decoding="async" /></picture>
+        <p class="app-kicker">Savanna Guides 应用</p>
+        <h1>你的东非<br>野外指南。</h1>
+        <p class="app-lede">
+          打开“发现”页面，浏览精选徒步路线、公园、露营地、国家和野生动物的新鲜组合，趁道路还未变得冷清，先保存好你需要的信息。
+        </p>
+        <ul class="app-hero__mix" aria-label="发现精选">
+          <li>徒步路线</li>
+          <li>公园</li>
+          <li>露营地</li>
+          <li>国家</li>
+          <li>动物</li>
+        </ul>
+        <div class="app-badges" aria-label="下载 Savanna Guides">
+          <a href="https://apps.apple.com/us/app/savanna-parks-guide/id6636470632" class="app-badge" target="_blank" rel="noopener">
+            <img src="/assets/app/app-store-badge.svg?v=4fdd992dd6" alt="在 App Store 下载 Savanna Guides" loading="eager" decoding="async" />
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.mgk.savannaguides" class="app-badge" target="_blank" rel="noopener">
+            <img src="/assets/app/google-play-badge-optimized.jpg?v=4fdd992dd6" alt="在 Google Play 获取 Savanna Guides" loading="eager" decoding="async" />
+          </a>
+        </div>
+      </div>
+      <div class="app-hero__art" data-animate="fade-up">
+        <div class="app-device app-device--hero">
+          <picture>
+            <source srcset="/assets/app/iphone-mockup.webp?v=4fdd992dd6" type="image/webp" />
+            <img class="app-device__mockup" src="/assets/app/iphone-mockup.png?v=4fdd992dd6" alt="" width="1022" height="2082" loading="eager" decoding="async" fetchpriority="high" />
+          </picture>
+          <div class="app-device__screen">
+            <picture>
+              <source srcset="/assets/app/app-discover.webp?v=4fdd992dd6" type="image/webp" />
+              <img src="/assets/app/app-discover.png?v=4fdd992dd6" alt="Savanna Guides“发现”页面，展示精选的 Elephant Hill 徒步路线" width="739" height="1600" loading="eager" decoding="async" fetchpriority="high" />
+            </picture>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-section app-section--light app-feature app-feature--trails">
+    <div class="app-shell app-feature__grid">
+      <div class="app-feature__copy">
+        <p class="app-kicker">徒步路线</p>
+        <h2>攀登之前，<br>先看路线。</h2>
+        <p>在迈出第一步之前，比较路线、了解难度、查看距离并预览地图。</p>
+        <ul class="app-points" aria-label="徒步路线规划功能">
+          <li>难度与距离</li>
+          <li>地图预览</li>
+          <li>路线背景信息</li>
+        </ul>
+      </div>
+      <div class="app-feature__art app-device-pair">
+        <div class="app-device app-device--secondary">
+          <picture>
+            <source srcset="/assets/app/iphone-mockup.webp?v=4fdd992dd6" type="image/webp" />
+            <img class="app-device__mockup" src="/assets/app/iphone-mockup.png?v=4fdd992dd6" alt="" width="1022" height="2082" loading="lazy" decoding="async" />
+          </picture>
+          <div class="app-device__screen">
+            <picture>
+              <source srcset="/assets/app/app-trails.webp?v=4fdd992dd6" type="image/webp" />
+              <img src="/assets/app/app-trails.png?v=4fdd992dd6" alt="Savanna Guides 徒步路线列表页面" width="739" height="1600" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+        <div class="app-device app-device--primary">
+          <picture>
+            <source srcset="/assets/app/iphone-mockup.webp?v=4fdd992dd6" type="image/webp" />
+            <img class="app-device__mockup" src="/assets/app/iphone-mockup.png?v=4fdd992dd6" alt="" width="1022" height="2082" loading="lazy" decoding="async" />
+          </picture>
+          <div class="app-device__screen">
+            <picture>
+              <source srcset="/assets/app/app-trail-profile.webp?v=4fdd992dd6" type="image/webp" />
+              <img src="/assets/app/app-trail-profile.png?v=4fdd992dd6" alt="Savanna Guides 徒步路线详情页面，显示距离、难度和海拔" width="739" height="1600" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-section app-section--dark app-feature app-feature--parks">
+    <div class="app-shell app-feature__grid app-feature__grid--reversed">
+      <div class="app-feature__art app-device-pair">
+        <div class="app-device app-device--primary">
+          <picture>
+            <source srcset="/assets/app/iphone-mockup.webp?v=4fdd992dd6" type="image/webp" />
+            <img class="app-device__mockup" src="/assets/app/iphone-mockup.png?v=4fdd992dd6" alt="" width="1022" height="2082" loading="lazy" decoding="async" />
+          </picture>
+          <div class="app-device__screen">
+            <picture>
+              <source srcset="/assets/app/app-park-profile.webp?v=4fdd992dd6" type="image/webp" />
+              <img src="/assets/app/app-park-profile.png?v=4fdd992dd6" alt="Savanna Guides 公园详情页面，显示公园操作与亮点" width="739" height="1600" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+        <div class="app-device app-device--secondary">
+          <picture>
+            <source srcset="/assets/app/iphone-mockup.webp?v=4fdd992dd6" type="image/webp" />
+            <img class="app-device__mockup" src="/assets/app/iphone-mockup.png?v=4fdd992dd6" alt="" width="1022" height="2082" loading="lazy" decoding="async" />
+          </picture>
+          <div class="app-device__screen">
+            <picture>
+              <source srcset="/assets/app/app-parks.webp?v=4fdd992dd6" type="image/webp" />
+              <img src="/assets/app/app-parks.png?v=4fdd992dd6" alt="Savanna Guides 公园列表页面" width="739" height="1600" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+      </div>
+      <div class="app-feature__copy">
+        <p class="app-kicker">公园</p>
+        <h2>每座公园，<br>一目了然。</h2>
+        <p>抵达公园大门之前，就能找到公园亮点、野生动物、附近住宿、活动和地图。</p>
+        <ul class="app-points" aria-label="公园规划功能">
+          <li>亮点与活动</li>
+          <li>野生动物与图集</li>
+          <li>附近住宿</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-section app-section--cream app-feature app-feature--campsites">
+    <div class="app-shell app-feature__grid">
+      <div class="app-feature__copy">
+        <p class="app-kicker">露营地</p>
+        <h2>选择营地，<br>胸有成竹。</h2>
+        <p>趁天色尚明、仍有时间挑选，查看每处住宿的设施、联系方式、位置、预算和整体氛围。</p>
+        <ul class="app-points" aria-label="露营地规划功能">
+          <li>设施与预算</li>
+          <li>路线指引与联系方式</li>
+          <li>园内或园外</li>
+        </ul>
+      </div>
+      <div class="app-feature__art">
+        <div class="app-device app-device--solo">
+          <picture>
+            <source srcset="/assets/app/iphone-mockup.webp?v=4fdd992dd6" type="image/webp" />
+            <img class="app-device__mockup" src="/assets/app/iphone-mockup.png?v=4fdd992dd6" alt="" width="1022" height="2082" loading="lazy" decoding="async" />
+          </picture>
+          <div class="app-device__screen">
+            <picture>
+              <source srcset="/assets/app/app-campsite-profile.webp?v=4fdd992dd6" type="image/webp" />
+              <img src="/assets/app/app-campsite-profile.png?v=4fdd992dd6" alt="Savanna Guides 露营地详情页面，显示露营地信息与联系操作" width="739" height="1600" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-section app-cta">
+    <div class="app-shell">
+      <p class="app-kicker">随身携带</p>
+      <h2>免费下载。<br>从今天的指南开始。</h2>
+      <p>为东非真实旅程量身打造的徒步路线、公园、露营地、野生动物与国家指南。</p>
+      <div class="app-badges app-badges--center" aria-label="下载 Savanna Guides">
+        <a href="https://apps.apple.com/us/app/savanna-parks-guide/id6636470632" class="app-badge" target="_blank" rel="noopener">
+          <img src="/assets/app/app-store-badge.svg?v=4fdd992dd6" alt="在 App Store 下载 Savanna Guides" loading="lazy" />
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.mgk.savannaguides" class="app-badge" target="_blank" rel="noopener">
+          <img src="/assets/app/google-play-badge-optimized.jpg?v=4fdd992dd6" alt="在 Google Play 获取 Savanna Guides" loading="lazy" />
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Savanna Guides",
+    "operatingSystem": "iOS, Android",
+    "applicationCategory": "TravelApplication",
+    "description": "Savanna Guides 是你的东非户外旅伴，提供动态更新的“发现”主页，以及徒步路线、公园、露营地、野生动物和国家指南。",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    },
+    "image": "https://savannaguides.com/assets/app/app-discover.png?v=4fdd992dd6",
+    "url": "https://savannaguides.com/zh/app/",
+    "sameAs": [
+        "https://apps.apple.com/us/app/savanna-parks-guide/id6636470632",
+        "https://play.google.com/store/apps/details?id=com.mgk.savannaguides"
+    ],
+    "inLanguage": "zh-Hans"
+}
+    </script>
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="搜索" data-i18n="Search" data-i18n-attr="aria-label">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="关闭搜索" data-i18n="Close search" data-i18n-attr="aria-label">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only" data-i18n="Type to search">
+          输入关键词搜索
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="输入关键词搜索" data-i18n="Type to search" data-i18n-attr="placeholder">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results" data-i18n="No results for your search, try something different.">
+      没有找到相关结果，请换个关键词试试。
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+      <a href="https://savannaguides.com/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Savanna Guides © 2026</span>
+    </p>
+
+  </div>
+</footer>
+    <script defer src="/assets/js/manifest.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/vendor.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/app.js?v=4fdd992dd6"></script>
+
+    
+
+    
+  </body>
+</html>

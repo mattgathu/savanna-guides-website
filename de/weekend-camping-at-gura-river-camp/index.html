@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Wochenend-Camping im Gura River Camp</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="/assets/css/app.css?v=4fdd992dd6" as="style" />
+    <link rel="preload" href="/assets/js/manifest.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/vendor.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/app.js?v=4fdd992dd6" as="script" />
+
+      <link rel="preload" href="/assets/css/post.css?v=4fdd992dd6" as="style" />
+  <link rel="preload" href="/assets/js/post.js?v=4fdd992dd6" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* jost-300-light */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-Light.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-300-lightitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-LightItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-book */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-Book.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-bookitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-BookItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-medium */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-Medium.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-mediumitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-MediumItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semi */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-Semi.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semiitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-SemiItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bold */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-Bold.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bolditalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-BoldItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6#iefix") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=4fdd992dd6") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=4fdd992dd6") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3?v=4fdd992dd6#icomoon") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=4fdd992dd6" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="/assets/css/post.css?v=4fdd992dd6" media="screen" />
+
+
+    
+
+    <link rel="icon" href="https://savannaguides.com/content/images/size/w256h256/2025/09/app-icon-min-white.png" type="image/png">
+    <link rel="canonical" href="https://savannaguides.com/de/weekend-camping-at-gura-river-camp/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Savanna Guides">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Wochenend-Camping im Gura River Camp">
+    <meta property="og:description" content="Das Gura River Camp ist genau der richtige Campingplatz für ein kurzes Wochenende raus aus Nairobi. Es liegt am Ufer des Gura River im Aberdare-Wald, und sein Reiz ist schlicht: Camping am Fluss in ruhiger, grüner Umgebung – ohne lange Anfahrt oder allzu">
+    <meta property="og:url" content="https://savannaguides.com/de/weekend-camping-at-gura-river-camp/">
+    <meta property="og:image" content="https://savannaguides.com/content/images/2026/04/DSC05378.JPG">
+    <meta property="article:published_time" content="2026-04-09T13:03:03.000Z">
+    <meta property="article:modified_time" content="2026-04-09T13:03:03.000Z">
+    <meta property="article:tag" content="Campsites">
+    <meta property="article:tag" content="Trails">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wochenend-Camping im Gura River Camp">
+    <meta name="twitter:description" content="Das Gura River Camp ist genau der richtige Campingplatz für ein kurzes Wochenende raus aus Nairobi. Es liegt am Ufer des Gura River im Aberdare-Wald, und sein Reiz ist schlicht: Camping am Fluss in ruhiger, grüner Umgebung – ohne lange Anfahrt oder allzu">
+    <meta name="twitter:url" content="https://savannaguides.com/de/weekend-camping-at-gura-river-camp/">
+    <meta name="twitter:image" content="https://savannaguides.com/content/images/2026/04/DSC05378.JPG">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Savanna Guides">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Campsites, Trails">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Savanna Guides",
+        "url": "https://savannaguides.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Savanna Guides",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png",
+            "width": 1024,
+            "height": 1024
+        },
+        "url": "https://savannaguides.com/author/sgt/",
+        "sameAs": [
+            "https://savannaguides.com/",
+            "https://www.instagram.com/savannaguides"
+        ]
+    },
+    "headline": "Wochenend-Camping im Gura River Camp",
+    "url": "https://savannaguides.com/de/weekend-camping-at-gura-river-camp/",
+    "datePublished": "2026-04-09T13:03:03.000Z",
+    "dateModified": "2026-04-09T13:03:03.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://savannaguides.com/content/images/2026/04/DSC05378.JPG",
+        "width": 1200,
+        "height": 675
+    },
+    "keywords": "Campsites, Trails",
+    "description": "Das Gura River Camp ist genau der richtige Campingplatz für ein kurzes Wochenende raus aus Nairobi. Es liegt am Ufer des Gura River im Aberdare-Wald, und sein Reiz ist schlicht: Camping am Fluss in ruhiger, grüner Umgebung – ohne lange Anfahrt oder viel Organisationsaufwand. Vor Kurzem haben wir hier ein Wochenende verbracht. Es war ein unkomplizierter Ausflug: ankommen, Zelt aufbauen, am Fluss sitzen und den Tag von selbst langsamer werden lassen. Es gibt Stellplätze direkt am Wasser, genug Baumbestand, damit sich der Ort abgeschi",
+    "mainEntityOfPage": "https://savannaguides.com/weekend-camping-at-gura-river-camp/",
+    "inLanguage": "de"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.0">
+    <link rel="alternate" type="application/rss+xml" title="Savanna Guides" href="https://savannaguides.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="8d28d3b35d87a2006f6822161a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://savannaguides.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://savannaguides.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=4fdd992dd6"></script><style>:root {--ghost-accent-color: #10540d;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=4fdd992dd6">
+    <style>
+@font-face {
+  font-family: 'Forta';
+  src: url('/assets/fonts/Forta.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+</style>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: 'Forta'; }
+</style> 
+
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: #1d1f1d; /* charcoal */
+  }
+
+  thead {
+    background: #f3f7f0; /* pale savanna green */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #d6e2d1; /* desaturated green-gray */
+    text-align: center;
+  }
+
+  th {
+    color: #10540d; /* savanna green */
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background: #f8faf7; /* subtle hover hint */
+  }
+</style>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42V9F2RPQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42V9F2RPQ5');
+</script>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://savannaguides.com"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+      <link rel="alternate" hreflang="en" href="https://savannaguides.com/weekend-camping-at-gura-river-camp/" />
+    <link rel="alternate" hreflang="de" href="https://savannaguides.com/de/weekend-camping-at-gura-river-camp/" />
+    <link rel="alternate" hreflang="fr" href="https://savannaguides.com/fr/weekend-camping-at-gura-river-camp/" />
+    <link rel="alternate" hreflang="es" href="https://savannaguides.com/es/weekend-camping-at-gura-river-camp/" />
+    <link rel="alternate" hreflang="it" href="https://savannaguides.com/it/weekend-camping-at-gura-river-camp/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://savannaguides.com/zh/weekend-camping-at-gura-river-camp/" />
+    <link rel="alternate" hreflang="x-default" href="https://savannaguides.com/weekend-camping-at-gura-river-camp/" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="it_IT" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+  </head>
+  <body class="post-template tag-campsites tag-en tag-trails">
+    
+
+
+
+
+  
+<header class="m-header with-picture js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Menü öffnen" data-i18n="Open menu" data-i18n-attr="aria-label">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://savannaguides.com/de/" class="m-logo sg-brand in-mobile-topbar">
+        <span class="sg-brand__mark">
+          <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+        </span>
+        <span class="sg-brand__wordmark">Savanna Guides</span>
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="Suche öffnen" data-i18n="Open search" data-i18n-attr="aria-label">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Menü schließen" data-i18n="Close menu" data-i18n-attr="aria-label">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Hauptmenü" data-i18n="Main menu" data-i18n-attr="aria-label">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://savannaguides.com/de/" class="m-logo sg-brand">
+                    <span class="sg-brand__mark">
+                      <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+                    </span>
+                    <span class="sg-brand__wordmark">Savanna Guides</span>
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="https://savannaguides.com/de/">Startseite</a>
+    </li>
+    <li class="nav-app">
+      <a href="https://savannaguides.com/de/app/">App</a>
+    </li>
+    <li class="nav-about">
+      <a href="https://savannaguides.com/de/about/">Über uns</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Untermenü öffnen" data-i18n="Open submenu" data-i18n-attr="aria-label">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles" data-i18n="Recent articles">Neueste Artikel</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="/de/hiking-mount-satima-via-dragons-teeth/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/satima-story/hero.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/satima-story/hero.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/satima-story/hero.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/satima-story/hero.jpg.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/satima-story/hero.jpg 300w,
+      /content/images/size/w600/2026/10/satima-story/hero.jpg 600w,
+      /content/images/size/w1000/2026/10/satima-story/hero.jpg 1000w,
+      /content/images/size/w2000/2026/10/satima-story/hero.jpg 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/10/satima-story/hero.jpg"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Satima im Regen">
+                                      Satima im Regen
+                                    </h3>
+                                    <span class="m-recent-article__date">letzten Monat</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/de/gatamaiyu-trail-hike/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/07/IMG_4382.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Wanderung auf dem Gatamaiyu Trail">
+                                      Wanderung auf dem Gatamaiyu Trail
+                                    </h3>
+                                    <span class="m-recent-article__date">vor 4 Monaten</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/de/weekend-camping-at-gura-river-camp/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/04/DSC05378.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Wochenend-Camping im Gura River Camp">
+                                      Wochenend-Camping im Gura River Camp
+                                    </h3>
+                                    <span class="m-recent-article__date">vor 7 Monaten</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/de/ngare-ndare-forest-hike-2026/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Wanderung im Ngare Ndare Forest">
+                                      Wanderung im Ngare Ndare Forest
+                                    </h3>
+                                    <span class="m-recent-article__date">vor 10 Monaten</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title" data-i18n="Tags">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="/de/tag/aberdare/">Aberdare</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/campsites/">Campingplätze</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/hikes/">Wanderungen</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/kiambu/">Kiambu</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/laikipia/">Laikipia</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/ngare-ndare/">Ngare Ndare</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/trails/">Wanderwege</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="Suche öffnen" data-i18n="Open search" data-i18n-attr="aria-label">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" data-i18n="Toggle dark mode" data-i18n-attr="data-tippy-content" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only" data-i18n-text>
+                Hell-/Dunkelmodus umschalten
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+            <details class="m-lang-menu js-lang-menu">
+              <summary class="m-lang-switch" aria-label="Sprache wählen">
+                <span class="icon-globe" aria-hidden="true"></span>
+                <span class="m-lang-switch__text" translate="no" data-lang-current>DE</span>
+              </summary>
+              <ul class="m-lang-menu__list" translate="no">
+                <li><a data-lang-link="en" lang="en" hreflang="en" href="/weekend-camping-at-gura-river-camp/">English</a></li>
+                <li><a data-lang-link="de" lang="de" hreflang="de" href="/de/weekend-camping-at-gura-river-camp/" aria-current="true">Deutsch</a></li>
+                <li><a data-lang-link="fr" lang="fr" hreflang="fr" href="/fr/weekend-camping-at-gura-river-camp/">Français</a></li>
+                <li><a data-lang-link="es" lang="es" hreflang="es" href="/es/weekend-camping-at-gura-river-camp/">Español</a></li>
+                <li><a data-lang-link="it" lang="it" hreflang="it" href="/it/weekend-camping-at-gura-river-camp/">Italiano</a></li>
+                <li><a data-lang-link="zh" lang="zh-Hans" hreflang="zh-Hans" href="/zh/weekend-camping-at-gura-river-camp/">简体中文</a></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-animate="fade">
+    <div class="m-hero__picture in-post">
+      <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+    src="/content/images/size/w1000/2026/04/DSC05378.JPG"
+    alt=""
+    
+    
+  />
+</picture>
+    </div>
+    </section>
+        <div class="l-wrapper in-caption">
+          <p class="m-small-text align-center">
+            <span style="white-space: pre-wrap;">Unser Zeltaufbau</span>
+          </p>
+        </div>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-animation-wrapper" data-animate="fade-up">
+          <div
+            class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Wochenend-Camping im Gura River Camp</h1>
+              <div class="m-heading__meta">
+                  <a href="https://savannaguides.com/de/tag/campsites/" class="m-heading__meta__tag">Campingplätze</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">9. Apr. 2026</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://savannaguides.com/de/weekend-camping-at-gura-river-camp/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Weekend%20Camping%20at%20Gura%20River%20Camp&url=https://savannaguides.com/de/weekend-camping-at-gura-river-camp/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Nach oben" data-i18n="Scroll to top" data-i18n-attr="aria-label">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p>Das Gura River Camp ist genau der richtige Campingplatz für ein kurzes Wochenende raus aus Nairobi. Es liegt am Ufer des Gura River im Aberdare-Wald, und sein Reiz ist schlicht: Camping am Fluss in ruhiger, grüner Umgebung – ohne lange Anfahrt oder viel Organisationsaufwand.</p><p>Vor Kurzem haben wir hier ein Wochenende verbracht. Es war ein unkomplizierter Ausflug: ankommen, Zelt aufbauen, am Fluss sitzen und den Tag von selbst langsamer werden lassen. Es gibt Stellplätze direkt am Wasser, genug Baumbestand, damit sich der Ort angenehm abgeschieden anfühlt, und das stete Rauschen des Flusses, der mitten durchs Camp fließt. Die Atmosphäre ist einfach und unaufgeregt statt herausgeputzt. Wir waren begeistert.</p><hr><h2 id="location-access">Lage &amp; Anfahrt</h2><p>Das Gura River Camp liegt im Waldschutzgebiet am Gura River, direkt außerhalb des Zauns des Aberdares National Park. Laut Camp sind es von der Innenstadt Nairobis etwa 2 Stunden 45 Minuten, fast durchgehend auf Asphalt; nur die letzten 10 Minuten geht es über Piste. Allradantrieb ist in der Regel nicht nötig, es sei denn, dein Fahrzeug hat besonders wenig Bodenfreiheit oder es ist Regenzeit.  </p><div class="kg-card kg-callout-card kg-callout-card-accent"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text">In der Nähe des Camps wird der Handyempfang dünn, daher lohnt es sich, die Wegbeschreibung vor dem letzten Abschnitt herunterzuladen.</div></div><hr><h2 id="the-camp-experience">Das Camp-Erlebnis</h2><p>Der erste Eindruck gehört dem Fluss. Die Stellplätze liegen direkt am Ufer, das Wasser ist immer im Blick. Steht das Lager erst einmal, gibt es kaum einen Grund, mehr zu tun, als einfach anzukommen.</p><p>Genau das war der Rhythmus unseres Aufenthalts. Der erste Nachmittag gehörte den üblichen Camp-Ritualen: das Auto ausladen, das Zelt aufbauen, die Stühle zurechtrücken und ein Stück Boden nach und nach in ein Zuhause auf Zeit verwandeln. Danach öffnete sich der Tag für die ruhigeren Seiten des Campens: Tee, Lesen, dem Fluss zuschauen und auf das Abendlicht warten.</p><p>Der Sonnenuntergang war einer der schönsten Momente der Reise. Das Licht wurde weich über den Zelten und dem Fluss, und über dem Camp lag jene vertraute Stille am Ende des Tages, die es offenbar nur draußen gibt. Der nächste Morgen verlief im selben gemächlichen Tempo: Sonnenaufgang über dem Camp, Frühstück am Fluss und keine Eile – nur den Morgen genießen, bevor wir zusammenpackten.</p><p>Am besten funktioniert das Gura River Camp, wenn man genau das sucht. Es ist kein Ort für ein volles Aktivitätenprogramm, sondern eher etwas für Camper, die die ruhige Seite des Draußenseins genießen.</p><figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/MdShm_ANrhw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" title="Setting Up Camp at Gura River Camp"></iframe></figure><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05368.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05368.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05368.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05368.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05368.JPG 2400w" sizes="(min-width: 1280px) 320px, (min-width: 768px) 274px, 34vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05369.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05369.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05369.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05369.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05369.JPG 2400w" sizes="(min-width: 1280px) 320px, (min-width: 768px) 274px, 34vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05370.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05370.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05370.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05370.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05370.JPG 2400w" sizes="(min-width: 1280px) 320px, (min-width: 768px) 274px, 34vw"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05389.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05389.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05389.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05389.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05389.JPG 2400w" sizes="(min-width: 1280px) 320px, (min-width: 768px) 274px, 34vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05390.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05390.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05390.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05390.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05390.JPG 2400w" sizes="(min-width: 1280px) 320px, (min-width: 768px) 274px, 34vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05391.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05391.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05391.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05391.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05391.JPG 2400w" sizes="(min-width: 1280px) 320px, (min-width: 768px) 274px, 34vw"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05392.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05392.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05392.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05392.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05392.JPG 2400w" sizes="(min-width: 1280px) 480px, (min-width: 768px) 410px, 50vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05393.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05393.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05393.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05393.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05393.JPG 2400w" sizes="(min-width: 1280px) 480px, (min-width: 768px) 410px, 50vw"></div></div></div></figure><hr><h2 id="facilities">Ausstattung</h2><p>Die Ausstattung ist einfach, aber durchdacht. Das Camp bietet Komposttoiletten, warme Duschen, eine Küchen-Banda mit Spüle und Arbeitsfläche sowie Feuerholz nach Absprache. Einen Stromanschluss gibt es vor Ort nicht, und die Beleuchtung ist spärlich. Das Leitungswasser stammt aus dem Fluss und wird nicht gefiltert, du solltest also Trinkwasser oder einen Filter mitbringen. Auch der Mobilfunkempfang im Camp ist sehr eingeschränkt. All das sollte man vor der Anreise einplanen. </p><p>In der Praxis fühlt sich das Camp komfortabel an, solange man gut vorbereitet anreist. Luxuriös ist es nicht, aber es bietet alles, was man für ein gelungenes Selbstversorger-Wochenende in der Natur braucht.</p><hr><h2 id="short-walks-time-by-the-river">Kurze Spaziergänge &amp; Zeit am Fluss</h2><p>Wir haben auch einen kurzen Spaziergang am Fluss entlang gemacht. Keine große Wanderung, nur ein schmaler, etwas zugewachsener Pfad, der dem Wasser folgt und sich durch die Vegetation rund ums Camp schlängelt. Er brachte ein wenig Bewegung in den Ausflug, ohne die Grundstimmung zu verändern.</p><p>Das passte zum Ort. Selbst die aktiveren Momente des Wochenendes liefen immer wieder auf dasselbe hinaus: nah am Fluss sein und ein langsameres Tempo anschlagen. </p><figure class="kg-card kg-gallery-card kg-width-wide kg-card-hascaption"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05395.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05395.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05395.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05395.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05395.JPG 2400w" sizes="(min-width: 1280px) 415px, (min-width: 768px) 354px, 44vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05396.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05396.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05396.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05396.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05396.JPG 2400w" sizes="(min-width: 1280px) 415px, (min-width: 768px) 354px, 44vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05397.JPG" width="2000" height="3555" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05397.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05397.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05397.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05397.JPG 2400w" sizes="(min-width: 1280px) 132px, (min-width: 768px) 113px, 14vw"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05398.JPG" width="2000" height="3555" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05398.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05398.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05398.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05398.JPG 2400w" sizes="(min-width: 1280px) 231px, (min-width: 768px) 198px, 25vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/04/DSC05390-1.JPG" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/04/DSC05390-1.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/04/DSC05390-1.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/04/DSC05390-1.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/04/DSC05390-1.JPG 2400w" sizes="(min-width: 1280px) 730px, (min-width: 768px) 623px, 76vw"></div></div></div><figcaption><p dir="ltr"><span style="white-space: pre-wrap;">Bilder von unserem Spaziergang</span></p></figcaption></figure><hr><h2 id="field-notes">Feldnotizen</h2><p><code>Riverside camp • Aberdares • Self-catering • Weekend trip • Forest setting</code></p><p><strong>Bedingungen</strong></p><ul><li>Stellplätze am Flussufer, schattig im Wald gelegen</li><li>Ruhige Atmosphäre mit sehr begrenztem Mobilfunkempfang</li><li>Gut erreichbar für einen kurzen Wochenendausflug ab Nairobi</li></ul><p><strong>Empfehlungen</strong></p><ul><li>Trinkwasser oder einen zuverlässigen Wasserfilter mitbringen</li><li>Lampen und Lademöglichkeiten einpacken</li><li>Wegbeschreibung vor dem letzten Streckenabschnitt herunterladen</li><li>Für ein entschleunigtes Wochenende kommen, nicht für ein volles Aktivitätenprogramm</li></ul><p><strong>Stolperfallen</strong></p><ul><li>Kein Stromanschluss</li><li>Eingeschränkter Empfang</li><li>Leitungswasser aus dem Fluss, ungefiltert</li><li>Einfache Ausstattung ohne Schnickschnack</li></ul><hr><h2 id="final-take">Fazit</h2><p>Das Gura River Camp schließt man leicht ins Herz. Es liegt nah genug an Nairobi für ein entspanntes Wochenende, doch sobald man ankommt, fühlt man sich wirklich weit weg von der Stadt. Der Fluss, der Wald und die Schlichtheit der Anlage machen den Großteil des Reizes aus.</p><p>Für Camper, denen Atmosphäre wichtiger ist als Komfort, ist es eine sehr gute Wahl fürs Wochenende.</p><figure class="kg-card kg-embed-card kg-card-hascaption"><iframe width="200" height="113" src="https://www.youtube.com/embed/Ci4nt6IzOCw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" title="Weekend Camping at Gura River Camp"></iframe><figcaption><p dir="ltr"><span style="white-space: pre-wrap;">Kurzes YouTube-Video von unserem Aufenthalt</span></p></figcaption></figure><p></p><figure class="kg-card kg-bookmark-card kg-card-hascaption"><a class="kg-bookmark-container" href="https://apps.apple.com/us/app/savanna-guides/id6636470632?itscg=30200&amp;itsct=apps_box_link&amp;mttnsubad=6636470632"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Savanna Guides App - App Store</div><div class="kg-bookmark-description">Lade Savanna Guides von Matthew Gathu Kamande im App Store herunter. Sieh dir Screenshots, Bewertungen und Rezensionen, Nutzertipps und weitere Spiele wie Savanna Guides an.</div><div class="kg-bookmark-metadata"><picture><source type="image/webp" srcset="/content/images/format/webp/icon/favicon-180.png.webp"><img class="kg-bookmark-icon" src="https://savannaguides.com/content/images/icon/favicon-180.png" alt=""></picture><span class="kg-bookmark-author">App Store</span><span class="kg-bookmark-publisher">Matthew Gathu Kamande</span></div></div><div class="kg-bookmark-thumbnail"><picture><source type="image/webp" srcset="/content/images/format/webp/thumbnail/1200x630wa.jpg.webp"><img src="https://savannaguides.com/content/images/thumbnail/1200x630wa.jpg" alt="" onerror="this.style.display = 'none'"></picture></div></a><figcaption><p dir="ltr"><span style="white-space: pre-wrap;">Savanna Guides App herunterladen</span></p></figcaption></figure>
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title" data-i18n="Tags">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="/de/tag/campsites/" title="Campingplätze">Campingplätze</a>
+                      </li>
+                      <li>
+                        <a href="/de/tag/trails/" title="Wanderwege">Wanderwege</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="https://savannaguides.com/de/author/sgt/" class="m-author-picture" aria-label="Savanna Guides">
+                  <div style="background-image: url(https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="https://savannaguides.com/de/author/sgt/">Savanna Guides</a>
+              </h4>
+                <p class="m-author__bio">Savanna Guides ist ein Projekt von Matt Gathu – mit der liebevollen Hilfe meiner guten Freunde Nicks und Tessie.</p>
+              <ul class="m-author-links">
+                  <li>
+                    <a href="https://savannaguides.com/de/" target="_blank" rel="noopener" aria-label="Website" data-i18n="Website" data-i18n-attr="aria-label">
+                      <span class="icon-globe" aria-hidden="true"></span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
+
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Suche" data-i18n="Search" data-i18n-attr="aria-label">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Suche schließen" data-i18n="Close search" data-i18n-attr="aria-label">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only" data-i18n="Type to search">
+          Suchbegriff eingeben
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Suchbegriff eingeben" data-i18n="Type to search" data-i18n-attr="placeholder">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results" data-i18n="No results for your search, try something different.">
+      Keine Ergebnisse für deine Suche – bitte versuche es mit einem anderen Begriff.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+      <a href="https://savannaguides.com/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Savanna Guides © 2026</span>
+    </p>
+
+  </div>
+</footer>
+    <script defer src="/assets/js/manifest.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/vendor.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/app.js?v=4fdd992dd6"></script>
+
+      <script defer src="/assets/js/post.js?v=4fdd992dd6"></script>
+
+
+    
+  </body>
+</html>

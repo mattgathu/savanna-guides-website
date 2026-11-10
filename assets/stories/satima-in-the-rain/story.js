@@ -11,6 +11,14 @@ const WASH_URL = '/assets/stories/satima-in-the-rain/wash.png';
 const DIRECTION_KEY = 'sg:satima:direction';
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const MAP_INK = 'var(--map-ink)';
+// Text that this script adds to the page. init() reads the translated values
+// from the data-label-* attributes on the story root.
+const LABELS = {
+  film: 'Watch on YouTube',
+  map: 'Map of the Ole Satima trail drawn from the GPS track',
+  camp: 'Summit camp',
+  start: 'Twin Rocks · camp',
+};
 
 // Icon paths in a 15 x 15 viewBox.
 const ICONS = {
@@ -21,6 +29,10 @@ const ICONS = {
 };
 
 function init(main) {
+  for (const key of Object.keys(LABELS)) {
+    const value = main.getAttribute(`data-label-${key}`);
+    if (value) LABELS[key] = value;
+  }
   const body = main.querySelector('.sg-satima__body');
   const sections = body ? buildSegments(body) : [];
   const map = createMap(main.querySelector('.sg-satima__map'));
@@ -167,7 +179,9 @@ function arrangeHeading(section, cfg) {
 
 function arrangeJournal(section, cfg) {
   section.querySelectorAll(':scope > p').forEach((p) => {
-    if (onlyChild(p, 'STRONG') && /^Journal\b/.test(p.textContent.trim())) {
+    // Journal lines read "Journal · Thu 17 Sept · 15:45". Match the separator,
+    // not the English word, so that translated pages keep the style.
+    if (onlyChild(p, 'STRONG') && /^[^·]{1,24}\s·\s/.test(p.textContent.trim())) {
       p.classList.add('sg-satima__journal');
       if (cfg.dot === 'tent') p.classList.add('is-tent');
     }
@@ -293,7 +307,7 @@ function arrangeFilm(section) {
   p.className = 'sg-satima__film-link';
   const a = document.createElement('a');
   a.href = `https://www.youtube.com/watch?v=${id}`;
-  a.textContent = 'Watch on YouTube';
+  a.textContent = LABELS.film;
   p.append(a);
   card.after(p);
 }
@@ -322,7 +336,7 @@ function createMap(container) {
   const root = svg('svg', {
     preserveAspectRatio: 'xMidYMid slice',
     role: 'img',
-    'aria-label': 'Map of the Ole Satima trail drawn from the GPS track',
+    'aria-label': LABELS.map,
   });
   const world = svg('g', { class: 'is-framed' }, root);
   svg('image', { class: 'sg-satima__wash', href: WASH_URL, x: 0, y: 0, width: meta.W, height: meta.H, preserveAspectRatio: 'none' }, world);
@@ -356,11 +370,11 @@ function createMap(container) {
   }, world);
 
   const waypoints = [
-    { name: 'Twin Rocks · camp', at: meta.start, icon: 'campsite', dx: 14 },
+    { name: LABELS.start, at: meta.start, icon: 'campsite', dx: 14 },
     { name: 'Nipple Rock', at: offset(pointAt(track, 2.9), 22, -8), icon: 'mountain', dx: 14 },
     { name: "Dragon's Teeth", at: offset(pointAt(track, 6.3), -30, -4), icon: 'viewpoint', dx: -14, anchor: 'end' },
     { name: 'Ol Donyo Lesatima · 4,001 m', at: [meta.summit.x, meta.summit.y], icon: 'mountain', dx: 14 },
-    { name: 'Summit camp', at: [meta.camp.x, meta.camp.y - 14], icon: 'campsite', dx: -14, anchor: 'end', minK: 1.6 },
+    { name: LABELS.camp, at: [meta.camp.x, meta.camp.y - 14], icon: 'campsite', dx: -14, anchor: 'end', minK: 1.6 },
   ];
   const waypointGroup = svg('g', {}, world);
   for (const wp of waypoints) {

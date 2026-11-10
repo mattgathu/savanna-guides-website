@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>雨中的 Satima · Savanna Guides</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="/assets/css/app.css?v=4fdd992dd6" as="style" />
+    <link rel="preload" href="/assets/js/manifest.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/vendor.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/app.js?v=4fdd992dd6" as="script" />
+
+      <link rel="preload" href="/assets/stories/satima-in-the-rain/story.css?v=4fdd992dd6" as="style" />
+  <link rel="modulepreload" href="/assets/stories/satima-in-the-rain/story.js?v=4fdd992dd6" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* jost-300-light */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-Light.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-300-lightitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-LightItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-book */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-Book.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-bookitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-BookItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-medium */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-Medium.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-mediumitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-MediumItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semi */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-Semi.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semiitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-SemiItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bold */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-Bold.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bolditalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-BoldItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6#iefix") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=4fdd992dd6") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=4fdd992dd6") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3?v=4fdd992dd6#icomoon") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=4fdd992dd6" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="/assets/stories/satima-in-the-rain/story.css?v=4fdd992dd6" media="screen" />
+
+
+    
+
+    <meta name="description" content="在 Ole Satima 徒步路线上的两天：从 Twin Rocks 出发，穿过 Dragon's Teeth，直抵 Aberdare 山脉之巅，而天气始终随心所欲。">
+    <link rel="icon" href="https://savannaguides.com/content/images/size/w256h256/2025/09/app-icon-min-white.png" type="image/png">
+    <link rel="canonical" href="https://savannaguides.com/zh/hiking-mount-satima-via-dragons-teeth/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Savanna Guides">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="雨中的 Satima">
+    <meta property="og:description" content="在 Ole Satima 徒步路线上的两天：从 Twin Rocks 出发，穿过 Dragon's Teeth，直抵 Aberdare 山脉之巅，而天气始终随心所欲。">
+    <meta property="og:url" content="https://savannaguides.com/zh/hiking-mount-satima-via-dragons-teeth/">
+    <meta property="og:image" content="https://savannaguides.com/content/images/2026/10/satima-story/hero.jpg">
+    <meta property="article:published_time" content="2026-10-08T06:10:58.000Z">
+    <meta property="article:modified_time" content="2026-10-12T05:17:31.000Z">
+    <meta property="article:tag" content="Trails">
+    <meta property="article:tag" content="Aberdare">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="雨中的 Satima">
+    <meta name="twitter:description" content="在 Ole Satima 徒步路线上的两天：从 Twin Rocks 出发，穿过 Dragon's Teeth，直抵 Aberdare 山脉之巅，而天气始终随心所欲。">
+    <meta name="twitter:url" content="https://savannaguides.com/zh/hiking-mount-satima-via-dragons-teeth/">
+    <meta name="twitter:image" content="https://savannaguides.com/content/images/2026/10/satima-story/hero.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Savanna Guides">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Trails, Aberdare">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Savanna Guides",
+        "url": "https://savannaguides.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Savanna Guides",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png",
+            "width": 1024,
+            "height": 1024
+        },
+        "url": "https://savannaguides.com/author/sgt/",
+        "sameAs": [
+            "https://savannaguides.com/",
+            "https://www.instagram.com/savannaguides"
+        ]
+    },
+    "headline": "雨中的 Satima · Savanna Guides",
+    "url": "https://savannaguides.com/zh/hiking-mount-satima-via-dragons-teeth/",
+    "datePublished": "2026-10-08T06:10:58.000Z",
+    "dateModified": "2026-10-12T05:17:31.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://savannaguides.com/content/images/2026/10/satima-story/hero.jpg",
+        "width": 1200,
+        "height": 675
+    },
+    "keywords": "Trails, Aberdare",
+    "description": "在 Ole Satima 徒步路线上的两天：从 Twin Rocks 出发，穿过 Dragon's Teeth，直抵 Aberdare 山脉之巅，而天气始终随心所欲。",
+    "mainEntityOfPage": "https://savannaguides.com/hiking-mount-satima-via-dragons-teeth/",
+    "inLanguage": "zh-Hans"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.0">
+    <link rel="alternate" type="application/rss+xml" title="Savanna Guides" href="https://savannaguides.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="8d28d3b35d87a2006f6822161a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://savannaguides.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://savannaguides.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=4fdd992dd6"></script><style>:root {--ghost-accent-color: #10540d;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=4fdd992dd6">
+    <style>
+@font-face {
+  font-family: 'Forta';
+  src: url('/assets/fonts/Forta.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+</style>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: 'Forta'; }
+</style> 
+
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: #1d1f1d; /* charcoal */
+  }
+
+  thead {
+    background: #f3f7f0; /* pale savanna green */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #d6e2d1; /* desaturated green-gray */
+    text-align: center;
+  }
+
+  th {
+    color: #10540d; /* savanna green */
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background: #f8faf7; /* subtle hover hint */
+  }
+</style>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42V9F2RPQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42V9F2RPQ5');
+</script>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://savannaguides.com"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+      <link rel="alternate" hreflang="en" href="https://savannaguides.com/hiking-mount-satima-via-dragons-teeth/" />
+    <link rel="alternate" hreflang="de" href="https://savannaguides.com/de/hiking-mount-satima-via-dragons-teeth/" />
+    <link rel="alternate" hreflang="fr" href="https://savannaguides.com/fr/hiking-mount-satima-via-dragons-teeth/" />
+    <link rel="alternate" hreflang="es" href="https://savannaguides.com/es/hiking-mount-satima-via-dragons-teeth/" />
+    <link rel="alternate" hreflang="it" href="https://savannaguides.com/it/hiking-mount-satima-via-dragons-teeth/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://savannaguides.com/zh/hiking-mount-satima-via-dragons-teeth/" />
+    <link rel="alternate" hreflang="x-default" href="https://savannaguides.com/hiking-mount-satima-via-dragons-teeth/" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="it_IT" />
+  </head>
+  <body class="post-template tag-trails tag-en tag-aberdare">
+    
+
+
+
+  
+<header class="m-header with-picture js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="打开菜单" data-i18n="Open menu" data-i18n-attr="aria-label">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://savannaguides.com/zh/" class="m-logo sg-brand in-mobile-topbar">
+        <span class="sg-brand__mark">
+          <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+        </span>
+        <span class="sg-brand__wordmark">Savanna Guides</span>
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="打开搜索" data-i18n="Open search" data-i18n-attr="aria-label">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="关闭菜单" data-i18n="Close menu" data-i18n-attr="aria-label">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="主菜单" data-i18n="Main menu" data-i18n-attr="aria-label">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://savannaguides.com/zh/" class="m-logo sg-brand">
+                    <span class="sg-brand__mark">
+                      <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+                    </span>
+                    <span class="sg-brand__wordmark">Savanna Guides</span>
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="https://savannaguides.com/zh/">首页</a>
+    </li>
+    <li class="nav-app">
+      <a href="https://savannaguides.com/zh/app/">应用</a>
+    </li>
+    <li class="nav-about">
+      <a href="https://savannaguides.com/zh/about/">关于</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="打开子菜单" data-i18n="Open submenu" data-i18n-attr="aria-label">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles" data-i18n="Recent articles">近期文章</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="/zh/hiking-mount-satima-via-dragons-teeth/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/satima-story/hero.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/satima-story/hero.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/satima-story/hero.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/satima-story/hero.jpg.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/satima-story/hero.jpg 300w,
+      /content/images/size/w600/2026/10/satima-story/hero.jpg 600w,
+      /content/images/size/w1000/2026/10/satima-story/hero.jpg 1000w,
+      /content/images/size/w2000/2026/10/satima-story/hero.jpg 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/10/satima-story/hero.jpg"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="雨中的 Satima">
+                                      雨中的 Satima
+                                    </h3>
+                                    <span class="m-recent-article__date">上个月</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/gatamaiyu-trail-hike/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/07/IMG_4382.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Gatamaiyu 徒步路线">
+                                      Gatamaiyu 徒步路线
+                                    </h3>
+                                    <span class="m-recent-article__date">4个月前</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/weekend-camping-at-gura-river-camp/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/04/DSC05378.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="周末露营：Gura River Camp">
+                                      周末露营：Gura River Camp
+                                    </h3>
+                                    <span class="m-recent-article__date">7个月前</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/ngare-ndare-forest-hike-2026/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Ngare Ndare 森林徒步">
+                                      Ngare Ndare 森林徒步
+                                    </h3>
+                                    <span class="m-recent-article__date">10个月前</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title" data-i18n="Tags">标签</h3>
+                        <ul>
+                            <li>
+                              <a href="/zh/tag/aberdare/">Aberdare</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/campsites/">露营地</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/hikes/">徒步</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/kiambu/">Kiambu</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/laikipia/">Laikipia</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/ngare-ndare/">Ngare Ndare</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/trails/">徒步路线</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="打开搜索" data-i18n="Open search" data-i18n-attr="aria-label">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" data-i18n="Toggle dark mode" data-i18n-attr="data-tippy-content" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only" data-i18n-text>
+                切换浅色/深色模式
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+            <details class="m-lang-menu js-lang-menu">
+              <summary class="m-lang-switch" aria-label="选择语言">
+                <span class="icon-globe" aria-hidden="true"></span>
+                <span class="m-lang-switch__text" translate="no" data-lang-current>ZH</span>
+              </summary>
+              <ul class="m-lang-menu__list" translate="no">
+                <li><a data-lang-link="en" lang="en" hreflang="en" href="/hiking-mount-satima-via-dragons-teeth/">English</a></li>
+                <li><a data-lang-link="de" lang="de" hreflang="de" href="/de/hiking-mount-satima-via-dragons-teeth/">Deutsch</a></li>
+                <li><a data-lang-link="fr" lang="fr" hreflang="fr" href="/fr/hiking-mount-satima-via-dragons-teeth/">Français</a></li>
+                <li><a data-lang-link="es" lang="es" hreflang="es" href="/es/hiking-mount-satima-via-dragons-teeth/">Español</a></li>
+                <li><a data-lang-link="it" lang="it" hreflang="it" href="/it/hiking-mount-satima-via-dragons-teeth/">Italiano</a></li>
+                <li><a data-lang-link="zh" lang="zh-Hans" hreflang="zh-Hans" href="/zh/hiking-mount-satima-via-dragons-teeth/" aria-current="true">简体中文</a></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</header>
+  <main class="sg-satima" data-direction="weather"
+  data-label-film="在 YouTube 上观看"
+  data-label-map="根据 GPS 轨迹绘制的 Ole Satima 徒步路线地图"
+  data-label-camp="峰顶营地"
+  data-label-start="Twin Rocks · 营地">
+  <script>
+    try {
+      var sgDirection = localStorage.getItem('sg:satima:direction');
+      if (sgDirection === 'calm' || sgDirection === 'weather') {
+        document.currentScript.parentNode.setAttribute('data-direction', sgDirection);
+      }
+    } catch (e) {}
+  </script>
+
+  <div class="sg-satima__map" aria-hidden="true"></div>
+
+  <header class="sg-satima__hero">
+      <div class="sg-satima__hero-image">
+        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/satima-story/hero.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/satima-story/hero.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/satima-story/hero.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/satima-story/hero.jpg.webp 2000w
+    "
+    sizes="100vw"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/satima-story/hero.jpg 300w,
+      /content/images/size/w600/2026/10/satima-story/hero.jpg 600w,
+      /content/images/size/w1000/2026/10/satima-story/hero.jpg 1000w,
+      /content/images/size/w2000/2026/10/satima-story/hero.jpg 2000w
+    "
+    sizes="100vw"
+    src="/content/images/size/w2000/2026/10/satima-story/hero.jpg"
+    alt="一名徒步者独自走在 Dragon's Teeth 尖峰下的一条窄径上"
+    
+    decoding="async"
+  />
+</picture>
+      </div>
+    <div class="sg-satima__hero-card">
+      <span class="sg-satima__kicker sg-satima__kicker--lg">Aberdare National Park · 肯尼亚</span>
+      <h1 class="sg-satima__title">雨中的 Satima</h1>
+        <p class="sg-satima__subtitle">在 Ole Satima 徒步路线上的两天：从 Twin Rocks 出发，穿过 Dragon's Teeth，直抵 Aberdare 山脉之巅，而天气始终随心所欲。</p>
+      <div class="sg-satima__hero-meta">
+        <span>作者：<strong>Savanna Guides</strong></span>
+        <span>2026年9月17日–18日</span>
+        <span>19.5 km · 爬升 634 m · 4,001 m</span>
+        <span>8 分钟阅读</span>
+      </div>
+      <fieldset class="sg-satima__direction">
+        <legend class="sr-only">显示模式</legend>
+        <label><input type="radio" name="sg-direction" value="calm"> 平静</label>
+        <label><input type="radio" name="sg-direction" value="weather" checked> 风雨</label>
+      </fieldset>
+    </div>
+  </header>
+
+  <div class="sg-satima__body">
+    <h2 id="from-the-summit-tent">发自峰顶帐篷</h2><p><em>峰顶 · 4,001 m · 9月17日 星期四，15:45</em></p><p><strong>日志 · 9月17日 周四 · 15:45 · Mount Satima 峰顶</strong></p><p>我正在 Mount Satima 峰顶的帐篷里写下这些文字。原计划是从 Twin Rocks 走到山顶，再沿 Wandare 徒步路线下山，在 Wandare 起点露营，第二天返回。然而天公不作美。</p><p>从上午过半起就一直在下雨。偶有间歇，但从不长久。我在雨中登顶，在雨中搭帐篷，吃了午饭，烧了热茶。此刻写字时，外面仍下着毛毛雨。</p><p>这条徒步路线本身相当宜人。起步平缓，而 Dragon's Teeth 的景色美得让我不敢相信自己的眼睛。</p><p>拍摄就难多了。一下雨，两台相机都成了累赘，所以我只在雨势稍歇时拍摄。</p><p>今晚会很冷。我的登山靴湿透了，而且我没带任何保暖衣物。</p><h2 id="the-back-door">后门</h2><p><em>Rhino Gate → Twin Rocks · 9月16日 星期三 · 驾车前往</em></p><p><strong>日志 · 9月21日 周一 · Nanyuki（纳纽基）</strong></p><p>Mount Satima 让我第一次走进 Aberdare 山脉北部。从 Nanyuki 开车到 Rhino Gate 一路平淡无奇，大门本身也很简朴：一座巡护员岗亭和一道亟待修理的栏杆，仿佛是进入公园的一扇后门。</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/rhino-gate.jpg" class="kg-image" alt="Rhino Gate：铁皮屋顶的标牌上写着 Aberdare N Park, Rhino Gate，海拔 2560 米，旁边是犀牛剪影造型的大门" loading="lazy" width="1600" height="1200" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/rhino-gate.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/rhino-gate.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/rhino-gate.jpg 1600w" sizes="(min-width: 1200px) 1200px"><figcaption>Rhino Gate，2,560 m。简朴的入口，通往非凡的风景。</figcaption></figure><p>开往 Twin Rocks 的这段路才是精华。大门处开阔的草原渐渐让位于茂密的森林，临近露营地时又变成低矮的高山荒原灌丛。道路变窄、紧贴山坡蜿蜒之际，远在抵达之前就能望见那对双子巨石。它们刺破天际，宣告着自己的存在。</p><p>露营地很容易找到。一块路标标示出野餐区和 Ole Satima 徒步路线，还有一大片停车场。我大约下午3:30抵达，四下无人。设施极为简陋：几处旧篝火的痕迹，还有一座看似已废弃的厕所。</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/format/webp/2026/10/satima-story/track-start.jpg.webp 1600w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/track-start.jpg" class="kg-image" alt="浓云低垂下，Twin Rocks 附近的 4x4 越野车道上，一辆深绿色汽车停在红土路上，右侧耸立着一座圆顶状岩丘" loading="lazy" width="1600" height="1200" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/track-start.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/track-start.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/track-start.jpg 1600w" sizes="(min-width: 1200px) 1200px"></picture><figcaption>9月16日，15:57。进山的路上，那对双子巨石率先映入眼帘。</figcaption></figure><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/twin-rock-sign.jpg" class="kg-image" alt="徒步路线起点的 Twin-Rock Picnic Site 和 Ole Satima Hiking Trail 指示牌" loading="lazy" width="1600" height="1200" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/twin-rock-sign.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/twin-rock-sign.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/twin-rock-sign.jpg 1600w" sizes="(min-width: 1200px) 1200px"><figcaption>徒步路线起点标牌，距露营地 100 m。</figcaption></figure><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/format/webp/2026/10/satima-story/campsite.jpg.webp 1200w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/campsite.jpg" class="kg-image" alt="高山荒原灌丛中一块饱经风霜的红色 Campsite 标牌，背后是岩石露头" loading="lazy" width="1200" height="1600" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/campsite.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/campsite.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/campsite.jpg 1200w" sizes="(min-width: 1200px) 1200px"></picture><figcaption>9月17日，07:54。次日清晨的露营地，就在岩石露头脚下。</figcaption></figure><p>我刚开始扎营，雨就来了。来的路上一直下着毛毛雨；此刻，层云已铺满整片天空。我在车边帐下做晚饭，用一块防水布挡住横扫而来的雨，把帐篷也搭在车边帐下，便早早收工。有一丝微弱的 4G 信号，够发几条消息。</p><p>对于一个以寒冷著称的地方而言，这一夜相当舒适。</p><h2 id="a-gentle-welcome">温柔的开场</h2><p><em>km 0 → 3 · 9月17日 星期四 · 08:27 – 09:49 · 3,440 → 3,553 m</em></p><p><strong>日志 · 9月21日 周一（续）</strong></p><p>原计划是早早出发。可实际上，吃早餐、收拾行装、把东西搬上车，样样都比预想的耗时，我直到八点半左右才动身。</p><p>Mount Satima 徒步路线以温和的姿态迎接你。一条大体平坦的 4x4 越野车道，让你有充裕的时间慢慢进入行走的节奏。车道尽头，穿越高山荒原的攀登随之开始，最先出现的嶙峋岩石已在暗示前方的景象。在这里不妨回身一望：从高处看去，Twin Rocks 和露营地已然换了一副模样。</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/format/webp/2026/10/satima-story/teeth-sky.jpg.webp 1600w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/teeth-sky.jpg" class="kg-image" alt="一道由嶙峋岩柱组成的山脊，头顶是零散的白云与蓝天" loading="lazy" width="1600" height="1200" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/teeth-sky.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/teeth-sky.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/teeth-sky.jpg 1600w" sizes="(min-width: 1200px) 1200px"></picture><figcaption>08:53。最初的嶙峋岩石，头顶这片晴空好景不长。</figcaption></figure><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/10/satima-story/nipple-blue.jpg.webp 600w, /content/images/size/w1000/format/webp/2026/10/satima-story/nipple-blue.jpg.webp 1000w, /content/images/format/webp/2026/10/satima-story/nipple-blue.jpg.webp 1600w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/nipple-blue.jpg" class="kg-image" alt="从徒步路线上望见的 Twin Rocks，一座平顶岩丘耸立在高山荒原之上，背景是深蓝色的天空" loading="lazy" width="1600" height="1200" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/nipple-blue.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/nipple-blue.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/nipple-blue.jpg 1600w" sizes="(min-width: 1200px) 1200px"></picture><figcaption>在第一段攀升途中回望 Twin Rocks。</figcaption></figure><p>第一段攀升过后，路线下降进入一处小山谷，跨过一条细小的溪流，再沿一段更陡的坡向上。Nipple Rock 立于中景，Dragon's Teeth 在其身后。</p><p>出发才一个小时左右，云层便聚拢过来。毛毛细雨很快变成了一场真正的大雨。相机收起，雨衣上身。我遇到了当天的第一批徒步者，一对情侣和他们的向导，他们走到了我前面。</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/rocks-0930.jpg" class="kg-image" alt="一根红白相间的木制路标，上面写着六又四分之三公里并带有箭头，立在云层下的岩石山坡前" loading="lazy" width="1600" height="1200" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/rocks-0930.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/rocks-0930.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/rocks-0930.jpg 1600w" sizes="(min-width: 1200px) 1200px"><figcaption>09:30。第一段攀升途中的路标：还剩 6¾ km，云层正在积聚。</figcaption></figure><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/10/satima-story/nipple-rock.jpg.webp 600w, /content/images/format/webp/2026/10/satima-story/nipple-rock.jpg.webp 1200w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/nipple-rock.jpg" class="kg-image" alt="Nipple Rock，一座尖耸的岩峰立在开阔的高山荒原之上，头顶是沉重的灰色天空，左侧是 Dragon's Teeth" loading="lazy" width="1200" height="1600" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/nipple-rock.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/nipple-rock.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/nipple-rock.jpg 1200w" sizes="(min-width: 1200px) 1200px"></picture><figcaption>10:10。Nipple Rock 就在正前方，Dragon's Teeth 在其身后，天空渐渐压了下来。</figcaption></figure>
+<!--kg-card-begin: html-->
+<figure class="kg-card sg-clip kg-width-wide"><video src="https://savannaguides.com/content/files/2026/10/satima-story/rain-1051.mp4" data-loop-video="" controls="" muted="" loop="" playsinline="" preload="auto" aria-label="雨水落在高山荒原的徒步路线上，摄于上山途中 10:51"></video><figcaption>10:51，3,624 m。从兜帽下望出去的大雨。</figcaption></figure>
+<!--kg-card-end: html-->
+<h2 id="dragons-teeth-in-the-rain">雨中的 Dragon's Teeth</h2><p><em>km 3 → 6.75 · 09:49 – 11:58 · 3,553 → 3,710 m</em></p><p><strong>日志 · 9月21日 周一（续）</strong></p><p>冒雨向 Dragon's Teeth 缓慢跋涉，脚下的地面越来越软。途中又有一队人超过了我。我们在岩石旁短暂相遇，他们随后继续前行，而我趁着雨势稍歇停下来吃了点东西。</p><p>灰色天空下，这些岩石露头在湿漉漉的草地上显得肃穆而沉郁。我又冷又湿，却由衷庆幸自己来到了这里。直到返程，我才发现当时云层遮住了这片岩群的多大一部分。</p><figure class="kg-card kg-image-card kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/format/webp/2026/10/satima-story/signpost.jpg.webp 1600w" sizes="(min-width: 720px) 720px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/signpost.jpg" class="kg-image" alt="Dragon's Teeth 的橙色峭壁与岩柱消融在白雾中，下方是丛生草与巨型千里光" loading="lazy" width="1600" height="1200" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/signpost.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/signpost.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/signpost.jpg 1600w" sizes="(min-width: 720px) 720px"></picture><figcaption>11:17。Dragon's Teeth，一半已被云层吞没。</figcaption></figure><figure class="kg-card kg-image-card kg-width-full kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/format/webp/2026/10/satima-story/teeth-valley.jpg.webp 1600w"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/teeth-valley.jpg" class="kg-image" alt="无人机俯瞰两道橙色岩柱壁之间的草谷，前景是巨型千里光" loading="lazy" width="1600" height="900" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/teeth-valley.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/teeth-valley.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/teeth-valley.jpg 1600w"></picture><figcaption>穿过 Dragon's Teeth 的那道“门”，下山途中从空中拍摄。</figcaption></figure><h2 id="zooming-out">视野渐开</h2><p><em>km 6.75 → 9.5 · 11:58 – 13:26 · 3,710 → 3,938 m</em></p><p><strong>日志 · 9月21日 周一（续）</strong></p><p>休息过后，徒步路线先是爬升，随后穿过岩石间的一道缺口下降，那缺口几乎像一扇门，开阔的高山荒原再度出现。小径在草丛间轻缓蜿蜒，越往前走，Dragon's Teeth 就显露得越多。风景随着脚步一点点展开。</p><p>在一道平缓的山脊上，雨又来了，这次下得更大，我从膝盖往下全湿透了。又一对情侣超过了我；背着满满一包露营装备，我走得更慢了。再往上我追上了他们，他们正在一道毫无遮挡的裸露山脊上躲雨，而我继续前进。这便是冲顶路段。</p><figure class="kg-card kg-image-card kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/10/satima-story/teeth-descent.jpg.webp 600w, /content/images/size/w1000/format/webp/2026/10/satima-story/teeth-descent.jpg.webp 1000w, /content/images/format/webp/2026/10/satima-story/teeth-descent.jpg.webp 1600w" sizes="(min-width: 720px) 720px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/teeth-descent.jpg" class="kg-image" alt="无人机拍摄的画面：一名徒步者沿着穿过丛生草的细窄小径，走向 Dragon's Teeth 的岩柱" loading="lazy" width="1600" height="900" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/teeth-descent.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/teeth-descent.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/teeth-descent.jpg 1600w" sizes="(min-width: 720px) 720px"></picture><figcaption>从更远处的高山荒原望向 Dragon's Teeth，返程时从空中拍摄。</figcaption></figure><h2 id="four-thousand-and-one">四千零一</h2><p><em>km 9.5 → 10 · 13:26 – 13:57 · 4,001 m</em></p><p><strong>日志 · 9月21日 周一（续）</strong></p><p>我遇到一队下山的人，又在雨势稍缓时，于峰顶下方遇到了先前那对情侣。随后大雨再度倾泻，我在滂沱雨中爬完了最后一段，在下午两点前不久登顶。</p><p>拍了几张庆祝的照片之后，问题就变成了在哪里扎营。一株孤零零的巨型半边莲旁有块略微倾斜的空地，凑合可用。我搭帐篷时，细碎的冰粒在四周纷纷落下。</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/10/satima-story/summit-drone.jpg.webp 600w, /content/images/size/w1000/format/webp/2026/10/satima-story/summit-drone.jpg.webp 1000w, /content/images/format/webp/2026/10/satima-story/summit-drone.jpg.webp 1600w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/summit-drone.jpg" class="kg-image" alt="无人机俯瞰峰顶：岩石顶上，一个小小的人影站在绿顶的 Ol Donyo Lesatima Peak 标牌旁" loading="lazy" width="1600" height="900" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/summit-drone.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/summit-drone.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/summit-drone.jpg 1600w" sizes="(min-width: 1200px) 1200px"></picture><figcaption>Ol Donyo Lesatima，4,001 m。阵雨间隙拍下的庆祝照。</figcaption></figure><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/10/satima-story/summit-camp-drone.jpg.webp 600w, /content/images/size/w1000/format/webp/2026/10/satima-story/summit-camp-drone.jpg.webp 1000w, /content/images/format/webp/2026/10/satima-story/summit-camp-drone.jpg.webp 1600w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/summit-camp-drone.jpg" class="kg-image" alt="无人机俯瞰灰色云层下的峰顶山脊，一顶灰色小帐篷搭在标牌下方一株孤零零的千里光旁" loading="lazy" width="1600" height="900" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/summit-camp-drone.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/summit-camp-drone.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/summit-camp-drone.jpg 1600w" sizes="(min-width: 1200px) 1200px"></picture><figcaption>从空中俯瞰峰顶山脊，帐篷就搭在标牌下方。</figcaption></figure><hr><blockquote>寒冷的一夜，靴子湿透，也没有保暖衣物。很少有哪杯热茶来得如此及时。</blockquote><p>帐篷就在那株孤零零的半边莲旁，离峰顶标牌只有几步之遥。傍晚时分，雨渐渐变成毛毛细雨，到了夜里某个时候，终于停了。</p><figure class="kg-card kg-image-card kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/10/satima-story/lobelia-mist.jpg.webp 600w, /content/images/size/w1000/format/webp/2026/10/satima-story/lobelia-mist.jpg.webp 1000w, /content/images/format/webp/2026/10/satima-story/lobelia-mist.jpg.webp 1200w" sizes="(min-width: 720px) 720px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/lobelia-mist.jpg" class="kg-image" alt="一株孤零零的巨型千里光映衬着灰色天空，高山荒原的山脊隐入薄雾" loading="lazy" width="1200" height="1600" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/lobelia-mist.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/lobelia-mist.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/lobelia-mist.jpg 1200w" sizes="(min-width: 720px) 720px"></picture><figcaption>16:04。帐篷旁那株孤零零的巨型半边莲，山脊渐渐隐入雾中。</figcaption></figure>
+<!--kg-card-begin: html-->
+<figure class="kg-card sg-clip kg-width-full"><video src="https://savannaguides.com/content/files/2026/10/satima-story/cloud-swelling-1737.mp4" data-loop-video="" controls="" muted="" loop="" playsinline="" preload="metadata" aria-label="雨后云层在峰顶山脊上翻涌"></video><figcaption>17:37。雨停之后，云层涌上来与峰顶相会。</figcaption></figure>
+<!--kg-card-end: html-->
+<h2 id="a-different-world">另一个世界</h2><p><em>km 10.5 → 19.5 · 9月18日 星期五 · 08:24 – 11:52 · 回到海拔 3,440 m</em></p>
+<!--kg-card-begin: html-->
+<figure class="kg-card sg-clip kg-width-full"><video src="https://savannaguides.com/content/files/2026/10/satima-story/sunrise-0602.mp4" poster="/content/images/2026/10/satima-story/sunrise-kenya.jpg" data-loop-video="" controls="" muted="" loop="" playsinline="" preload="metadata" aria-label="峰顶日出，太阳从 Mount Kenya（肯尼亚山）的剪影后升起"></video><figcaption>星期五，06:02。第一缕晨光，太阳从 Mount Kenya 身后升起。</figcaption></figure>
+<!--kg-card-end: html-->
+<p><strong>日志 · 9月26日 周六 · 06:25</strong></p><p>第二天下山是一种享受。天气一直宜人，路大多是下坡，防雨罩始终没再拿出来。</p><p>从反方向看，Dragon's Teeth 又是另一番模样。有了驻足流连的时间，我终于能好好端详这些岩石的形态以及它们之间的空隙。那感觉，仿佛被带进了另一个世界。</p><figure class="kg-card kg-image-card kg-width-full kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/10/satima-story/golden-hills.jpg.webp 600w, /content/images/size/w1000/format/webp/2026/10/satima-story/golden-hills.jpg.webp 1000w, /content/images/format/webp/2026/10/satima-story/golden-hills.jpg.webp 1600w"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/golden-hills.jpg" class="kg-image" alt="日出的光芒把峰顶山脊染成橙色，前景是一株巨型千里光和帐篷的一角" loading="lazy" width="1600" height="1200" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/golden-hills.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/golden-hills.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/golden-hills.jpg 1600w"></picture><figcaption>前一天在云中攀登的那道山脊，在早餐时分被阳光点亮。</figcaption></figure><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/format/webp/2026/10/satima-story/fog-cliffs.jpg.webp 1200w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/fog-cliffs.jpg" class="kg-image" alt="一条窄径穿过金色的丛生草高山荒原，通向远处的岩塔和朦胧的低地" loading="lazy" width="1200" height="1600" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/fog-cliffs.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/fog-cliffs.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/fog-cliffs.jpg 1200w" sizes="(min-width: 1200px) 1200px"></picture><figcaption>09:02。大多是下坡：高山荒原、岩塔，以及远方的大裂谷。</figcaption></figure><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/format/webp/2026/10/satima-story/moorland-down.jpg.webp 1600w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/moorland-down.jpg" class="kg-image" alt="一条小径穿过丛生草和巨型千里光，通向零散云层下的一座岩丘" loading="lazy" width="1600" height="1200" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/moorland-down.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/moorland-down.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/moorland-down.jpg 1600w" sizes="(min-width: 1200px) 1200px"></picture><figcaption>10:19。返回 Twin Rocks 途中的千里光荒原。</figcaption></figure><figure class="kg-card kg-image-card kg-width-full kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/format/webp/2026/10/satima-story/teeth-sunny.jpg.webp 1600w"><img src="https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/teeth-sunny.jpg" class="kg-image" alt="无人机沿着 Dragon's Teeth 的橙色岩柱拍摄，远处是平坦的高山荒原和起伏的山丘" loading="lazy" width="1600" height="900" srcset="https://savannaguides.com/content/images/size/w600/2026/10/satima-story/teeth-sunny.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/10/satima-story/teeth-sunny.jpg 1000w, https://savannaguides.com/content/images/2026/10/satima-story/teeth-sunny.jpg 1600w"></picture><figcaption>Dragon's Teeth，终于有时间细细流连。</figcaption></figure><h2 id="the-practical-bit">实用信息</h2><h3 id="before-you-go">出发之前</h3><p>那些我希望在 Rhino Gate 就已知道的事。文中费用为我于2026年9月实际支付的金额；出行前请向 KWS 核实。</p><h3 id="kws-fees">KWS 费用</h3><p><strong>费用一览</strong></p>
+<!--kg-card-begin: html-->
+<table> <thead><tr><th>项目</th><th>公民</th><th>非居民</th></tr></thead> <tbody> <tr><td>公园门票</td><td>KES 800</td><td>USD 70</td></tr> <tr><td>露营，每晚</td><td>KES 250</td><td>USD 35</td></tr> <tr><td>车辆，每天</td><td colspan="2">KES 600</td></tr> </tbody> </table>
+<!--kg-card-end: html-->
+<h3 id="camping-at-twin-rocks">在 Twin Rocks 露营</h3><p><strong>一块平地和一块路牌</strong></p><p>路牌上写着 Twin-Rock Picnic Site 和 Ole Satima Hiking Trail，有一大片停车区，也有地方搭帐篷或天幕。设施极为简陋，厕所看上去早已废弃。徒步路线就从这里起步。</p><h3 id="guide">向导</h3><p><strong>非必需</strong></p><p>我没有请向导。徒步路线有路牌指引，除非浓云密布，否则一目了然。我遇到的其他几队人都请了向导，这是个不错的选择，但并非硬性规定。出发前请向公园确认最新安排。</p><p><em>无需向导 · 适合独行</em></p><h3 id="gear-that-failed">掉链子的装备</h3><p><strong>前车之鉴：我的双脚</strong></p><p>走到山脊时靴子已经湿透：请带上雪套或真正防水的鞋。为海拔 4,000 m 的夜晚备好保暖衣物，并保持睡眠装备干燥。长时间下雨时，相机就成了累赘；装在防水袋里的手机反而更管用。</p><h3 id="cell-signal">手机信号</h3><p><strong>时有时无的 4G</strong></p><p>Twin Rocks 露营地有断断续续的 4G 信号，够发几条消息。再往上就别指望了。</p><h3 id="from-the-track">来自轨迹记录</h3><p><strong>数据一览</strong></p><p>往返 19.5 km · 累计爬升 634 m · 起点海拔 3,440 m，峰顶 4,001 m · 冒雨背着满负重上山约 5 h 30，晴天下山 3 h 30。</p><p><a href="https://savannaguides.com/links/trails/ke-mount-satima-via-dragon-s-teeth">在 Savanna Guides 应用中打开这条徒步路线</a></p><p><a href="https://savannaguides.com/links/parks/ke-aberdare">在 Savanna Guides 应用中打开 Aberdare National Park</a></p><h2 id="watch-the-rain-for-yourself">亲眼看看这场雨</h2><h3 id="the-film">影片</h3><p>Satima 影片正在剪辑中，完成后将在此发布。</p>
+<!--kg-card-begin: html-->
+<a class="sg-satima__film-placeholder" href="https://www.youtube.com/@SavannaGuides" target="_blank" rel="noopener">
+  <span class="sg-satima__film-frame">
+    <picture><source type="image/webp" srcset="/content/images/format/webp/2026/10/satima-story/teeth-descent.jpg.webp"><img src="https://savannaguides.com/content/images/2026/10/satima-story/teeth-descent.jpg" alt="" width="1600" height="900" loading="lazy"></picture>
+    <span class="sg-satima__film-overlay">
+      <span class="sg-satima__film-play"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+      <span class="sg-satima__film-title">雨中的 Satima：即将上线</span>
+      <span class="sg-satima__film-sub">在 YouTube 上订阅，第一时间观看 · @SavannaGuides</span>
+    </span>
+  </span>
+</a>
+<!--kg-card-end: html-->
+<hr><p>地图依据徒步时记录的 GPS 轨迹绘制；等高线晕渲同样由该轨迹插值生成，因此远离徒步路线的山丘仅作示意。Nipple 和 Dragon's Teeth 的峰顶位置为大致估计。</p>
+  </div>
+
+  <template class="sg-satima__ticket-template">
+    <a class="sg-satima__ticket" href="/links/trails/ke-mount-satima-via-dragon-s-teeth" aria-label="Open Mount Satima via Dragon's Teeth in the Savanna Guides app">
+      <div class="sg-satima__ticket-main">
+        <div class="sg-satima__ticket-head">
+          <span class="sg-satima__ticket-kicker">Savanna Guides app · Trail</span>
+          <span class="sg-satima__ticket-serial">KE · Aberdare · № 4001</span>
+        </div>
+        <h3 class="sg-satima__ticket-title">Mount Satima via Dragon's Teeth</h3>
+        <dl class="sg-satima__ticket-fields">
+          <div><dt>Distance</dt><dd>19.5 km</dd></div>
+          <div><dt>Ascent</dt><dd>634 m</dd></div>
+          <div><dt>Summit</dt><dd>4,001 m</dd></div>
+          <div><dt>Route</dt><dd>Out and back</dd></div>
+          <div><dt>Start</dt><dd>Twin Rocks</dd></div>
+        </dl>
+        <p class="sg-satima__ticket-note">Opens the trail in the Savanna Guides app, with the GPS track, waypoints and offline map. If the app isn't installed you'll land on the website instead.</p>
+      </div>
+      <div class="sg-satima__ticket-stub">
+        <span class="sg-satima__ticket-stub-label">Open trail</span>
+        <div class="sg-satima__ticket-barcode" aria-hidden="true"></div>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+      </div>
+    </a>
+  </template>
+
+  <template class="sg-satima__park-template">
+    <a class="sg-satima__park" href="/links/parks/ke-aberdare" aria-label="Open Aberdare National Park in the Savanna Guides app">
+      <div class="sg-satima__park-head">
+        <div class="sg-satima__park-bar">
+          <span class="sg-satima__park-brand"><picture><source type="image/webp" srcset="/assets/app/app-icon-white-circle.png.webp"><img src="/assets/app/app-icon-white-circle.png?v=4fdd992dd6" alt="" width="26" height="26"></picture>Savanna Guides</span>
+          <span class="sg-satima__park-tag">Park</span>
+        </div>
+        <img class="sg-satima__park-photo" src="/assets/stories/satima-in-the-rain/aberdare.webp?v=4fdd992dd6" alt="" width="800" height="532" loading="lazy" decoding="async">
+      </div>
+      <div class="sg-satima__park-body">
+        <span class="sg-satima__park-kicker">Kenya</span>
+        <h3 class="sg-satima__park-title">Aberdare</h3>
+        <p class="sg-satima__park-lede">Majestic peaks and intriguing falls</p>
+      </div>
+      <div class="sg-satima__park-stub">
+        <span class="sg-satima__park-cta">Open in Savanna Guides</span>
+        <span class="sg-satima__park-note">Maps, photos and the full guide. Works offline.</span>
+        <span class="sg-satima__park-serial">
+          <span class="sg-satima__park-barcode" aria-hidden="true"></span>
+          <span>ke-aberdare</span>
+        </span>
+      </div>
+    </a>
+  </template>
+
+  <div class="sg-satima__mist" aria-hidden="true"></div>
+  <div class="sg-satima__rain" aria-hidden="true"></div>
+
+  <div class="sg-satima__strip" aria-hidden="true">
+    <div class="sg-satima__strip-stat">
+      <span class="sg-satima__strip-label">海拔</span>
+      <span class="sg-satima__strip-value" data-strip="alt">· m</span>
+    </div>
+    <div class="sg-satima__strip-stat sg-satima__strip-stat--hr">
+      <span class="sg-satima__strip-label">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+        心率
+      </span>
+      <span class="sg-satima__strip-value" data-strip="hr">·</span>
+    </div>
+    <div class="sg-satima__profile" data-strip="profile">
+      <span class="sg-satima__profile-dot" data-strip="dot"></span>
+      <div class="sg-satima__profile-labels">
+        <span class="is-start">Twin Rocks</span>
+        <span class="is-teeth">Dragon's Teeth</span>
+        <span class="is-summit">峰顶 · 夜晚</span>
+        <span class="is-end">Twin Rocks</span>
+      </div>
+    </div>
+  </div>
+  <div class="sg-satima__progress" aria-hidden="true"><div data-strip="bar"></div></div>
+</main>
+
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="搜索" data-i18n="Search" data-i18n-attr="aria-label">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="关闭搜索" data-i18n="Close search" data-i18n-attr="aria-label">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only" data-i18n="Type to search">
+          输入关键词搜索
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="输入关键词搜索" data-i18n="Type to search" data-i18n-attr="placeholder">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results" data-i18n="No results for your search, try something different.">
+      没有找到相关结果，请换个关键词试试。
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+      <a href="https://savannaguides.com/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Savanna Guides © 2026</span>
+    </p>
+
+  </div>
+</footer>
+    <script defer src="/assets/js/manifest.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/vendor.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/app.js?v=4fdd992dd6"></script>
+
+      <script type="module" src="/assets/stories/satima-in-the-rain/story.js?v=4fdd992dd6"></script>
+
+
+    
+  </body>
+</html>

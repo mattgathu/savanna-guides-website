@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Savanna Guides</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="/assets/css/app.css?v=4fdd992dd6" as="style" />
+    <link rel="preload" href="/assets/js/manifest.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/vendor.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/app.js?v=4fdd992dd6" as="script" />
+
+      <link rel="preload" href="/assets/css/home.css?v=4fdd992dd6" as="style" />
+  <link rel="preload" href="/assets/css/listing.css?v=4fdd992dd6" as="style" />
+  <link rel="preload" href="/assets/js/home.js?v=4fdd992dd6" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* jost-300-light */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-Light.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-300-lightitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-LightItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-book */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-Book.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-bookitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-BookItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-medium */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-Medium.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-mediumitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-MediumItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semi */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-Semi.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semiitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-SemiItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bold */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-Bold.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bolditalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-BoldItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6#iefix") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=4fdd992dd6") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=4fdd992dd6") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3?v=4fdd992dd6#icomoon") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=4fdd992dd6" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="/assets/css/home.css?v=4fdd992dd6" media="screen" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/listing.css?v=4fdd992dd6" media="screen" />
+
+
+    
+
+    <meta name="description" content="助你探索东非。">
+    <link rel="icon" href="https://savannaguides.com/content/images/size/w256h256/2025/09/app-icon-min-white.png" type="image/png">
+    <link rel="canonical" href="https://savannaguides.com/zh/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Savanna Guides">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Savanna Guides">
+    <meta property="og:description" content="助你探索东非。">
+    <meta property="og:url" content="https://savannaguides.com/zh/">
+    <meta property="og:image" content="https://savannaguides.com/content/images/2025/09/DSC04560.JPG">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Savanna Guides">
+    <meta name="twitter:description" content="助你探索东非。">
+    <meta name="twitter:url" content="https://savannaguides.com/zh/">
+    <meta name="twitter:image" content="https://savannaguides.com/content/images/2025/09/DSC04560.JPG">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Savanna Guides",
+        "url": "https://savannaguides.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "url": "https://savannaguides.com/zh/",
+    "name": "Savanna Guides",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://savannaguides.com/content/images/2025/09/DSC04560.JPG",
+        "width": 1200,
+        "height": 675
+    },
+    "mainEntityOfPage": "https://savannaguides.com/",
+    "description": "助你探索东非。",
+    "inLanguage": "zh-Hans"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.0">
+    <link rel="alternate" type="application/rss+xml" title="Savanna Guides" href="https://savannaguides.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="8d28d3b35d87a2006f6822161a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://savannaguides.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://savannaguides.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=4fdd992dd6"></script><style>:root {--ghost-accent-color: #10540d;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=4fdd992dd6">
+    <style>
+@font-face {
+  font-family: 'Forta';
+  src: url('/assets/fonts/Forta.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+</style>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: 'Forta'; }
+</style> 
+
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: #1d1f1d; /* charcoal */
+  }
+
+  thead {
+    background: #f3f7f0; /* pale savanna green */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #d6e2d1; /* desaturated green-gray */
+    text-align: center;
+  }
+
+  th {
+    color: #10540d; /* savanna green */
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background: #f8faf7; /* subtle hover hint */
+  }
+</style>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42V9F2RPQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42V9F2RPQ5');
+</script>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://savannaguides.com"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+      <link rel="alternate" hreflang="en" href="https://savannaguides.com/" />
+    <link rel="alternate" hreflang="de" href="https://savannaguides.com/de/" />
+    <link rel="alternate" hreflang="fr" href="https://savannaguides.com/fr/" />
+    <link rel="alternate" hreflang="es" href="https://savannaguides.com/es/" />
+    <link rel="alternate" hreflang="it" href="https://savannaguides.com/it/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://savannaguides.com/zh/" />
+    <link rel="alternate" hreflang="x-default" href="https://savannaguides.com/" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="it_IT" />
+  </head>
+  <body class="home-template">
+    
+
+
+
+
+<header class="m-header  js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="打开菜单" data-i18n="Open menu" data-i18n-attr="aria-label">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://savannaguides.com/zh/" class="m-logo sg-brand in-mobile-topbar">
+        <span class="sg-brand__mark">
+          <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+        </span>
+        <span class="sg-brand__wordmark">Savanna Guides</span>
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="打开搜索" data-i18n="Open search" data-i18n-attr="aria-label">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="关闭菜单" data-i18n="Close menu" data-i18n-attr="aria-label">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="主菜单" data-i18n="Main menu" data-i18n-attr="aria-label">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://savannaguides.com/zh/" class="m-logo sg-brand">
+                    <span class="sg-brand__mark">
+                      <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+                    </span>
+                    <span class="sg-brand__wordmark">Savanna Guides</span>
+                  </a>
+                </li>
+                
+    <li class="nav-home nav-current">
+      <a href="https://savannaguides.com/zh/">首页</a>
+    </li>
+    <li class="nav-app">
+      <a href="https://savannaguides.com/zh/app/">应用</a>
+    </li>
+    <li class="nav-about">
+      <a href="https://savannaguides.com/zh/about/">关于</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="打开子菜单" data-i18n="Open submenu" data-i18n-attr="aria-label">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles" data-i18n="Recent articles">近期文章</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="/zh/hiking-mount-satima-via-dragons-teeth/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/satima-story/hero.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/satima-story/hero.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/satima-story/hero.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/satima-story/hero.jpg.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/satima-story/hero.jpg 300w,
+      /content/images/size/w600/2026/10/satima-story/hero.jpg 600w,
+      /content/images/size/w1000/2026/10/satima-story/hero.jpg 1000w,
+      /content/images/size/w2000/2026/10/satima-story/hero.jpg 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/10/satima-story/hero.jpg"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="雨中的 Satima">
+                                      雨中的 Satima
+                                    </h3>
+                                    <span class="m-recent-article__date">上个月</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/gatamaiyu-trail-hike/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/07/IMG_4382.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Gatamaiyu 徒步路线">
+                                      Gatamaiyu 徒步路线
+                                    </h3>
+                                    <span class="m-recent-article__date">4个月前</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/weekend-camping-at-gura-river-camp/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/04/DSC05378.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="周末露营：Gura River Camp">
+                                      周末露营：Gura River Camp
+                                    </h3>
+                                    <span class="m-recent-article__date">7个月前</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/ngare-ndare-forest-hike-2026/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Ngare Ndare 森林徒步">
+                                      Ngare Ndare 森林徒步
+                                    </h3>
+                                    <span class="m-recent-article__date">10个月前</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title" data-i18n="Tags">标签</h3>
+                        <ul>
+                            <li>
+                              <a href="/zh/tag/aberdare/">Aberdare</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/campsites/">露营地</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/hikes/">徒步</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/kiambu/">Kiambu</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/laikipia/">Laikipia</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/ngare-ndare/">Ngare Ndare</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/trails/">徒步路线</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="打开搜索" data-i18n="Open search" data-i18n-attr="aria-label">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" data-i18n="Toggle dark mode" data-i18n-attr="data-tippy-content" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only" data-i18n-text>
+                切换浅色/深色模式
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+            <details class="m-lang-menu js-lang-menu">
+              <summary class="m-lang-switch" aria-label="选择语言">
+                <span class="icon-globe" aria-hidden="true"></span>
+                <span class="m-lang-switch__text" translate="no" data-lang-current>ZH</span>
+              </summary>
+              <ul class="m-lang-menu__list" translate="no">
+                <li><a data-lang-link="en" lang="en" hreflang="en" href="/">English</a></li>
+                <li><a data-lang-link="de" lang="de" hreflang="de" href="/de/">Deutsch</a></li>
+                <li><a data-lang-link="fr" lang="fr" hreflang="fr" href="/fr/">Français</a></li>
+                <li><a data-lang-link="es" lang="es" hreflang="es" href="/es/">Español</a></li>
+                <li><a data-lang-link="it" lang="it" hreflang="it" href="/it/">Italiano</a></li>
+                <li><a data-lang-link="zh" lang="zh-Hans" hreflang="zh-Hans" href="/zh/" aria-current="true">简体中文</a></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</header>
+
+<main class="sg-home">
+  <section class="sg-home-hero">
+    <div class="sg-home-hero__inner">
+      <div class="sg-home-hero__copy" data-animate="fade-up">
+        <p class="sg-kicker">Savanna Guides 野外笔记</p>
+        <h1>东非，<span>亲身探索。</span></h1>
+        <p>借助 Savanna Guides 探索东非的公园、徒步路线和露营地。保存地图和指南以便离线使用，一路带上实用的野外笔记。</p>
+        <div class="sg-home-hero__links">
+          <a href="/zh/app/">获取应用 <span aria-hidden="true">→</span></a>
+          <a href="#field-notes">阅读野外笔记 <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="sg-home-platforms">支持 iOS 和 Android</p>
+      </div>
+
+      <aside class="sg-pocket-guide" aria-labelledby="pocket-guide-title">
+        <div class="sg-pocket-guide__label">
+          <p class="sg-kicker">Savanna Guides 应用</p>
+          <h2 id="pocket-guide-title">装进口袋的<br>野外指南。</h2>
+          <ul aria-label="应用亮点">
+            <li>公园、徒步路线与露营地</li>
+            <li>离线地图与指南</li>
+          </ul>
+        </div>
+        <picture class="sg-pocket-guide__screen">
+          <source srcset="/assets/app/app-discover.webp?v=4fdd992dd6" type="image/webp" />
+          <img src="/assets/app/app-discover.png?v=4fdd992dd6" alt="Savanna Guides 的“发现”页面，展示精选的 Elephant Hill 徒步路线，以及徒步路线、公园和露营地标签页" width="739" height="1600" loading="eager" decoding="async" />
+        </picture>
+      </aside>
+    </div>
+  </section>
+
+  <section class="sg-featured-note" id="field-notes" aria-labelledby="field-notes-title">
+    <div class="sg-featured-note__intro">
+      <p class="sg-kicker">来自野外的故事</p>
+      <h2 id="field-notes-title">指南背后的<br>那些地方。</h2>
+      <p>徒步报告、露营日志和实用笔记，记录穿行东非的旅程。</p>
+    </div>
+          <article class="sg-hero-record " data-animate="fade-up">
+              <a class="sg-hero-record__image" href="/zh/hiking-mount-satima-via-dragons-teeth/" aria-label="雨中的 Satima">
+                <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/satima-story/hero.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/satima-story/hero.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/satima-story/hero.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/satima-story/hero.jpg.webp 2000w
+    "
+    sizes="(max-width: 767px) calc(100vw - 32px), 52vw"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/satima-story/hero.jpg 300w,
+      /content/images/size/w600/2026/10/satima-story/hero.jpg 600w,
+      /content/images/size/w1000/2026/10/satima-story/hero.jpg 1000w,
+      /content/images/size/w2000/2026/10/satima-story/hero.jpg 2000w
+    "
+    sizes="(max-width: 767px) calc(100vw - 32px), 52vw"
+    src="/content/images/size/w1000/2026/10/satima-story/hero.jpg"
+    alt="一名徒步者独自走在 Dragon's Teeth 尖峰下的一条窄径上"
+    loading="lazy"
+    
+  />
+</picture>
+              </a>
+            <div class="sg-hero-record__body">
+              <span>精选野外笔记</span>
+              <h2><a href="/zh/hiking-mount-satima-via-dragons-teeth/">雨中的 Satima</a></h2>
+              <p>在 Ole Satima 徒步路线上的两天：从 Twin Rocks 出发，穿过 Dragon's Teeth，直抵 Aberdare 山脉之巅，而天气始终随心所欲。</p>
+            </div>
+          </article>
+  </section>
+
+  <section class="sg-field-board" aria-label="探索 Savanna Guides">
+    <div class="sg-field-board__intro" data-animate="fade-up">
+      <p class="sg-kicker">从目标出发</p>
+      <h2>想找一条步道、一处露营地，还是想先了解一地的概况？</h2>
+    </div>
+    <div class="sg-field-board__grid" data-animate="fade-up">
+      <a href="/zh/tag/trails/" class="sg-field-card">
+        <span>01 / 徒步日志</span>
+        <strong>步道、徒步与路线，附实用背景信息。</strong>
+      </a>
+      <a href="/zh/tag/campsites/" class="sg-field-card">
+        <span>02 / 营地名录</span>
+        <strong>住在哪里、会遇到什么、该带些什么。</strong>
+      </a>
+      <a href="/zh/tag/laikipia/" class="sg-field-card">
+        <span>03 / 地区档案</span>
+        <strong>串联道路、天气与地形的区域笔记。</strong>
+      </a>
+      <a href="/zh/app/" class="sg-field-card">
+        <span>04 / 口袋指南</span>
+        <strong>可离线使用的公园、野生动物和国家信息，旅途随身带。</strong>
+      </a>
+    </div>
+  </section>
+
+  <section class="sg-latest" aria-label="最新文章">
+    <div class="sg-latest__heading" data-animate="fade-up">
+      <p class="sg-kicker">近期笔记</p>
+      <h2>摘自笔记本</h2>
+    </div>
+    <div class="sg-latest__list" data-animate="fade-up">
+        <article class="sg-note-row post tag-trails tag-en tag-aberdare featured">
+          <div class="sg-note-row__meta">
+            <a href="https://savannaguides.com/zh/tag/trails/">徒步路线</a>
+            <time datetime="2026-10-08">2026年10月8日</time>
+          </div>
+          <div class="sg-note-row__body">
+            <h3><a href="/zh/hiking-mount-satima-via-dragons-teeth/">雨中的 Satima</a></h3>
+            <p>在 Ole Satima 徒步路线上的两天：从 Twin Rocks 出发，穿过 Dragon's Teeth，直抵 Aberdare 山脉之巅，而天气始终随心所欲。</p>
+          </div>
+            <a class="sg-note-row__image" href="/zh/hiking-mount-satima-via-dragons-teeth/" aria-label="雨中的 Satima">
+              <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/satima-story/hero.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/satima-story/hero.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/satima-story/hero.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/satima-story/hero.jpg.webp 2000w
+    "
+    sizes="118px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/satima-story/hero.jpg 300w,
+      /content/images/size/w600/2026/10/satima-story/hero.jpg 600w,
+      /content/images/size/w1000/2026/10/satima-story/hero.jpg 1000w,
+      /content/images/size/w2000/2026/10/satima-story/hero.jpg 2000w
+    "
+    sizes="118px"
+    src="/content/images/size/w300/2026/10/satima-story/hero.jpg"
+    alt="一名徒步者独自走在 Dragon's Teeth 尖峰下的一条窄径上"
+    loading="lazy"
+    
+  />
+</picture>
+            </a>
+        </article>
+        <article class="sg-note-row post tag-trails tag-hikes tag-en tag-kiambu">
+          <div class="sg-note-row__meta">
+            <a href="https://savannaguides.com/zh/tag/trails/">徒步路线</a>
+            <time datetime="2026-07-23">2026年7月23日</time>
+          </div>
+          <div class="sg-note-row__body">
+            <h3><a href="/zh/gatamaiyu-trail-hike/">Gatamaiyu 徒步路线</a></h3>
+            <p>在 Kiambu 连绵起伏的茶园中漫步一日。</p>
+          </div>
+            <a class="sg-note-row__image" href="/zh/gatamaiyu-trail-hike/" aria-label="Gatamaiyu 徒步路线">
+              <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="118px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="118px"
+    src="/content/images/size/w300/2026/07/IMG_4382.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+            </a>
+        </article>
+        <article class="sg-note-row post tag-campsites tag-en tag-trails">
+          <div class="sg-note-row__meta">
+            <a href="https://savannaguides.com/zh/tag/campsites/">露营地</a>
+            <time datetime="2026-04-09">2026年4月9日</time>
+          </div>
+          <div class="sg-note-row__body">
+            <h3><a href="/zh/weekend-camping-at-gura-river-camp/">周末露营：Gura River Camp</a></h3>
+            <p>Gura River Camp 正是那种适合从 Nairobi 出发、来一场周末短途露营的地方。它坐落在</p>
+          </div>
+            <a class="sg-note-row__image" href="/zh/weekend-camping-at-gura-river-camp/" aria-label="周末露营：Gura River Camp">
+              <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="118px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="118px"
+    src="/content/images/size/w300/2026/04/DSC05378.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+            </a>
+        </article>
+        <article class="sg-note-row post tag-trails tag-hikes tag-laikipia tag-ngare-ndare tag-en">
+          <div class="sg-note-row__meta">
+            <a href="https://savannaguides.com/zh/tag/trails/">徒步路线</a>
+            <time datetime="2026-01-21">2026年1月21日</time>
+          </div>
+          <div class="sg-note-row__body">
+            <h3><a href="/zh/ngare-ndare-forest-hike-2026/">Ngare Ndare 森林徒步</a></h3>
+            <p>Ngare Ndare 森林一日徒步：林间步道、树冠栈道，以及标志性的碧蓝 Blue Pools。</p>
+          </div>
+            <a class="sg-note-row__image" href="/zh/ngare-ndare-forest-hike-2026/" aria-label="Ngare Ndare 森林徒步">
+              <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="118px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="118px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+            </a>
+        </article>
+        <article class="sg-note-row post tag-trails tag-en featured">
+          <div class="sg-note-row__meta">
+            <a href="https://savannaguides.com/zh/tag/trails/">徒步路线</a>
+            <time datetime="2026-01-19">2026年1月19日</time>
+          </div>
+          <div class="sg-note-row__body">
+            <h3><a href="/zh/returning-to-mount-kenya/">重返 Mount Kenya</a></h3>
+            <p>上一次在 Mount Kenya 进行长线徒步，已经是一年多以前的事了。在……的最后几天</p>
+          </div>
+            <a class="sg-note-row__image" href="/zh/returning-to-mount-kenya/" aria-label="重返 Mount Kenya">
+              <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011173-2.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011173-2.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011173-2.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011173-2.JPG.webp 2000w
+    "
+    sizes="118px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011173-2.JPG 300w,
+      /content/images/size/w600/2026/01/P1011173-2.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011173-2.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011173-2.JPG 2000w
+    "
+    sizes="118px"
+    src="/content/images/size/w300/2026/01/P1011173-2.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+            </a>
+        </article>
+    </div>
+    
+<div class="l-wrapper">
+  <nav class="m-pagination" aria-label="分页" data-i18n="Pagination" data-i18n-attr="aria-label">
+    <span class="m-pagination__text">
+      <span data-i18n="Page">页码</span> 1 <span data-i18n="of">/</span> 1
+    </span>
+  </nav>
+</div>
+
+  </section>
+</main>
+
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="搜索" data-i18n="Search" data-i18n-attr="aria-label">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="关闭搜索" data-i18n="Close search" data-i18n-attr="aria-label">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only" data-i18n="Type to search">
+          输入关键词搜索
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="输入关键词搜索" data-i18n="Type to search" data-i18n-attr="placeholder">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results" data-i18n="No results for your search, try something different.">
+      没有找到相关结果，请换个关键词试试。
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+      <a href="https://savannaguides.com/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Savanna Guides © 2026</span>
+    </p>
+
+  </div>
+</footer>
+    <script defer src="/assets/js/manifest.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/vendor.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/app.js?v=4fdd992dd6"></script>
+
+      <script defer src="/assets/js/home.js?v=4fdd992dd6"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Wanderung im Ngare Ndare Forest</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="/assets/css/app.css?v=4fdd992dd6" as="style" />
+    <link rel="preload" href="/assets/js/manifest.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/vendor.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/app.js?v=4fdd992dd6" as="script" />
+
+      <link rel="preload" href="/assets/css/post.css?v=4fdd992dd6" as="style" />
+  <link rel="preload" href="/assets/js/post.js?v=4fdd992dd6" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* jost-300-light */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-Light.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-300-lightitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-LightItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-book */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-Book.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-bookitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-BookItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-medium */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-Medium.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-mediumitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-MediumItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semi */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-Semi.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semiitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-SemiItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bold */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-Bold.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bolditalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-BoldItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6#iefix") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=4fdd992dd6") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=4fdd992dd6") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3?v=4fdd992dd6#icomoon") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=4fdd992dd6" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="/assets/css/post.css?v=4fdd992dd6" media="screen" />
+
+
+    
+
+    <meta name="description" content="Eine Tageswanderung durch den Ngare Ndare Forest mit Waldpfaden, dem Baumwipfelpfad und den berühmten türkisfarbenen Blue Pools.">
+    <link rel="icon" href="https://savannaguides.com/content/images/size/w256h256/2025/09/app-icon-min-white.png" type="image/png">
+    <link rel="canonical" href="https://savannaguides.com/de/ngare-ndare-forest-hike-2026/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Savanna Guides">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Wanderung im Ngare Ndare Forest">
+    <meta property="og:description" content="Eine Tageswanderung durch den Ngare Ndare Forest mit Waldpfaden, dem Baumwipfelpfad und den berühmten türkisfarbenen Blue Pools.">
+    <meta property="og:url" content="https://savannaguides.com/de/ngare-ndare-forest-hike-2026/">
+    <meta property="og:image" content="https://savannaguides.com/content/images/2026/01/P1011229.JPG">
+    <meta property="article:published_time" content="2026-01-21T12:49:37.000Z">
+    <meta property="article:modified_time" content="2026-11-10T04:28:27.000Z">
+    <meta property="article:tag" content="Trails">
+    <meta property="article:tag" content="Hikes">
+    <meta property="article:tag" content="Laikipia">
+    <meta property="article:tag" content="Ngare Ndare">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wanderung im Ngare Ndare Forest">
+    <meta name="twitter:description" content="Eine Tageswanderung durch den Ngare Ndare Forest mit Waldpfaden, dem Baumwipfelpfad und den berühmten türkisfarbenen Blue Pools.">
+    <meta name="twitter:url" content="https://savannaguides.com/de/ngare-ndare-forest-hike-2026/">
+    <meta name="twitter:image" content="https://savannaguides.com/content/images/2026/01/P1011229.JPG">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Savanna Guides">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Trails, Hikes, Laikipia, Ngare Ndare">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Savanna Guides",
+        "url": "https://savannaguides.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Savanna Guides",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png",
+            "width": 1024,
+            "height": 1024
+        },
+        "url": "https://savannaguides.com/author/sgt/",
+        "sameAs": [
+            "https://savannaguides.com/",
+            "https://www.instagram.com/savannaguides"
+        ]
+    },
+    "headline": "Wanderung im Ngare Ndare Forest",
+    "url": "https://savannaguides.com/de/ngare-ndare-forest-hike-2026/",
+    "datePublished": "2026-01-21T12:49:37.000Z",
+    "dateModified": "2026-11-10T04:28:27.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://savannaguides.com/content/images/2026/01/P1011229.JPG",
+        "width": 1200,
+        "height": 800
+    },
+    "keywords": "Trails, Hikes, Laikipia, Ngare Ndare",
+    "description": "Eine Tageswanderung durch den Ngare Ndare Forest mit Waldpfaden, dem Baumwipfelpfad und den berühmten türkisfarbenen Blue Pools.",
+    "mainEntityOfPage": "https://savannaguides.com/ngare-ndare-forest-hike-2026/",
+    "inLanguage": "de"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.0">
+    <link rel="alternate" type="application/rss+xml" title="Savanna Guides" href="https://savannaguides.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="8d28d3b35d87a2006f6822161a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://savannaguides.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://savannaguides.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=4fdd992dd6"></script><style>:root {--ghost-accent-color: #10540d;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=4fdd992dd6">
+    <style>
+@font-face {
+  font-family: 'Forta';
+  src: url('/assets/fonts/Forta.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+</style>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: 'Forta'; }
+</style> 
+
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: #1d1f1d; /* charcoal */
+  }
+
+  thead {
+    background: #f3f7f0; /* pale savanna green */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #d6e2d1; /* desaturated green-gray */
+    text-align: center;
+  }
+
+  th {
+    color: #10540d; /* savanna green */
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background: #f8faf7; /* subtle hover hint */
+  }
+</style>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42V9F2RPQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42V9F2RPQ5');
+</script>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://savannaguides.com"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+      <link rel="alternate" hreflang="en" href="https://savannaguides.com/ngare-ndare-forest-hike-2026/" />
+    <link rel="alternate" hreflang="de" href="https://savannaguides.com/de/ngare-ndare-forest-hike-2026/" />
+    <link rel="alternate" hreflang="fr" href="https://savannaguides.com/fr/ngare-ndare-forest-hike-2026/" />
+    <link rel="alternate" hreflang="es" href="https://savannaguides.com/es/ngare-ndare-forest-hike-2026/" />
+    <link rel="alternate" hreflang="it" href="https://savannaguides.com/it/ngare-ndare-forest-hike-2026/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://savannaguides.com/zh/ngare-ndare-forest-hike-2026/" />
+    <link rel="alternate" hreflang="x-default" href="https://savannaguides.com/ngare-ndare-forest-hike-2026/" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="it_IT" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+  </head>
+  <body class="post-template tag-trails tag-hikes tag-laikipia tag-ngare-ndare tag-en">
+    
+
+
+
+
+  
+<header class="m-header with-picture js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Menü öffnen" data-i18n="Open menu" data-i18n-attr="aria-label">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://savannaguides.com/de/" class="m-logo sg-brand in-mobile-topbar">
+        <span class="sg-brand__mark">
+          <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+        </span>
+        <span class="sg-brand__wordmark">Savanna Guides</span>
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="Suche öffnen" data-i18n="Open search" data-i18n-attr="aria-label">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Menü schließen" data-i18n="Close menu" data-i18n-attr="aria-label">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Hauptmenü" data-i18n="Main menu" data-i18n-attr="aria-label">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://savannaguides.com/de/" class="m-logo sg-brand">
+                    <span class="sg-brand__mark">
+                      <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+                    </span>
+                    <span class="sg-brand__wordmark">Savanna Guides</span>
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="https://savannaguides.com/de/">Startseite</a>
+    </li>
+    <li class="nav-app">
+      <a href="https://savannaguides.com/de/app/">App</a>
+    </li>
+    <li class="nav-about">
+      <a href="https://savannaguides.com/de/about/">Über uns</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Untermenü öffnen" data-i18n="Open submenu" data-i18n-attr="aria-label">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles" data-i18n="Recent articles">Neueste Artikel</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="/de/hiking-mount-satima-via-dragons-teeth/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/satima-story/hero.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/satima-story/hero.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/satima-story/hero.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/satima-story/hero.jpg.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/satima-story/hero.jpg 300w,
+      /content/images/size/w600/2026/10/satima-story/hero.jpg 600w,
+      /content/images/size/w1000/2026/10/satima-story/hero.jpg 1000w,
+      /content/images/size/w2000/2026/10/satima-story/hero.jpg 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/10/satima-story/hero.jpg"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Satima im Regen">
+                                      Satima im Regen
+                                    </h3>
+                                    <span class="m-recent-article__date">letzten Monat</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/de/gatamaiyu-trail-hike/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/07/IMG_4382.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Wanderung auf dem Gatamaiyu Trail">
+                                      Wanderung auf dem Gatamaiyu Trail
+                                    </h3>
+                                    <span class="m-recent-article__date">vor 4 Monaten</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/de/weekend-camping-at-gura-river-camp/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/04/DSC05378.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Wochenend-Camping im Gura River Camp">
+                                      Wochenend-Camping im Gura River Camp
+                                    </h3>
+                                    <span class="m-recent-article__date">vor 7 Monaten</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/de/ngare-ndare-forest-hike-2026/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Wanderung im Ngare Ndare Forest">
+                                      Wanderung im Ngare Ndare Forest
+                                    </h3>
+                                    <span class="m-recent-article__date">vor 10 Monaten</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title" data-i18n="Tags">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="/de/tag/aberdare/">Aberdare</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/campsites/">Campingplätze</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/hikes/">Wanderungen</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/kiambu/">Kiambu</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/laikipia/">Laikipia</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/ngare-ndare/">Ngare Ndare</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/trails/">Wanderwege</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="Suche öffnen" data-i18n="Open search" data-i18n-attr="aria-label">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" data-i18n="Toggle dark mode" data-i18n-attr="data-tippy-content" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only" data-i18n-text>
+                Hell-/Dunkelmodus umschalten
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+            <details class="m-lang-menu js-lang-menu">
+              <summary class="m-lang-switch" aria-label="Sprache wählen">
+                <span class="icon-globe" aria-hidden="true"></span>
+                <span class="m-lang-switch__text" translate="no" data-lang-current>DE</span>
+              </summary>
+              <ul class="m-lang-menu__list" translate="no">
+                <li><a data-lang-link="en" lang="en" hreflang="en" href="/ngare-ndare-forest-hike-2026/">English</a></li>
+                <li><a data-lang-link="de" lang="de" hreflang="de" href="/de/ngare-ndare-forest-hike-2026/" aria-current="true">Deutsch</a></li>
+                <li><a data-lang-link="fr" lang="fr" hreflang="fr" href="/fr/ngare-ndare-forest-hike-2026/">Français</a></li>
+                <li><a data-lang-link="es" lang="es" hreflang="es" href="/es/ngare-ndare-forest-hike-2026/">Español</a></li>
+                <li><a data-lang-link="it" lang="it" hreflang="it" href="/it/ngare-ndare-forest-hike-2026/">Italiano</a></li>
+                <li><a data-lang-link="zh" lang="zh-Hans" hreflang="zh-Hans" href="/zh/ngare-ndare-forest-hike-2026/">简体中文</a></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-animate="fade">
+    <div class="m-hero__picture in-post">
+      <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+    src="/content/images/size/w1000/2026/01/P1011229.JPG"
+    alt=""
+    
+    
+  />
+</picture>
+    </div>
+    </section>
+        <div class="l-wrapper in-caption">
+          <p class="m-small-text align-center">
+            <span style="white-space: pre-wrap;">Blue Pools</span>
+          </p>
+        </div>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-animation-wrapper" data-animate="fade-up">
+          <div
+            class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Wanderung im Ngare Ndare Forest</h1>
+              <div class="m-heading__meta">
+                  <a href="https://savannaguides.com/de/tag/trails/" class="m-heading__meta__tag">Wanderwege</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">21. Jan. 2026</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://savannaguides.com/de/ngare-ndare-forest-hike-2026/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Ngare%20Ndare%20Forest%20Hike&url=https://savannaguides.com/de/ngare-ndare-forest-hike-2026/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Nach oben" data-i18n="Scroll to top" data-i18n-attr="aria-label">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w2400/format/webp/2026/01/P1011229-1.JPG.webp 2400w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011229-1.JPG" class="kg-image" alt="" loading="lazy" width="2000" height="1333" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011229-1.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011229-1.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011229-1.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011229-1.JPG 2400w" sizes="(min-width: 1200px) 1200px"></picture><figcaption><span style="white-space: pre-wrap;">Blue Pools</span></figcaption></figure><h2 id="summary-card">Übersicht</h2>
+<!--kg-card-begin: html-->
+<div class="summary-card">
+  <table class="summary-table">
+    <tr><th>Region</th><td>Laikipia, Kenia</td></tr>
+    <tr><th>Name des Wanderwegs</th><td>Ngare Ndare Forest</td></tr>
+    <tr><th>Strecke</th><td>8–10 km</td></tr>
+    <tr><th>Höhenmeter im Aufstieg</th><td>160 m</td></tr>
+    <tr><th>Dauer</th><td>3–5 Stunden</td></tr>
+    <tr><th>Schwierigkeit</th><td>Leicht</td></tr>
+    <tr><th>Routentyp</th><td>Hin und zurück</td></tr>
+    <tr><th>Saison</th><td>Trockenzeit</td></tr>
+    <tr><th>Highlights</th><td>Blue Pools, Baumwipfelpfad, Naturwald </td></tr>
+    <tr><th>Gebühren</th><td>2000 für Ansässige + 1000 für den bewaffneten Guide</td></tr>
+  </table>
+</div>
+
+<!--kg-card-end: html-->
+<h2 id="introduction">Einleitung</h2><p>Der Ngare Ndare Forest bietet eine entspannte, landschaftlich reizvolle Tageswanderung mit dichtem Naturwald, einem Baumwipfelpfad aus Hängebrücken und türkisfarbenen Pools, gespeist vom Gletscherschmelzwasser des Mount Kenya.</p><p>Die Wanderung ist gut erreichbar, anfängerfreundlich und ideal, wenn du einen entspannten Tag draußen mit Bademöglichkeit verbringen willst.</p><hr><h2 id="location-access">Lage &amp; Anfahrt</h2><p>Der Ngare Ndare Forest liegt an den unteren Hängen des Mount Kenya, zwischen Timau und der Lewa Conservancy.</p><p>Google Maps: <a href="https://maps.app.goo.gl/ApunP6HeAhVzVE6v8" rel="noreferrer"><em>Ngare Ndare Forest Trust</em></a></p><p><strong>Nächstgelegene Orte</strong></p><ul><li>Timau (30 Min.)</li><li>Nanyuki (60 Min.)</li></ul><p><strong>Anfahrt</strong></p><ul><li>Viele reisen mit dem eigenen Auto an. Ideal ist ein Fahrzeug mit hoher Bodenfreiheit.</li><li>Du fährst bis zum Büro bzw. Waldtor des Ngare Ndare Forest Trust, wo du parkst und die Eintrittsformalitäten erledigst.</li><li>Der Mobilfunkempfang ist bis zum Büro meist gut und wird im Wald dann lückenhaft.</li></ul><figure class="kg-card kg-image-card kg-width-wide"><picture><source type="image/webp" srcset="/content/images/size/w2400/format/webp/2026/01/IMG_2245.JPG.webp 2400w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/IMG_2245.JPG" class="kg-image" alt="" loading="lazy" width="2000" height="1500" srcset="https://savannaguides.com/content/images/size/w600/2026/01/IMG_2245.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/IMG_2245.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/IMG_2245.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/IMG_2245.JPG 2400w" sizes="(min-width: 1200px) 1200px"></picture></figure><hr><h2 id="entry-requirements">Zugangsvoraussetzungen</h2><p>Der Ngare Ndare Forest wird vom <a href="https://ngarendare.org" rel="noreferrer">Ngare Ndare Forest Trust</a> verwaltet. Details können sich ändern, aber grundsätzlich gilt:</p><ul><li><strong>Öffnungszeiten:</strong> 08:00–17:00</li><li><strong>Eintrittsgebühren:</strong> zahlbar im Forstbüro ( <strong>2000</strong> für Ansässige plus <strong>1000</strong> für den bewaffneten Guide)</li><li><strong>Buchung:</strong> erforderlich – du musst einen bewaffneten Guide reservieren.</li><li><strong>Guides:</strong> Pflicht.</li></ul><p>Bitte erkundige dich vor deinem Besuch im Forstbüro nach den aktuellen Gebühren und Regeln.</p><hr><h2 id="route-description">Routenbeschreibung</h2><p>Von der Waldrezeption folgt man der 4x4-Piste, die sanft bergab in den Wald führt. Der Weg ist breit und leicht zu finden; sobald man in dichteren Naturwald mit hohen Roten Zedern und wilden Oliven eintaucht, wird es rasch kühler und schattiger.</p><p>Nach etwa 30 Minuten verlässt man die Hauptpiste für einen kurzen Abstecher durch den Wald, der steil ins Flussbett hinabführt. So gelangt man zu den berühmten Blue Pools – klares, türkisfarbenes Wasser, gespeist vom Mount Kenya. Ein natürlicher Rastplatz und ein guter Ort für einen Snack, Fotos und (für die Mutigen) ein eiskaltes Bad.</p><p>Von den Pools geht es ein kurzes Stück weiter das Flussbett entlang bis zum Wasserfall. Er stürzt hoch herab in ein tiefes Becken an seinem Fuß. Der letzte Abstieg ist steil und kann rutschig sein, also sei vorsichtig.</p><p>Die meisten Gruppen kehren auf demselben Weg zur Waldrezeption zurück. Von dort geht es weiter zum Beginn des Baumwipfelpfads. Die 450 m lange Hängebrücke überspannt ein bewaldetes Tal, schwankt sanft und bietet herrliche Ausblicke über den Wald. Sie ist auch für Einsteiger geeignet und bei Familien beliebt.</p><p>In der Savanna Guides App findest du diese Route auf der Karte.</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://apps.apple.com/us/app/savanna-guides/id6636470632?itscg=30200&amp;itsct=apps_box_link&amp;mttnsubad=6636470632"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Savanna Guides App - App Store</div><div class="kg-bookmark-description">Lade Savanna Guides von Matthew Gathu Kamande im App Store herunter. Sieh dir Screenshots, Bewertungen und Rezensionen, Nutzertipps und weitere Spiele wie Savanna Guides an.</div><div class="kg-bookmark-metadata"><picture><source type="image/webp" srcset="/content/images/format/webp/icon/favicon-180.png.webp"><img class="kg-bookmark-icon" src="https://savannaguides.com/content/images/icon/favicon-180.png" alt=""></picture><span class="kg-bookmark-author">App Store</span><span class="kg-bookmark-publisher">Matthew Gathu Kamande</span></div></div><div class="kg-bookmark-thumbnail"><picture><source type="image/webp" srcset="/content/images/format/webp/thumbnail/1200x630wa.jpg.webp"><img src="https://savannaguides.com/content/images/thumbnail/1200x630wa.jpg" alt="" onerror="this.style.display = 'none'"></picture></div></a></figure><hr><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><picture><source type="image/webp" srcset="/content/images/size/w2400/format/webp/2026/01/P1011229-3.JPG.webp 2400w" sizes="(min-width: 1280px) 480px, (min-width: 768px) 410px, 50vw"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011229-3.JPG" width="2000" height="1333" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011229-3.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011229-3.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011229-3.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011229-3.JPG 2400w" sizes="(min-width: 1280px) 480px, (min-width: 768px) 410px, 50vw"></picture></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011253-1.JPG" width="2000" height="1333" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011253-1.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011253-1.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011253-1.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011253-1.JPG 2400w" sizes="(min-width: 1280px) 480px, (min-width: 768px) 410px, 50vw"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011334-1.jpeg" width="2000" height="1333" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011334-1.jpeg 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011334-1.jpeg 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011334-1.jpeg 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011334-1.jpeg 2400w" sizes="(min-width: 1280px) 480px, (min-width: 768px) 410px, 50vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011342-1.JPG" width="2000" height="1333" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011342-1.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011342-1.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011342-1.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011342-1.JPG 2400w" sizes="(min-width: 1280px) 480px, (min-width: 768px) 410px, 50vw"></div></div></div></figure><h2 id="highlights">Highlights</h2><h3 id="indigenous-forest-wildlife">Naturwald &amp; Tierwelt</h3><p>Ngare Ndare ist ein echter Wald und keine Plantage:</p><ul><li>Rote Zedern, Maulbeerfeigen, wilde Oliven, Steineiben und andere einheimische Arten</li><li>Viele Vögel; mit etwas Glück sieht man auch Affen</li><li>Auch größere Wildtiere wie Büffel oder Elefanten können durch das Gebiet ziehen – ein Grund, warum ein Guide so wichtig ist.</li></ul><h3 id="blue-pools">Blue Pools</h3><p>Die Blue Pools werden von Gletscherwasser gespeist und sind selbst an heißen Tagen eiskalt.</p><ul><li>Klares, türkisfarbenes Wasser.</li><li>Tief genug zum Hineinspringen.</li><li>Ideal für ein kurzes Eintauchen oder eine schnelle Runde.</li><li>Rutschige Felsen an den Rändern.</li></ul><h3 id="canopy-walk">Baumwipfelpfad</h3><p>Der Baumwipfelpfad ist einer der Gründe, warum Ngare Ndare so unvergesslich ist:</p><ul><li>Lange Hängebrückenkonstruktion über den Baumkronen</li><li>Schwankt leicht, bietet aber festen Tritt</li><li>Tolle Aussichtspunkte für Fotos und kurze Videos</li><li>Schöner Ort, um nach Vögeln und Affen Ausschau zu halten</li></ul><hr><h2 id="trail-conditions">Zustand des Wanderwegs</h2><p>In diesem Abschnitt geht es nicht nur um Zahlen, sondern darum, wie sich der Wanderweg anfühlt und wie er sich begehen lässt.</p><ul><li><strong>Gelände:</strong> überwiegend Waldpisten und -pfade, nahe dem Fluss mit einigen felsigen oder wurzeligen Abschnitten</li><li><strong>Steigung:</strong> meist sanft, mit ein paar kurzen, steileren Passagen an den Flussufern.</li><li><strong>Untergrund:</strong> kann nach Regen schlammig und rutschig werden; in der Trockenzeit meist fest.</li><li><strong>Orientierung:</strong> mit Guide unkompliziert; </li><li><strong>Handyempfang:</strong> im Wald meist schwach oder gar nicht vorhanden, besser am Büro und auf manchen Anhöhen</li><li><strong>Einrichtungen:</strong> einfache Toiletten und ein kleines Büro nahe dem Tor; an den Pools selbst gibt es keine Einrichtungen.</li></ul><hr><h2 id="gear-packing-list">Ausrüstung &amp; Packliste</h2><h3 id="essentials"><strong>Das Wichtigste</strong></h3><ul><li>1,5 L Wasser pro Person</li><li>Snacks oder ein Lunchpaket</li><li>Bequeme Trailschuhe oder robuste Sneaker</li><li>Hut und Sonnencreme</li><li>Leichte, atmungsaktive Kleidung, die schnell trocknet</li><li>Ein kleiner Tagesrucksack</li></ul><h3 id="nice-to-have"><strong>Nützliche Extras</strong></h3><ul><li>Badesachen und ein leichtes Handtuch</li><li>Drybag oder Zip-Beutel für Handy und Kamera</li><li>Leichte Fleecejacke oder Windjacke (besonders morgens oder an bewölkten Tagen)</li><li>Einfaches Erste-Hilfe-Set (Pflaster, Schmerzmittel, Blasenpflaster)</li></ul><hr><h2 id="safety-tips">Sicherheit &amp; Tipps</h2><ul><li><strong>Wetter:</strong> am besten in der Trockenzeit.</li><li><strong>Schwimmen:</strong> Das Wasser ist sehr kalt und die Pools können tief sein. Schwimmwesten werden kostenlos angeboten.</li><li><strong>Wildtiere:</strong> Bleib bei deinem bewaffneten Guide.</li><li><strong>Keine Spuren hinterlassen:</strong> sämtlichen Müll wieder mitnehmen, auch Verpackungen und Flaschen.</li></ul><hr><h2 id="best-time-to-go">Beste Reisezeit</h2><ul><li><strong>Saison:</strong> In den trockeneren Monaten (etwa Juni – Oktober und Januar – März) sind Wandern und Anfahrt am einfachsten.</li><li><strong>Tageszeit:</strong> Ein Start im Laufe des Vormittags passt gut.</li><li><strong>Unter der Woche oder am Wochenende:</strong> Unter der Woche ist es ruhiger; an Wochenenden und Feiertagen kann es an den Pools voll werden.</li></ul><hr><h2 id="notes">Notizen</h2><p>Der Ngare Ndare Forest ist ein hervorragendes Wanderziel für alle, die etwas Abenteuerlicheres als einen Spaziergang im Park suchen, aber nicht gleich einen großen Berg besteigen wollen. Die Kombination aus Wald, Baumwipfelpfad und eiskalten blauen Pools bringt erstaunlich viel Abwechslung in einen relativ kurzen Tag.</p><p>Die Tour ist einsteigerfreundlich, fotogen und eine wunderbare Möglichkeit, Freunde ohne einschüchterndes Gelände ans Wandern heranzuführen. Allein der Baumwipfelpfad lohnt den Besuch, und das Bad in den Pools ist der perfekte Abschluss.</p><p>Wer Zeit in Nanyuki oder rund um den Mount Kenya verbringt, dem kann ich diese Tour bedenkenlos empfehlen. Denk daran, im Voraus zu buchen.</p>
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title" data-i18n="Tags">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="/de/tag/trails/" title="Wanderwege">Wanderwege</a>
+                      </li>
+                      <li>
+                        <a href="/de/tag/hikes/" title="Wanderungen">Wanderungen</a>
+                      </li>
+                      <li>
+                        <a href="/de/tag/laikipia/" title="Laikipia">Laikipia</a>
+                      </li>
+                      <li>
+                        <a href="/de/tag/ngare-ndare/" title="Ngare Ndare">Ngare Ndare</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="https://savannaguides.com/de/author/sgt/" class="m-author-picture" aria-label="Savanna Guides">
+                  <div style="background-image: url(https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="https://savannaguides.com/de/author/sgt/">Savanna Guides</a>
+              </h4>
+                <p class="m-author__bio">Savanna Guides ist ein Projekt von Matt Gathu – mit der liebevollen Hilfe meiner guten Freunde Nicks und Tessie.</p>
+              <ul class="m-author-links">
+                  <li>
+                    <a href="https://savannaguides.com/de/" target="_blank" rel="noopener" aria-label="Website" data-i18n="Website" data-i18n-attr="aria-label">
+                      <span class="icon-globe" aria-hidden="true"></span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
+
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Suche" data-i18n="Search" data-i18n-attr="aria-label">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Suche schließen" data-i18n="Close search" data-i18n-attr="aria-label">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only" data-i18n="Type to search">
+          Suchbegriff eingeben
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Suchbegriff eingeben" data-i18n="Type to search" data-i18n-attr="placeholder">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results" data-i18n="No results for your search, try something different.">
+      Keine Ergebnisse für deine Suche – bitte versuche es mit einem anderen Begriff.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+      <a href="https://savannaguides.com/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Savanna Guides © 2026</span>
+    </p>
+
+  </div>
+</footer>
+    <script defer src="/assets/js/manifest.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/vendor.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/app.js?v=4fdd992dd6"></script>
+
+      <script defer src="/assets/js/post.js?v=4fdd992dd6"></script>
+
+
+    
+  </body>
+</html>

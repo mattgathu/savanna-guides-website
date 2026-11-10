@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Gatamaiyu 徒步路线</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="/assets/css/app.css?v=4fdd992dd6" as="style" />
+    <link rel="preload" href="/assets/js/manifest.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/vendor.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/app.js?v=4fdd992dd6" as="script" />
+
+      <link rel="preload" href="/assets/css/post.css?v=4fdd992dd6" as="style" />
+  <link rel="preload" href="/assets/js/post.js?v=4fdd992dd6" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* jost-300-light */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-Light.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-300-lightitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-LightItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-book */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-Book.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-bookitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-BookItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-medium */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-Medium.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-mediumitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-MediumItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semi */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-Semi.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semiitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-SemiItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bold */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-Bold.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bolditalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-BoldItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6#iefix") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=4fdd992dd6") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=4fdd992dd6") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3?v=4fdd992dd6#icomoon") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=4fdd992dd6" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="/assets/css/post.css?v=4fdd992dd6" media="screen" />
+
+
+    
+
+    <meta name="description" content="在 Kiambu 连绵起伏的茶园中漫步一日。">
+    <link rel="icon" href="https://savannaguides.com/content/images/size/w256h256/2025/09/app-icon-min-white.png" type="image/png">
+    <link rel="canonical" href="https://savannaguides.com/zh/gatamaiyu-trail-hike/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Savanna Guides">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Gatamaiyu 徒步路线">
+    <meta property="og:description" content="在 Kiambu 连绵起伏的茶园中漫步一日。">
+    <meta property="og:url" content="https://savannaguides.com/zh/gatamaiyu-trail-hike/">
+    <meta property="og:image" content="https://savannaguides.com/content/images/2026/07/IMG_4382.JPG">
+    <meta property="article:published_time" content="2026-07-23T05:38:50.000Z">
+    <meta property="article:modified_time" content="2026-07-23T06:04:26.000Z">
+    <meta property="article:tag" content="Trails">
+    <meta property="article:tag" content="Hikes">
+    <meta property="article:tag" content="Kiambu">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gatamaiyu 徒步路线">
+    <meta name="twitter:description" content="在 Kiambu 连绵起伏的茶园中漫步一日。">
+    <meta name="twitter:url" content="https://savannaguides.com/zh/gatamaiyu-trail-hike/">
+    <meta name="twitter:image" content="https://savannaguides.com/content/images/2026/07/IMG_4382.JPG">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Savanna Guides">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Trails, Hikes, Kiambu">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="900">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Savanna Guides",
+        "url": "https://savannaguides.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Savanna Guides",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png",
+            "width": 1024,
+            "height": 1024
+        },
+        "url": "https://savannaguides.com/author/sgt/",
+        "sameAs": [
+            "https://savannaguides.com/",
+            "https://www.instagram.com/savannaguides"
+        ]
+    },
+    "headline": "Gatamaiyu 徒步路线",
+    "url": "https://savannaguides.com/zh/gatamaiyu-trail-hike/",
+    "datePublished": "2026-07-23T05:38:50.000Z",
+    "dateModified": "2026-07-23T06:04:26.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://savannaguides.com/content/images/2026/07/IMG_4382.JPG",
+        "width": 1200,
+        "height": 900
+    },
+    "keywords": "Trails, Hikes, Kiambu",
+    "description": "在 Kiambu 连绵起伏的茶园中漫步一日。",
+    "mainEntityOfPage": "https://savannaguides.com/gatamaiyu-trail-hike/",
+    "inLanguage": "zh-Hans"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.0">
+    <link rel="alternate" type="application/rss+xml" title="Savanna Guides" href="https://savannaguides.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="8d28d3b35d87a2006f6822161a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://savannaguides.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://savannaguides.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=4fdd992dd6"></script><style>:root {--ghost-accent-color: #10540d;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=4fdd992dd6">
+    <style>
+@font-face {
+  font-family: 'Forta';
+  src: url('/assets/fonts/Forta.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+</style>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: 'Forta'; }
+</style> 
+
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: #1d1f1d; /* charcoal */
+  }
+
+  thead {
+    background: #f3f7f0; /* pale savanna green */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #d6e2d1; /* desaturated green-gray */
+    text-align: center;
+  }
+
+  th {
+    color: #10540d; /* savanna green */
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background: #f8faf7; /* subtle hover hint */
+  }
+</style>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42V9F2RPQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42V9F2RPQ5');
+</script>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://savannaguides.com"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+      <link rel="alternate" hreflang="en" href="https://savannaguides.com/gatamaiyu-trail-hike/" />
+    <link rel="alternate" hreflang="de" href="https://savannaguides.com/de/gatamaiyu-trail-hike/" />
+    <link rel="alternate" hreflang="fr" href="https://savannaguides.com/fr/gatamaiyu-trail-hike/" />
+    <link rel="alternate" hreflang="es" href="https://savannaguides.com/es/gatamaiyu-trail-hike/" />
+    <link rel="alternate" hreflang="it" href="https://savannaguides.com/it/gatamaiyu-trail-hike/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://savannaguides.com/zh/gatamaiyu-trail-hike/" />
+    <link rel="alternate" hreflang="x-default" href="https://savannaguides.com/gatamaiyu-trail-hike/" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="it_IT" />
+  </head>
+  <body class="post-template tag-trails tag-hikes tag-en tag-kiambu">
+    
+
+
+
+
+  
+<header class="m-header with-picture js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="打开菜单" data-i18n="Open menu" data-i18n-attr="aria-label">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://savannaguides.com/zh/" class="m-logo sg-brand in-mobile-topbar">
+        <span class="sg-brand__mark">
+          <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+        </span>
+        <span class="sg-brand__wordmark">Savanna Guides</span>
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="打开搜索" data-i18n="Open search" data-i18n-attr="aria-label">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="关闭菜单" data-i18n="Close menu" data-i18n-attr="aria-label">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="主菜单" data-i18n="Main menu" data-i18n-attr="aria-label">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://savannaguides.com/zh/" class="m-logo sg-brand">
+                    <span class="sg-brand__mark">
+                      <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+                    </span>
+                    <span class="sg-brand__wordmark">Savanna Guides</span>
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="https://savannaguides.com/zh/">首页</a>
+    </li>
+    <li class="nav-app">
+      <a href="https://savannaguides.com/zh/app/">应用</a>
+    </li>
+    <li class="nav-about">
+      <a href="https://savannaguides.com/zh/about/">关于</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="打开子菜单" data-i18n="Open submenu" data-i18n-attr="aria-label">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles" data-i18n="Recent articles">近期文章</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="/zh/hiking-mount-satima-via-dragons-teeth/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/satima-story/hero.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/satima-story/hero.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/satima-story/hero.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/satima-story/hero.jpg.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/satima-story/hero.jpg 300w,
+      /content/images/size/w600/2026/10/satima-story/hero.jpg 600w,
+      /content/images/size/w1000/2026/10/satima-story/hero.jpg 1000w,
+      /content/images/size/w2000/2026/10/satima-story/hero.jpg 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/10/satima-story/hero.jpg"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="雨中的 Satima">
+                                      雨中的 Satima
+                                    </h3>
+                                    <span class="m-recent-article__date">上个月</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/gatamaiyu-trail-hike/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/07/IMG_4382.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Gatamaiyu 徒步路线">
+                                      Gatamaiyu 徒步路线
+                                    </h3>
+                                    <span class="m-recent-article__date">4个月前</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/weekend-camping-at-gura-river-camp/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/04/DSC05378.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="周末露营：Gura River Camp">
+                                      周末露营：Gura River Camp
+                                    </h3>
+                                    <span class="m-recent-article__date">7个月前</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/zh/ngare-ndare-forest-hike-2026/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Ngare Ndare 森林徒步">
+                                      Ngare Ndare 森林徒步
+                                    </h3>
+                                    <span class="m-recent-article__date">10个月前</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title" data-i18n="Tags">标签</h3>
+                        <ul>
+                            <li>
+                              <a href="/zh/tag/aberdare/">Aberdare</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/campsites/">露营地</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/hikes/">徒步</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/kiambu/">Kiambu</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/laikipia/">Laikipia</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/ngare-ndare/">Ngare Ndare</a>
+                            </li>
+                            <li>
+                              <a href="/zh/tag/trails/">徒步路线</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="打开搜索" data-i18n="Open search" data-i18n-attr="aria-label">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" data-i18n="Toggle dark mode" data-i18n-attr="data-tippy-content" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only" data-i18n-text>
+                切换浅色/深色模式
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+            <details class="m-lang-menu js-lang-menu">
+              <summary class="m-lang-switch" aria-label="选择语言">
+                <span class="icon-globe" aria-hidden="true"></span>
+                <span class="m-lang-switch__text" translate="no" data-lang-current>ZH</span>
+              </summary>
+              <ul class="m-lang-menu__list" translate="no">
+                <li><a data-lang-link="en" lang="en" hreflang="en" href="/gatamaiyu-trail-hike/">English</a></li>
+                <li><a data-lang-link="de" lang="de" hreflang="de" href="/de/gatamaiyu-trail-hike/">Deutsch</a></li>
+                <li><a data-lang-link="fr" lang="fr" hreflang="fr" href="/fr/gatamaiyu-trail-hike/">Français</a></li>
+                <li><a data-lang-link="es" lang="es" hreflang="es" href="/es/gatamaiyu-trail-hike/">Español</a></li>
+                <li><a data-lang-link="it" lang="it" hreflang="it" href="/it/gatamaiyu-trail-hike/">Italiano</a></li>
+                <li><a data-lang-link="zh" lang="zh-Hans" hreflang="zh-Hans" href="/zh/gatamaiyu-trail-hike/" aria-current="true">简体中文</a></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-animate="fade">
+    <div class="m-hero__picture in-post">
+      <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+    src="/content/images/size/w1000/2026/07/IMG_4382.JPG"
+    alt=""
+    
+    
+  />
+</picture>
+    </div>
+    </section>
+        <div class="l-wrapper in-caption">
+          <p class="m-small-text align-center">
+            <span style="white-space: pre-wrap;">从茶园望见的 Little Thompson 瀑布</span>
+          </p>
+        </div>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-animation-wrapper" data-animate="fade-up">
+          <div
+            class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Gatamaiyu 徒步路线</h1>
+              <div class="m-heading__meta">
+                  <a href="https://savannaguides.com/zh/tag/trails/" class="m-heading__meta__tag">徒步路线</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">2026年7月23日</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://savannaguides.com/zh/gatamaiyu-trail-hike/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Gatamaiyu%20Trail%20Hike&url=https://savannaguides.com/zh/gatamaiyu-trail-hike/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="返回顶部" data-i18n="Scroll to top" data-i18n-attr="aria-label">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <figure class="kg-card kg-image-card kg-width-wide"><img src="https://savannaguides.com/content/images/size/w1000/2026/07/dji_mimo_20260718_145700_20260718145700_1784389688939_photo.jpg" class="kg-image" alt="" loading="lazy" width="2000" height="1125" srcset="https://savannaguides.com/content/images/size/w600/2026/07/dji_mimo_20260718_145700_20260718145700_1784389688939_photo.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/07/dji_mimo_20260718_145700_20260718145700_1784389688939_photo.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/dji_mimo_20260718_145700_20260718145700_1784389688939_photo.jpg 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/dji_mimo_20260718_145700_20260718145700_1784389688939_photo.jpg 2400w" sizes="(min-width: 1200px) 1200px"></figure><h2 id="summary-card">概要卡片</h2>
+<!--kg-card-begin: html-->
+<div class="summary-card">
+  <table class="summary-table">
+    <tr><th>地区</th><td>Kiambu</td></tr>
+    <tr><th>徒步路线名称</th><td>Gatamaiyu Trail</td></tr>
+    <tr><th>距离</th><td>8 km</td></tr>
+    <tr><th>累计爬升</th><td>447 m</td></tr>
+    <tr><th>用时</th><td>3–5 小时</td></tr>
+    <tr><th>难度</th><td>中等</td></tr>
+    <tr><th>路线类型</th><td>环线</td></tr>
+    <tr><th>季节</th><td>旱季</td></tr>
+    <tr><th>亮点</th><td>茶园、瀑布、洞穴</td></tr>
+    <tr><th>费用</th><td>免费</td></tr>
+  </table>
+</div>
+
+<!--kg-card-end: html-->
+<h2 id="introduction">简介</h2><p>Gatamaiyu 是一条颇具挑战的徒步路线，在茶园间上上下下，沿途视野开阔，令人不虚此行，不时还能遇见瀑布，偶尔需要涉水过河。<br><br>如果你想在一条紧凑的环线中同时领略高地风光、短促陡峭的爬升和瀑布探秘，这里再合适不过。</p><hr><h2 id="location-access">位置与交通</h2><p>徒步路线的起点和终点均位于 Kagwe Town。</p><p>Google Maps：<a href="https://maps.app.goo.gl/Y7HSjurKVEwi7RK48" rel="noreferrer"><em>Kagwe Town</em></a></p><p><strong>交通</strong></p><ul><li>通常选择自驾前往，道路全年通行无阻。</li></ul><hr><h2 id="entry-requirements">准入要求</h2><p>该徒步路线位于公众可通行的土地上，无需办理任何准入手续。不过沿途大多为私人土地，请注意尊重他人财产。 </p><hr><h2 id="route-description">路线介绍</h2><p>Gatamaiyu Trail 起止于 Kagwe Town，是一条难度中等的 7.8 km 环线，穿越 Kiambu 北部的茶叶种植高地。</p><p>这是一条以反差为魅力的徒步路线。开阔的农田小径和茶园过后，路线陡然下切，进入林木葱郁的河谷，茂密的植被、湿滑的岩石和清凉的树荫，营造出与上方耕作坡地截然不同的氛围。路线海拔介于 2,004 至 2,110 米之间，在 2 至 3 小时的行程中累计爬升 447 米，起伏的地形要求全程保持稳定的体力输出。</p><p>水是这段体验的灵魂。路线与 Kagagu Cave 及一系列瀑布相连，其中包括一道洞穴旁的瀑布，需穿过泥泞湿滑的河谷地带才能抵达。沿河路段蕨类丛生、藤蔓缠绕，溪流廊道浓荫蔽日；而返回农田和小镇的上坡路，可能比距离所显示的更加吃力。Kagwe Town 既是起点也是终点，这让它更像一次便捷的小镇徒步，而非一场完整的森林保护区远足。</p><p>Gatamaiyu 适合那些想在一条紧凑环线中兼得乡村高地风光、短促陡峭爬升与瀑布探秘的徒步者。</p><p>你可以在 Savanna Guides 应用中查看这条路线的可视化地图。</p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://apps.apple.com/us/app/savanna-guides/id6636470632?itscg=30200&amp;itsct=apps_box_link&amp;mttnsubad=6636470632"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Savanna Guides 应用 - App Store</div><div class="kg-bookmark-description">在 App Store 下载 Matthew Gathu Kamande 开发的 Savanna Guides。查看截图、评分与评论、用户提示，以及更多类似 Savanna Guides 的游戏。</div><div class="kg-bookmark-metadata"><picture><source type="image/webp" srcset="/content/images/format/webp/icon/favicon-180.png.webp"><img class="kg-bookmark-icon" src="https://savannaguides.com/content/images/icon/favicon-180.png" alt=""></picture><span class="kg-bookmark-author">App Store</span><span class="kg-bookmark-publisher">Matthew Gathu Kamande</span></div></div><div class="kg-bookmark-thumbnail"><picture><source type="image/webp" srcset="/content/images/format/webp/thumbnail/1200x630wa.jpg.webp"><img src="https://savannaguides.com/content/images/thumbnail/1200x630wa.jpg" alt="" onerror="this.style.display = 'none'"></picture></div></a></figure>
+<!--kg-card-begin: html-->
+<a
+  href="https://play.google.com/store/apps/details?id=com.mgk.savannaguides&utm_source=savannaguides&utm_medium=website"
+  target="_blank"
+  rel="noopener"
+  style="
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+    height: 150px;
+    background: #ffffff;
+    border: 1px solid #d9dde3;
+    border-radius: 0;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+  "
+>
+  <!-- Left: App information -->
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 18px 22px;
+      box-sizing: border-box;
+      min-width: 0;
+      text-align: left;
+    "
+  >
+    <div
+      style="
+        margin: 0 0 8px 0;
+        padding: 0;
+        font-size: 16px;
+        line-height: 1.25;
+        font-weight: 700;
+        color: #383e47;
+        text-align: left;
+      "
+    >
+      Savanna Guides 应用 - Google Play
+    </div>
+
+    <div
+      style="
+        margin: 0 0 16px 0;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.4;
+        font-weight: 400;
+        color: #687281;
+        text-align: left;
+      "
+    >
+      借助 Savanna Guides，探索东非的国家公园、徒步路线、露营地、野生动物与户外目的地。
+    </div>
+
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.3;
+        color: #687281;
+        text-align: left;
+      "
+    >
+      <picture><source type="image/webp" srcset="/assets/app/google-play-icon.png.webp"><img
+        src="https://savannaguides.com/assets/app/google-play-icon.png"
+        alt="Google Play"
+        style="
+          display: block;
+          width: 28px;
+          height: 28px;
+          margin: 0;
+          padding: 0;
+          object-fit: cover;
+          border-radius: 5px;
+          flex-shrink: 0;
+        "
+      /></picture>
+
+      <span
+        style="
+          font-weight: 500;
+          color: #383e47;
+        "
+      >
+        Google Play
+      </span>
+
+      <span style="color: #383e47;">•</span>
+
+      <span>Matthew Gathu Kamande</span>
+    </div>
+  </div>
+
+  <!-- Right: App icon -->
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: #f7f7f8;
+      box-sizing: border-box;
+    "
+  >
+    <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img
+      src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png"
+      alt="Savanna Guides"
+      style="
+        display: block;
+        width: 90px;
+        height: 90px;
+        margin: 0;
+        padding: 0;
+        object-fit: cover;
+        border-radius: 20px;
+      "
+    /></picture>
+  </div>
+</a>
+<!--kg-card-end: html-->
+<hr><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/07/dji_mimo_20260718_125938_20260718125937_1784389690056_photo.jpg" width="1728" height="3072" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/dji_mimo_20260718_125938_20260718125937_1784389690056_photo.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/07/dji_mimo_20260718_125938_20260718125937_1784389690056_photo.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/dji_mimo_20260718_125938_20260718125937_1784389690056_photo.jpg 1600w, https://savannaguides.com/content/images/2026/07/dji_mimo_20260718_125938_20260718125937_1784389690056_photo.jpg 1728w" sizes="(min-width: 1280px) 205px, (min-width: 768px) 175px, 22vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4373.JPG" width="2000" height="2667" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4373.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4373.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4373.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4373.JPG 2400w" sizes="(min-width: 1280px) 273px, (min-width: 768px) 233px, 29vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4309.JPG" width="2000" height="1500" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4309.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4309.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4309.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4309.JPG 2400w" sizes="(min-width: 1280px) 484px, (min-width: 768px) 414px, 51vw"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4327.JPG" width="2000" height="2667" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4327.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4327.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4327.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4327.JPG 2400w" sizes="(min-width: 1280px) 187px, (min-width: 768px) 160px, 20vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/07/dji_mimo_20260718_145710_20260718145711_1784389687947_photo.jpg" width="2000" height="1125" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/dji_mimo_20260718_145710_20260718145711_1784389687947_photo.jpg 600w, https://savannaguides.com/content/images/size/w1000/2026/07/dji_mimo_20260718_145710_20260718145711_1784389687947_photo.jpg 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/dji_mimo_20260718_145710_20260718145711_1784389687947_photo.jpg 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/dji_mimo_20260718_145710_20260718145711_1784389687947_photo.jpg 2400w" sizes="(min-width: 1280px) 443px, (min-width: 768px) 378px, 47vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4305.JPG" width="2000" height="1500" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4305.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4305.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4305.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4305.JPG 2400w" sizes="(min-width: 1280px) 332px, (min-width: 768px) 284px, 35vw"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4338.JPG" width="2000" height="1500" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4338.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4338.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4338.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4338.JPG 2400w" sizes="(min-width: 1280px) 375px, (min-width: 768px) 321px, 40vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4334.JPG" width="2000" height="1500" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4334.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4334.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4334.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4334.JPG 2400w" sizes="(min-width: 1280px) 375px, (min-width: 768px) 321px, 40vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4318.JPG" width="2000" height="2667" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/07/IMG_4318.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/07/IMG_4318.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/07/IMG_4318.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/07/IMG_4318.JPG 2400w" sizes="(min-width: 1280px) 211px, (min-width: 768px) 180px, 22vw"></div></div></div></figure><h2 id="highlights">亮点</h2><h3 id="tea-farms">茶园</h3><p>徒步路线穿越茶园，在陡峭的山坡上起起伏伏。</p><h3 id="waterfalls">瀑布</h3><p>沿途有多处瀑布。</p><h3 id="caves">洞穴</h3><p>徒步路线上有洞穴。</p><hr><h2 id="trail-conditions">徒步路线状况</h2><p>本节关注的是这条徒步路线走起来的真实感受与特点，而不只是数字。</p><ul><li><strong>地形：</strong>以茶园小径为主，靠近河流处坡度陡峭。</li><li><strong>坡度：</strong>陡峭的茶园一路下降至河谷。</li><li><strong>路面：</strong>雨后可能泥泞湿滑；旱季时路面大多坚实。</li><li><strong>导航：</strong>有向导带领则十分简单； </li><li><strong>手机信号：</strong>总体很好。</li><li><strong>设施：</strong>沿途没有任何设施。</li></ul><hr><h2 id="gear-packing-list">装备与打包清单</h2><h3 id="essentials"><strong>必备物品</strong></h3><ul><li>每人 1.5 L 饮用水</li><li>零食或自带午餐</li><li>舒适的徒步鞋或结实的运动鞋</li><li>帽子和防晒霜</li><li>轻便透气、速干的衣物</li><li>一个小型背包</li><li>雨衣，以防阵雨。</li></ul><hr><h2 id="safety-tips">安全与小贴士</h2><ul><li><strong>天气：</strong>最好选择旱季。泥泞的路面会让坡道行走变得困难。</li><li><strong>无痕户外：</strong>带走所有垃圾，包括食品包装和瓶子。</li></ul><hr><h2 id="best-time-to-go">最佳出行时间</h2><ul><li><strong>季节：</strong>较干燥的月份（大约六月至十月，以及一月至三月）徒步条件最为轻松。</li><li><strong>出发时段：</strong>上午过半时出发较为合适。</li><li><strong>工作日与周末：</strong>都可以。</li></ul><hr><h2 id="notes">备注</h2><p>Gatamaiyu 适合那些想在一条紧凑环线中兼得乡村高地风光、短促陡峭爬升与瀑布探秘的徒步者。</p>
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title" data-i18n="Tags">标签</h3>
+                  <ul>
+                      <li>
+                        <a href="/zh/tag/trails/" title="徒步路线">徒步路线</a>
+                      </li>
+                      <li>
+                        <a href="/zh/tag/hikes/" title="徒步">徒步</a>
+                      </li>
+                      <li>
+                        <a href="/zh/tag/kiambu/" title="Kiambu">Kiambu</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="https://savannaguides.com/zh/author/sgt/" class="m-author-picture" aria-label="Savanna Guides">
+                  <div style="background-image: url(https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="https://savannaguides.com/zh/author/sgt/">Savanna Guides</a>
+              </h4>
+                <p class="m-author__bio">Savanna Guides 是 Matt Gathu 发起的项目，我的挚友 Nicks 和 Tessie 也倾情相助。</p>
+              <ul class="m-author-links">
+                  <li>
+                    <a href="https://savannaguides.com/zh/" target="_blank" rel="noopener" aria-label="网站" data-i18n="Website" data-i18n-attr="aria-label">
+                      <span class="icon-globe" aria-hidden="true"></span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
+
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="搜索" data-i18n="Search" data-i18n-attr="aria-label">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="关闭搜索" data-i18n="Close search" data-i18n-attr="aria-label">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only" data-i18n="Type to search">
+          输入关键词搜索
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="输入关键词搜索" data-i18n="Type to search" data-i18n-attr="placeholder">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results" data-i18n="No results for your search, try something different.">
+      没有找到相关结果，请换个关键词试试。
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+      <a href="https://savannaguides.com/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Savanna Guides © 2026</span>
+    </p>
+
+  </div>
+</footer>
+    <script defer src="/assets/js/manifest.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/vendor.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/app.js?v=4fdd992dd6"></script>
+
+      <script defer src="/assets/js/post.js?v=4fdd992dd6"></script>
+
+
+    
+  </body>
+</html>

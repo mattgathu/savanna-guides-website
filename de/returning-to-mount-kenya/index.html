@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Zurück am Mount Kenya</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="/assets/css/app.css?v=4fdd992dd6" as="style" />
+    <link rel="preload" href="/assets/js/manifest.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/vendor.js?v=4fdd992dd6" as="script" />
+    <link rel="preload" href="/assets/js/app.js?v=4fdd992dd6" as="script" />
+
+      <link rel="preload" href="/assets/css/post.css?v=4fdd992dd6" as="style" />
+  <link rel="preload" href="/assets/js/post.js?v=4fdd992dd6" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=4fdd992dd6") format('woff2'),
+            url("/assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=4fdd992dd6") format('woff');
+      }
+
+      /* jost-300-light */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-Light.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-300-lightitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 300;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-300-LightItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-book */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-Book.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-400-bookitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-400-BookItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-medium */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-Medium.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-500-mediumitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 500;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-500-MediumItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semi */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-Semi.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-600-semiitalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 600;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-600-SemiItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bold */
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-Bold.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* jost-700-bolditalic */
+      @font-face {
+        font-family: 'Jost';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url("/assets/fonts/Jost-700-BoldItalic.ttf?v=4fdd992dd6") format('truetype');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6");
+        src: url("/assets/fonts/icomoon/icomoon.eot?101fc3?v=4fdd992dd6#iefix") format('embedded-opentype'),
+        url("/assets/fonts/icomoon/icomoon.ttf?101fc3?v=4fdd992dd6") format('truetype'),
+        url("/assets/fonts/icomoon/icomoon.woff?101fc3?v=4fdd992dd6") format('woff'),
+        url("/assets/fonts/icomoon/icomoon.svg?101fc3?v=4fdd992dd6#icomoon") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css?v=4fdd992dd6" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="/assets/css/post.css?v=4fdd992dd6" media="screen" />
+
+
+    
+
+    <link rel="icon" href="https://savannaguides.com/content/images/size/w256h256/2025/09/app-icon-min-white.png" type="image/png">
+    <link rel="canonical" href="https://savannaguides.com/de/returning-to-mount-kenya/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Savanna Guides">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Zurück am Mount Kenya">
+    <meta property="og:description" content="Meine letzte lange Wanderung am Mount Kenya lag über ein Jahr zurück, und in den letzten Dezembertagen des vergangenen Jahres zog es mich wieder hin – teils, um freie Tage zu nutzen, teils, um das Jahr mit einem Höhepunkt abzuschließen. Das Wetter war nicht das beste, die">
+    <meta property="og:url" content="https://savannaguides.com/de/returning-to-mount-kenya/">
+    <meta property="og:image" content="https://savannaguides.com/content/images/2026/01/P1011173-2.JPG">
+    <meta property="article:published_time" content="2026-01-19T09:21:03.000Z">
+    <meta property="article:modified_time" content="2026-11-10T04:28:27.000Z">
+    <meta property="article:tag" content="Trails">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zurück am Mount Kenya">
+    <meta name="twitter:description" content="Meine letzte lange Wanderung am Mount Kenya lag über ein Jahr zurück, und in den letzten Dezembertagen des vergangenen Jahres zog es mich wieder hin – teils, um freie Tage zu nutzen, teils, um das Jahr mit einem Höhepunkt abzuschließen. Das Wetter war nicht das beste, die">
+    <meta name="twitter:url" content="https://savannaguides.com/de/returning-to-mount-kenya/">
+    <meta name="twitter:image" content="https://savannaguides.com/content/images/2026/01/P1011173-2.JPG">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Savanna Guides">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Trails">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Savanna Guides",
+        "url": "https://savannaguides.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Savanna Guides",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png",
+            "width": 1024,
+            "height": 1024
+        },
+        "url": "https://savannaguides.com/author/sgt/",
+        "sameAs": [
+            "https://savannaguides.com/",
+            "https://www.instagram.com/savannaguides"
+        ]
+    },
+    "headline": "Zurück am Mount Kenya",
+    "url": "https://savannaguides.com/de/returning-to-mount-kenya/",
+    "datePublished": "2026-01-19T09:21:03.000Z",
+    "dateModified": "2026-11-10T04:28:27.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://savannaguides.com/content/images/2026/01/P1011173-2.JPG",
+        "width": 1200,
+        "height": 800
+    },
+    "keywords": "Trails",
+    "description": "Meine letzte lange Wanderung am Mount Kenya lag über ein Jahr zurück, und in den letzten Dezembertagen des vergangenen Jahres zog es mich wieder hin – teils, um freie Tage zu nutzen, teils, um das Jahr mit einem Höhepunkt abzuschließen. Das Wetter war nicht das beste: Die Regenzeit neigte sich dem Ende zu, und am Berg wechselten sich klarer Himmel, Bewölkung, leichte Schauer und schließlich heftiger Regen ständig ab. Trotzdem war es eine schöne Zeit am Berg. Die Route Eine Gipfelbesteigung hatte ich nicht geplant, stattdessen ging ich eine Zwei-Tages-Runde auf der",
+    "mainEntityOfPage": "https://savannaguides.com/returning-to-mount-kenya/",
+    "inLanguage": "de"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 6.0">
+    <link rel="alternate" type="application/rss+xml" title="Savanna Guides" href="https://savannaguides.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="8d28d3b35d87a2006f6822161a" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://savannaguides.com/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://savannaguides.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=4fdd992dd6"></script><style>:root {--ghost-accent-color: #10540d;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=4fdd992dd6">
+    <style>
+@font-face {
+  font-family: 'Forta';
+  src: url('/assets/fonts/Forta.woff') format('woff');
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+</style>
+
+<style>
+  h1, h2, h3, h4, h5, h6 { font-family: 'Forta'; }
+</style> 
+
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+    color: #1d1f1d; /* charcoal */
+  }
+
+  thead {
+    background: #f3f7f0; /* pale savanna green */
+  }
+
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #d6e2d1; /* desaturated green-gray */
+    text-align: center;
+  }
+
+  th {
+    color: #10540d; /* savanna green */
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background: #f8faf7; /* subtle hover hint */
+  }
+</style>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42V9F2RPQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-42V9F2RPQ5');
+</script>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://savannaguides.com"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+      <link rel="alternate" hreflang="en" href="https://savannaguides.com/returning-to-mount-kenya/" />
+    <link rel="alternate" hreflang="de" href="https://savannaguides.com/de/returning-to-mount-kenya/" />
+    <link rel="alternate" hreflang="fr" href="https://savannaguides.com/fr/returning-to-mount-kenya/" />
+    <link rel="alternate" hreflang="es" href="https://savannaguides.com/es/returning-to-mount-kenya/" />
+    <link rel="alternate" hreflang="it" href="https://savannaguides.com/it/returning-to-mount-kenya/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://savannaguides.com/zh/returning-to-mount-kenya/" />
+    <link rel="alternate" hreflang="x-default" href="https://savannaguides.com/returning-to-mount-kenya/" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="it_IT" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+  </head>
+  <body class="post-template tag-trails tag-en">
+    
+
+
+
+
+  
+<header class="m-header with-picture js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Menü öffnen" data-i18n="Open menu" data-i18n-attr="aria-label">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="https://savannaguides.com/de/" class="m-logo sg-brand in-mobile-topbar">
+        <span class="sg-brand__mark">
+          <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+        </span>
+        <span class="sg-brand__wordmark">Savanna Guides</span>
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="Suche öffnen" data-i18n="Open search" data-i18n-attr="aria-label">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Menü schließen" data-i18n="Close menu" data-i18n-attr="aria-label">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Hauptmenü" data-i18n="Main menu" data-i18n-attr="aria-label">
+            <ul>
+                <li class="only-desktop">
+                  <a href="https://savannaguides.com/de/" class="m-logo sg-brand">
+                    <span class="sg-brand__mark">
+                      <picture><source type="image/webp" srcset="/content/images/format/webp/2025/10/app-icon-min-white-circle.png.webp"><img src="https://savannaguides.com/content/images/2025/10/app-icon-min-white-circle.png" alt="Savanna Guides" class=""></picture>
+                    </span>
+                    <span class="sg-brand__wordmark">Savanna Guides</span>
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="https://savannaguides.com/de/">Startseite</a>
+    </li>
+    <li class="nav-app">
+      <a href="https://savannaguides.com/de/app/">App</a>
+    </li>
+    <li class="nav-about">
+      <a href="https://savannaguides.com/de/about/">Über uns</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Untermenü öffnen" data-i18n="Open submenu" data-i18n-attr="aria-label">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles" data-i18n="Recent articles">Neueste Artikel</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="/de/hiking-mount-satima-via-dragons-teeth/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/10/satima-story/hero.jpg.webp 300w,
+      /content/images/size/w600/format/webp/2026/10/satima-story/hero.jpg.webp 600w,
+      /content/images/size/w1000/format/webp/2026/10/satima-story/hero.jpg.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/10/satima-story/hero.jpg.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/10/satima-story/hero.jpg 300w,
+      /content/images/size/w600/2026/10/satima-story/hero.jpg 600w,
+      /content/images/size/w1000/2026/10/satima-story/hero.jpg 1000w,
+      /content/images/size/w2000/2026/10/satima-story/hero.jpg 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/10/satima-story/hero.jpg"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Satima im Regen">
+                                      Satima im Regen
+                                    </h3>
+                                    <span class="m-recent-article__date">letzten Monat</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/de/gatamaiyu-trail-hike/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/07/IMG_4382.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/07/IMG_4382.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/07/IMG_4382.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/07/IMG_4382.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/07/IMG_4382.JPG 300w,
+      /content/images/size/w600/2026/07/IMG_4382.JPG 600w,
+      /content/images/size/w1000/2026/07/IMG_4382.JPG 1000w,
+      /content/images/size/w2000/2026/07/IMG_4382.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/07/IMG_4382.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Wanderung auf dem Gatamaiyu Trail">
+                                      Wanderung auf dem Gatamaiyu Trail
+                                    </h3>
+                                    <span class="m-recent-article__date">vor 4 Monaten</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/de/weekend-camping-at-gura-river-camp/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/04/DSC05378.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/04/DSC05378.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/04/DSC05378.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/04/DSC05378.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/04/DSC05378.JPG 300w,
+      /content/images/size/w600/2026/04/DSC05378.JPG 600w,
+      /content/images/size/w1000/2026/04/DSC05378.JPG 1000w,
+      /content/images/size/w2000/2026/04/DSC05378.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/04/DSC05378.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Wochenend-Camping im Gura River Camp">
+                                      Wochenend-Camping im Gura River Camp
+                                    </h3>
+                                    <span class="m-recent-article__date">vor 7 Monaten</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="/de/ngare-ndare-forest-hike-2026/" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011229.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011229.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011229.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011229.JPG.webp 2000w
+    "
+    sizes="300px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011229.JPG 300w,
+      /content/images/size/w600/2026/01/P1011229.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011229.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011229.JPG 2000w
+    "
+    sizes="300px"
+    src="/content/images/size/w300/2026/01/P1011229.JPG"
+    alt=""
+    loading="lazy"
+    
+  />
+</picture>
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Wanderung im Ngare Ndare Forest">
+                                      Wanderung im Ngare Ndare Forest
+                                    </h3>
+                                    <span class="m-recent-article__date">vor 10 Monaten</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title" data-i18n="Tags">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="/de/tag/aberdare/">Aberdare</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/campsites/">Campingplätze</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/hikes/">Wanderungen</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/kiambu/">Kiambu</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/laikipia/">Laikipia</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/ngare-ndare/">Ngare Ndare</a>
+                            </li>
+                            <li>
+                              <a href="/de/tag/trails/">Wanderwege</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="Suche öffnen" data-i18n="Open search" data-i18n-attr="aria-label">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" data-i18n="Toggle dark mode" data-i18n-attr="data-tippy-content" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only" data-i18n-text>
+                Hell-/Dunkelmodus umschalten
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+            <details class="m-lang-menu js-lang-menu">
+              <summary class="m-lang-switch" aria-label="Sprache wählen">
+                <span class="icon-globe" aria-hidden="true"></span>
+                <span class="m-lang-switch__text" translate="no" data-lang-current>DE</span>
+              </summary>
+              <ul class="m-lang-menu__list" translate="no">
+                <li><a data-lang-link="en" lang="en" hreflang="en" href="/returning-to-mount-kenya/">English</a></li>
+                <li><a data-lang-link="de" lang="de" hreflang="de" href="/de/returning-to-mount-kenya/" aria-current="true">Deutsch</a></li>
+                <li><a data-lang-link="fr" lang="fr" hreflang="fr" href="/fr/returning-to-mount-kenya/">Français</a></li>
+                <li><a data-lang-link="es" lang="es" hreflang="es" href="/es/returning-to-mount-kenya/">Español</a></li>
+                <li><a data-lang-link="it" lang="it" hreflang="it" href="/it/returning-to-mount-kenya/">Italiano</a></li>
+                <li><a data-lang-link="zh" lang="zh-Hans" hreflang="zh-Hans" href="/zh/returning-to-mount-kenya/">简体中文</a></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-animate="fade">
+    <div class="m-hero__picture in-post">
+      <picture class="sg-picture">
+  <source
+    type="image/webp"
+    srcset="
+      /content/images/size/w300/format/webp/2026/01/P1011173-2.JPG.webp 300w,
+      /content/images/size/w600/format/webp/2026/01/P1011173-2.JPG.webp 600w,
+      /content/images/size/w1000/format/webp/2026/01/P1011173-2.JPG.webp 1000w,
+      /content/images/size/w2000/format/webp/2026/01/P1011173-2.JPG.webp 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+  />
+  <img
+    
+    srcset="
+      /content/images/size/w300/2026/01/P1011173-2.JPG 300w,
+      /content/images/size/w600/2026/01/P1011173-2.JPG 600w,
+      /content/images/size/w1000/2026/01/P1011173-2.JPG 1000w,
+      /content/images/size/w2000/2026/01/P1011173-2.JPG 2000w
+    "
+    sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+    src="/content/images/size/w1000/2026/01/P1011173-2.JPG"
+    alt=""
+    
+    
+  />
+</picture>
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-animation-wrapper" data-animate="fade-up">
+          <div
+            class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Zurück am Mount Kenya</h1>
+              <div class="m-heading__meta">
+                  <a href="https://savannaguides.com/de/tag/trails/" class="m-heading__meta__tag">Wanderwege</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">19. Jan. 2026</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https://savannaguides.com/de/returning-to-mount-kenya/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Returning%20to%20Mount%20Kenya&url=https://savannaguides.com/de/returning-to-mount-kenya/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Nach oben" data-i18n="Scroll to top" data-i18n-attr="aria-label">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <figure class="kg-card kg-image-card kg-width-full"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/01/P1011173-1.JPG.webp 600w, /content/images/size/w1000/format/webp/2026/01/P1011173-1.JPG.webp 1000w, /content/images/size/w1600/format/webp/2026/01/P1011173-1.JPG.webp 1600w, /content/images/size/w2400/format/webp/2026/01/P1011173-1.JPG.webp 2400w"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011173-1.JPG" class="kg-image" alt="" loading="lazy" width="2000" height="1333" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011173-1.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011173-1.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011173-1.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011173-1.JPG 2400w"></picture></figure><p>Meine letzte lange Wanderung am Mount Kenya lag über ein Jahr zurück, und in den letzten Dezembertagen des vergangenen Jahres zog es mich wieder hin – teils, um freie Tage zu nutzen, teils, um das Jahr mit einem Höhepunkt abzuschließen.<br><br>Das Wetter war nicht das beste: Die Regenzeit neigte sich dem Ende zu, und am Berg wechselten sich klarer Himmel, Bewölkung, leichte Schauer und schließlich heftiger Regen ständig ab. Trotzdem war es eine schöne Zeit am Berg.</p><hr><h2 id="the-route">Die Route</h2><p></p>
+<!--kg-card-begin: html-->
+<iframe src="https://gpx.studio/embed?options=%7B%22token%22%3A%22pk.eyJ1IjoibWF0dGdhdGh1IiwiYSI6ImNtZzR1a2t2NjFta3EybHNjdW94dWZrMmYifQ.Mca71SNb8mbBnZlClbfgFg%22%2C%22files%22%3A%5B%22https%3A%2F%2Fsavannaguides.com%2Fcontent%2Ffiles%2F2026%2F01%2Ftrail.gpx%22%5D%2C%22elevation%22%3A%7B%22height%22%3A180%7D%2C%22theme%22%3A%22light%22%7D" width="100%" height="600px" frameborder="0" style="outline: none;"></iframe>
+<!--kg-card-end: html-->
+<p><br>Eine Gipfelbesteigung hatte ich nicht geplant, stattdessen ging ich mit einem Guide eine <strong>Zwei-Tages-Runde</strong> auf der Sirimon-Seite des Mount Kenya: von Old Moses nach Shiptons durch das übliche Mackinders-Tal und zurück über die Likii-North-Route. Höchster Punkt war der Hausberg Col (4592 m), ein kurzer Abstecher vom Shiptons Camp.</p><p>In ihren besten Momenten bescherte uns die Route die klassischen Augenblicke im Mackinder’s Valley – klare Sicht auf die Gipfel, ganze Felder von Riesenlobelien und beruhigende Bäche, die den Berg hinabfließen. In ihren schlechtesten mussten die Ponchos gegen den Regen her, und der Aufstieg nach Likii North lehrte uns Demut.</p><hr><h2 id="a-false-start">Ein Fehlstart</h2><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/01/IMG_2107.jpeg.webp 600w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/IMG_2107.jpeg" class="kg-image" alt="Auf dem Weg ins Hochland" loading="lazy" width="2000" height="1500" srcset="https://savannaguides.com/content/images/size/w600/2026/01/IMG_2107.jpeg 600w, https://savannaguides.com/content/images/size/w1000/2026/01/IMG_2107.jpeg 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/IMG_2107.jpeg 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/IMG_2107.jpeg 2400w" sizes="(min-width: 1200px) 1200px"></picture><figcaption><span style="white-space: pre-wrap;">Sirimon Gate</span></figcaption></figure><p>Die Reise begann mit einer Absage.<br><br>Ich erreichte das Sirimon Gate gegen Ende des Tages; mein Plan war, dort zu zelten und am nächsten Tag loszuwandern. Wie sich herausstellte, durfte ich nicht allein wandern und brauchte einen Guide.<br>Die Parkranger halfen mir freundlicherweise – sie vermittelten mir einen Guide, der gerade vom Berg herunterkam und bereit war, gleich für eine weitere Tour umzukehren.<br><br>Ich zeltete auf dem Judmeier-Campingplatz (KWS-Campingplatz) nahe dem Old Moses Camp, wo ich eine Gruppe von Trägern und anderen Crew-Mitgliedern traf, die mich zum Tee in ihr Zelt einluden und aus einem öden Abend eine laute, herzliche Begegnung machten.<br></p><div class="kg-card kg-callout-card kg-callout-card-accent"><div class="kg-callout-emoji">💡</div><div class="kg-callout-text"><b><strong style="white-space: pre-wrap;">Organisiere für jeden Ausflug am Mount Kenya einen Guide, selbst für kurze Tageswanderungen. Der Park ist da sehr streng, weil sich immer wieder Leute verlaufen.</strong></b></div></div><hr><h2 id="gentle-climbs-gentle-showers">Sanfte Anstiege, sanfte Schauer</h2><figure class="kg-card kg-image-card kg-width-wide"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/01/P1011101.JPG.webp 600w, /content/images/size/w1000/format/webp/2026/01/P1011101.JPG.webp 1000w, /content/images/size/w1600/format/webp/2026/01/P1011101.JPG.webp 1600w, /content/images/size/w2400/format/webp/2026/01/P1011101.JPG.webp 2400w" sizes="(min-width: 1200px) 1200px"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011101.JPG" class="kg-image" alt="Riesenkreuzkraut und fließendes Wasser im Tal" loading="lazy" width="2000" height="1333" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011101.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011101.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011101.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011101.JPG 2400w" sizes="(min-width: 1200px) 1200px"></picture></figure><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><picture><source type="image/webp" srcset="/content/images/format/webp/2026/01/P1011079.JPG.webp 1280w" sizes="(min-width: 1280px) 320px, (min-width: 768px) 274px, 34vw"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011079.JPG" width="1280" height="1920" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011079.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011079.JPG 1000w, https://savannaguides.com/content/images/2026/01/P1011079.JPG 1280w" sizes="(min-width: 1280px) 320px, (min-width: 768px) 274px, 34vw"></picture></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011112-2.JPG" width="2000" height="3000" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011112-2.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011112-2.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011112-2.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011112-2.JPG 2400w" sizes="(min-width: 1280px) 320px, (min-width: 768px) 274px, 34vw"></div><div class="kg-gallery-image"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011120.JPG" width="2000" height="3000" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011120.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011120.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011120.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011120.JPG 2400w" sizes="(min-width: 1280px) 320px, (min-width: 768px) 274px, 34vw"></div></div></div></figure><p>Der erste Tag begann mit klarem Himmel und warmer Morgensonne.</p><p>Wir brachen von Old Moses auf, durchquerten Bultgrasflächen, überquerten zwei Flusstäler (Nyariginu und Likii) und erreichten den Rastplatz am Aussichtspunkt. Inzwischen war das Wetter allmählich trüb und bewölkt geworden.</p><p>Am Aussichtspunkt aßen wir zu Mittag, plauderten mit anderen Wanderern und begannen dann den allmählichen Aufstieg zum Shiptons Camp im Mackinders-Tal. Unterwegs regnete es ordentlich, doch auf den letzten paar Kilometern klarte es auf.<br></p><p>Wir zelteten auf dem KWS-Campingplatz, herrlich gelegen an einem kleinen, gewundenen Bach, und genossen den amphitheaterartigen Blick auf die Gipfel.</p><figure class="kg-card kg-gallery-card kg-width-wide kg-card-hascaption"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/01/P1011147.JPG.webp 600w, /content/images/size/w1000/format/webp/2026/01/P1011147.JPG.webp 1000w, /content/images/size/w1600/format/webp/2026/01/P1011147.JPG.webp 1600w, /content/images/size/w2400/format/webp/2026/01/P1011147.JPG.webp 2400w" sizes="(min-width: 1280px) 665px, (min-width: 768px) 568px, 70vw"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011147.JPG" width="2000" height="1333" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011147.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011147.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011147.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011147.JPG 2400w" sizes="(min-width: 1280px) 665px, (min-width: 768px) 568px, 70vw"></picture></div><div class="kg-gallery-image"><picture><source type="image/webp" srcset="/content/images/size/w600/format/webp/2026/01/P1011150.JPG.webp 600w, /content/images/size/w1000/format/webp/2026/01/P1011150.JPG.webp 1000w, /content/images/size/w1600/format/webp/2026/01/P1011150.JPG.webp 1600w, /content/images/size/w2400/format/webp/2026/01/P1011150.JPG.webp 2400w" sizes="(min-width: 1280px) 296px, (min-width: 768px) 253px, 31vw"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/P1011150.JPG" width="2000" height="3000" loading="lazy" alt="" srcset="https://savannaguides.com/content/images/size/w600/2026/01/P1011150.JPG 600w, https://savannaguides.com/content/images/size/w1000/2026/01/P1011150.JPG 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/P1011150.JPG 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/P1011150.JPG 2400w" sizes="(min-width: 1280px) 296px, (min-width: 768px) 253px, 31vw"></picture></div></div></div><figcaption><p><span style="white-space: pre-wrap;">Aussicht aus meinem Zelt</span></p></figcaption></figure><p></p><hr><h2 id="a-high-point-with-no-views">Ein Höhepunkt ohne Aussicht</h2><figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/M-T479txZZY?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" title="Climbing up to Hausberg Col"></iframe></figure><p><br>Am nächsten Morgen machten wir uns an den Aufstieg zum <strong>Hausberg Col</strong> – mit <strong>4592 m</strong> dem höchsten Punkt der Route.</p><p>Es war ein steiler, langsamer Aufstieg zum Sattel; die Luft wurde immer dünner, und die Lobelienfelder wichen nacktem Fels und lockerer Erde.<br><br>Oben auf dem Sattel soll man eigentlich einen großartigen Blick auf die Hausberg Tarns auf der anderen Seite des Berges haben. Leider hatte der Nebel an diesem Morgen die Sicht verschluckt. Dafür hatten wir einen wunderbaren Blick hinunter auf das Shiptons Camp.<br><br></p><figure class="kg-card kg-image-card kg-width-wide"><img src="https://savannaguides.com/content/images/size/w1000/2026/01/IMG_2050.jpeg" class="kg-image" alt="" loading="lazy" width="2000" height="1500" srcset="https://savannaguides.com/content/images/size/w600/2026/01/IMG_2050.jpeg 600w, https://savannaguides.com/content/images/size/w1000/2026/01/IMG_2050.jpeg 1000w, https://savannaguides.com/content/images/size/w1600/2026/01/IMG_2050.jpeg 1600w, https://savannaguides.com/content/images/size/w2400/2026/01/IMG_2050.jpeg 2400w" sizes="(min-width: 1200px) 1200px"></figure><p>Nach unserem kleinen Abstecher zum Hausberg Col stiegen wir zum Shiptons Camp ab, holten unser Gepäck und machten uns wieder auf den Weg durch das Mackinders-Tal – diesmal mit dem Campingplatz Likii North als Ziel.<br><br>Die Wanderung nach Likii North verlief ereignislos, abgesehen von dem nennenswerten Anstieg aus dem Mackinders-Tal hinüber ins Likii-North-Tal, in dem der Campingplatz liegt.<br><br>Solange wir im Mackinders-Tal unterwegs waren, blieb es bedeckt; beim Aufstieg aus dem Tal setzte leichter Niesel ein, und als wir zum Campingplatz Likii North zur Mittagspause abstiegen, regnete es richtig.<br><br>Nach einer kurzen, halbstündigen Mittagsrast ging es weiter Richtung Old Moses, durch sumpfige Abschnitte und über kleine Rinnen, die der Regen in den Wanderweg gespült hatte. Das nasse Wetter machte diesen Abschnitt eher trist, doch mein Guide erzählte, dass man bei klarer Sicht einen hervorragenden Blick auf den Gipfel hat.<br><br>Gegen 16:30 Uhr waren wir zurück in Old Moses. Das Wetter hatte wieder aufgeklart, und ich war trocken – bis auf meine durchnässten Trailrunning-Schuhe. Damit endete meine zweitägige Wandertour.</p><hr><h2 id="field-notes">FELDNOTIZEN </h2><p><code>34 km • +1650m/-1630m • 4592m high point • Loop • Wet season</code></p><p><strong>🗺️ Bedingungen</strong></p><ul><li><strong>Wetter: </strong>schnelle Wechsel; auch an klaren Morgen mit Regen rechnen 🌧️</li><li><strong>Gelände:</strong> Mackinder’s sanft ansteigend, Likii North bei Nässe sumpfig</li><li><strong>Höhe:</strong> über 4000m deutlich spürbar; ein gleichmäßiges Tempo zahlt sich aus</li></ul><p><strong>🥾 Empfehlungen</strong></p><ul><li><strong>Hausberg Col:</strong> lohnt den Aufstieg auch ohne Aussicht</li><li><strong>Schuhwerk: </strong>wasserdichte Stiefel + Gamaschen in der Regenzeit</li><li><strong>Tempo:</strong> langweilig = sicher in der Höhe, besonders auf nassem Fels</li></ul><p><strong>⚠️ Risiken / Stolperfallen</strong></p><ul><li><strong>Likii North:</strong> Sumpf, Auswaschungen und rutschiger Untergrund nach Regen</li><li><strong>Wetterumschwünge: </strong>Regen meist ab Mittag</li><li><strong>Guide-Pflicht:</strong> keine Solo-Wanderungen; vorab oder am Sirimon Gate organisieren</li></ul><p><strong>🧰 Checkliste</strong></p><ul><li>Wasserdichte Stiefel / Gamaschen</li><li>Poncho oder Regenjacke</li><li>Drybag / Rucksack-Innensack</li><li>Trekkingstöcke</li><li>Thermoschicht für die Nacht im Shiptons Camp</li><li>2L Wasser + Elektrolyte</li></ul><hr><h3 id="parks-fees-for-locals">Parkgebühren für Einheimische</h3><table>
+<thead>
+<tr>
+<th>Aktivität</th>
+<th>Gebühren (pro Tag)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Naturschutzgebühr</td>
+<td>800</td>
+</tr>
+<tr>
+<td>Camping</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Fahrzeug</td>
+<td>600</td>
+</tr>
+<tr>
+<td>Bergführer</td>
+<td>3000</td>
+</tr>
+</tbody>
+</table>
+<hr><h2 id=""></h2><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://apps.apple.com/us/app/savanna-guides/id6636470632?itscg=30200&amp;itsct=apps_box_link&amp;mttnsubad=6636470632"><div class="kg-bookmark-content"><div class="kg-bookmark-title">Savanna Guides App - App Store</div><div class="kg-bookmark-description">Lade Savanna Guides von Matthew Gathu Kamande im App Store herunter. Sieh dir Screenshots, Bewertungen und Rezensionen, Nutzertipps und weitere Spiele wie Savanna Guides an.</div><div class="kg-bookmark-metadata"><picture><source type="image/webp" srcset="/content/images/format/webp/icon/favicon-180.png.webp"><img class="kg-bookmark-icon" src="https://savannaguides.com/content/images/icon/favicon-180.png" alt=""></picture><span class="kg-bookmark-author">App Store</span><span class="kg-bookmark-publisher">Matthew Gathu Kamande</span></div></div><div class="kg-bookmark-thumbnail"><picture><source type="image/webp" srcset="/content/images/format/webp/thumbnail/1200x630wa.jpg.webp"><img src="https://savannaguides.com/content/images/thumbnail/1200x630wa.jpg" alt="" onerror="this.style.display = 'none'"></picture></div></a></figure>
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title" data-i18n="Tags">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="/de/tag/trails/" title="Wanderwege">Wanderwege</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="https://savannaguides.com/de/author/sgt/" class="m-author-picture" aria-label="Savanna Guides">
+                  <div style="background-image: url(https://savannaguides.com/content/images/2025/09/app-icon-min-white-3.png);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="https://savannaguides.com/de/author/sgt/">Savanna Guides</a>
+              </h4>
+                <p class="m-author__bio">Savanna Guides ist ein Projekt von Matt Gathu – mit der liebevollen Hilfe meiner guten Freunde Nicks und Tessie.</p>
+              <ul class="m-author-links">
+                  <li>
+                    <a href="https://savannaguides.com/de/" target="_blank" rel="noopener" aria-label="Website" data-i18n="Website" data-i18n-attr="aria-label">
+                      <span class="icon-globe" aria-hidden="true"></span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
+
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Suche" data-i18n="Search" data-i18n-attr="aria-label">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Suche schließen" data-i18n="Close search" data-i18n-attr="aria-label">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only" data-i18n="Type to search">
+          Suchbegriff eingeben
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Suchbegriff eingeben" data-i18n="Type to search" data-i18n-attr="placeholder">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results" data-i18n="No results for your search, try something different.">
+      Keine Ergebnisse für deine Suche – bitte versuche es mit einem anderen Begriff.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+      <a href="https://savannaguides.com/rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Savanna Guides © 2026</span>
+    </p>
+
+  </div>
+</footer>
+    <script defer src="/assets/js/manifest.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/vendor.js?v=4fdd992dd6"></script>
+    <script defer src="/assets/js/app.js?v=4fdd992dd6"></script>
+
+      <script defer src="/assets/js/post.js?v=4fdd992dd6"></script>
+
+
+    
+  </body>
+</html>
